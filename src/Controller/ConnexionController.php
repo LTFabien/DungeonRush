@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
-class HomeController extends AbstractController
+class ConnexionController extends AbstractController
 {
     /**
      * @var Environment
@@ -27,10 +27,10 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/", name="home")
+     * @Route("/connexion", name="connexion")
      */
-    public function homepage(): Response
+    public function connexion(): Response
     {
-        return new Response($this->twig->render('pages/home.html.twig'));
+        return new Response($this->twig->render('pages/connexion.html.twig'));
     }
 }
