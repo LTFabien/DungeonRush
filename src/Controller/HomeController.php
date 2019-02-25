@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 
+use App\Repository\CharacterClassRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,6 +22,7 @@ class HomeController extends AbstractController
      */
     public function homepage(): Response
     {
+
         return $this->render('pages/home.html.twig');
     }
 }

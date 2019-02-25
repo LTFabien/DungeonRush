@@ -13,14 +13,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ConnexionController extends AbstractController
-{
 
+class SignupController extends AbstractController
+{
     /**
-     * @Route("/connexion", name="connexion")
+     * @Route("/signup", name="signup")
      */
-    public function connexion(): Response
+    public function inscription(): Response
     {
-        return $this->render('pages/connexion.html.twig');
+        return $this->render('pages/signup.html.twig');
     }
 }
