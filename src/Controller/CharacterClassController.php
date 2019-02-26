@@ -37,7 +37,7 @@ class CharacterClassController extends AbstractController
     }
 
     /**
-     * @Route("/classes", name="property.index")
+     * @Route("/classes", name="characterclass.index")
      * @param CharacterClassRepository $repository
      * @return Response
      */
