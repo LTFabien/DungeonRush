@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block title 'Les classes' %}
 {% block body %}
-    <div class="container mt-4">
-        <div>
-            <h1> La liste des classes</h1>
+    <section class = "jumbotron text-center mb-4" style="background-image: url('{{ asset('build/images/wowbanner.jpg') }}')">
+        <div class="container">
+            <div>
+                <h1 class = "jumbotron-heading"> La liste des classes</h1>
+                <p class = "lead text-muted"> Voici les différentes classes qui pourront vous accompagner durant votre aventure.</p>
+            </div>
         </div>
-    </div>
-
+    </section>
     <div class="container">
         <div class="div row flex">
             {% for characterclass in characterclasses %}
@@ -25,4 +27,5 @@
             {% endfor %}
         </div>
     </div>
+
 {% endblock body %}

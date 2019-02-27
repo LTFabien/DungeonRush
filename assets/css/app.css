@@ -1,9 +1,31 @@
 .nav-item a {
-    color: white !important;
+    color: #EC1D27 !important;
     cursor: pointer;
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+
 }
 
 .nav-item a:hover {
     color: grey !important;
     cursor: pointer;
+}
+
+.jumbotron {
+    margin-bottom: 0;
+    background-color: #FFFFFF;
+    background-repeat : no-repeat;
+    background-size :cover;
+}
+.jumbotron .container{
+    max-width: 40rem;
+    background: rgba(255,255,255,0.2);
+    padding: 2rem;
+    color: white;
+}
+
+.jumbotron p {
+    color: white !important;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
 }
