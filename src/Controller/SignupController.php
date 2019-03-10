@@ -29,6 +29,7 @@ class SignupController extends AbstractController
             $user->setPassword($hash);
             $manager->persist($user);
             $manager->flush();
+            return $this->redirectToRoute('login');
         }
 
         return $this->render('pages/signup.html.twig', [
@@ -36,5 +37,6 @@ class SignupController extends AbstractController
         ]);
 
     }
+
 
 }
