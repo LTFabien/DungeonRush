@@ -1,11 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Inscription' %}
-{% block body %}
+
+{% block body %}}
     <div class="container">
         <div class ="jumbotron text-center">
             <h1> Inscription </h1>
-            <p> bloubloublou </p>
+            <p> Inscrivez vous </p>
+        </div>
+        <div class="jumbotron">
+            {{ form_start(form) }}
+                {{ form_row(form.username) }}
+                {{ form_row(form.password) }}
+                {{ form_row(form.firstname) }}
+                {{ form_row(form.lastname) }}
+            <button class="btn btn-lg btn-primary" type="submit">Inscription</button>
+            {{ form_end(form) }}
         </div>
     </div>
 
