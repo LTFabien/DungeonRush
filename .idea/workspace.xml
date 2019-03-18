@@ -6,6 +6,7 @@
 =======
     <list default="true" id="b30a988c-f4bb-4964-a074-9305ab67ee50" name="Default Changelist" comment="">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
@@ -2163,6 +2164,13 @@
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/login.html.twig" afterDir="false" />
 >>>>>>> Nadir
+=======
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/CharacterClass.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/CharacterClass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
 >>>>>>> 8ee2ad425d14684d4d4feb8744789b7a299af094
@@ -2257,13 +2265,25 @@
     <leaf>
       <file pinned="false" current-in-tab="false">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/symfony.lock">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-2295" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/Entity/CharacterClass.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-119">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+              <folding>
+                <element signature="e#30#78#0#PHP" expanded="true" />
+              </folding>
+            </state>
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -2280,20 +2300,35 @@
               <folding>
                 <element signature="e#30#62#0#PHP" expanded="true" />
               </folding>
+=======
+        <entry file="file://$PROJECT_DIR$/src/Entity/Weapons.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-658">
+              <caret line="31" column="95" selection-start-line="31" selection-start-column="95" selection-end-line="31" selection-end-column="95" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="254">
               <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Move.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="145" column="21" selection-start-line="145" selection-start-column="21" selection-end-line="145" selection-end-column="21" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/Controller/SignupController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="215">
@@ -2301,12 +2336,19 @@
               <folding>
                 <element signature="e#34#64#0#PHP" expanded="true" />
               </folding>
+=======
+        <entry file="file://$PROJECT_DIR$/src/Repository/CharacterRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="43" column="41" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
             </state>
 >>>>>>> Nadir
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor" />
@@ -2322,11 +2364,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
               <caret line="12" selection-start-line="12" selection-end-line="13" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/Entity/Consumables.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/Controller/LoginController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
@@ -2334,10 +2383,17 @@
               <folding>
                 <element signature="e#118#183#0#PHP" expanded="true" />
               </folding>
+=======
+        <entry file="file://$PROJECT_DIR$/src/Entity/Character.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="53" column="5" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
@@ -2355,16 +2411,40 @@
               <folding>
                 <element signature="e#28#48#0#PHP" expanded="true" />
               </folding>
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Repository/WeaponsRepository.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Statistics.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/templates/pages/signup.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
               <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
 >>>>>>> Nadir
+=======
+        <entry file="file://$PROJECT_DIR$/src/Repository/CharacterClassRepository.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/CharacterClassController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="51" column="1" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
             </state>
           </provider>
         </entry>
@@ -2383,12 +2463,16 @@
         <option value="$PROJECT_DIR$/templates/pages/inscription.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/PropertyController.php" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
         <option value="$PROJECT_DIR$/src/Controller/LoginController.php" />
         <option value="$PROJECT_DIR$/src/Controller/SignupController.php" />
 =======
         <option value="$PROJECT_DIR$/.env" />
 >>>>>>> Nadir
         <option value="$PROJECT_DIR$/src/Entity/CharacterClass.php" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/Controller/HomeController.php" />
         <option value="$PROJECT_DIR$/src/Controller/CharacterClassController.php" />
         <option value="$PROJECT_DIR$/src/Migrations/Version20190225003216.php" />
@@ -2413,6 +2497,15 @@
         <option value="$PROJECT_DIR$/src/Controller/LoginController.php" />
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
 >>>>>>> Nadir
+=======
+        <option value="$PROJECT_DIR$/src/Controller/CharacterClassController.php" />
+        <option value="$PROJECT_DIR$/templates/pages/home.html.twig" />
+        <option value="$PROJECT_DIR$/templates/property/index.html.twig" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/src/Entity/Consumables.php" />
+        <option value="$PROJECT_DIR$/src/Controller/HomeController.php" />
+        <option value="$PROJECT_DIR$/src/Entity/Move.php" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
       </list>
     </option>
   </component>
@@ -2495,10 +2588,20 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+<<<<<<< HEAD
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
     <option name="height" value="688" />
+=======
+    <option name="x" value="15" />
+    <option name="y" value="30" />
+    <option name="width" value="1890" />
+    <option name="height" value="960" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -2518,6 +2621,7 @@
               <item name="External Libraries" type="bcb0276e:PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
 =======
               <item name="DungeonRush" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="bin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -2530,6 +2634,9 @@
               <item name="DungeonRush" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
               <item name="packages" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
             </path>
             <path>
               <item name="DungeonRush" type="b2602c69:ProjectViewProjectNode" />
@@ -2540,6 +2647,7 @@
               <item name="DungeonRush" type="b2602c69:ProjectViewProjectNode" />
               <item name="DungeonRush" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -2547,6 +2655,9 @@
               <item name="DungeonRush" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Entity" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="Repository" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
             </path>
             <path>
               <item name="DungeonRush" type="b2602c69:ProjectViewProjectNode" />
@@ -2563,6 +2674,7 @@
               <item name="DungeonRush" type="b2602c69:ProjectViewProjectNode" />
               <item name="DungeonRush" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -2571,6 +2683,9 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="security" type="462c0819:PsiDirectoryNode" />
 >>>>>>> Nadir
+=======
+              <item name="property" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
             </path>
           </expand>
           <select />
@@ -2583,10 +2698,14 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$USER_HOME$/blog" />
 =======
     <property name="last_opened_file_path" value="C:/wamp64/www/blog" />
 >>>>>>> Nadir
+=======
+    <property name="last_opened_file_path" value="$USER_HOME$/blog" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -2640,6 +2759,7 @@
       <workItem from="1551217673950" duration="9574000" />
 =======
       <workItem from="1551053282631" duration="6617000" />
+<<<<<<< HEAD
       <workItem from="1551101791496" duration="4725000" />
       <workItem from="1551187241119" duration="7826000" />
       <workItem from="1551203069774" duration="6495000" />
@@ -2647,10 +2767,15 @@
       <workItem from="1551278496962" duration="1846000" />
       <workItem from="1552226491191" duration="2742000" />
 >>>>>>> Nadir
+=======
+      <workItem from="1551102204620" duration="12300000" />
+      <workItem from="1551208033976" duration="2086000" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
     <option name="totallyTimeSpent" value="50556000" />
 =======
@@ -2695,6 +2820,18 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32569557" />
+=======
+    <option name="totallyTimeSpent" value="35660000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17327935" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -2702,10 +2839,16 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3289689" />
       <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.4969743" visible="true" weight="0.31914893" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5030257" side_tool="true" weight="0.34042552" />
 >>>>>>> Nadir
+=======
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4979757" weight="0.3285968" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5020243" side_tool="true" weight="0.3285968" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -2752,12 +2895,15 @@
     <entry file="file://$PROJECT_DIR$/config/services.yaml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/config/bundles.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/config/bootstrap.php">
 =======
+=======
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
     <entry file="file://$PROJECT_DIR$/src/Kernel.php">
 >>>>>>> Nadir
       <provider selected="true" editor-type-id="text-editor" />
@@ -2770,10 +2916,21 @@
     <entry file="file://$PROJECT_DIR$/src/Entity/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Kernel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+=======
+    <entry file="file://$PROJECT_DIR$/templates/pages/logoDungeonRush.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/var/cache/dev/ContainerFzlMlVY/getInscriptionControllerService.php" />
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="41" column="60" selection-start-line="41" selection-start-column="60" selection-end-line="41" selection-end-column="60" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
         </state>
       </provider>
 =======
@@ -2788,9 +2945,10 @@
     <entry file="file://$PROJECT_DIR$/templates/pages/Capture.PNG">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/pages/logoDungeonRush.png">
+    <entry file="file://$PROJECT_DIR$/templates/property/warrior.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Repository/CharacterClassRepository.php">
       <provider selected="true" editor-type-id="text-editor" />
 >>>>>>> Nadir
@@ -2860,10 +3018,54 @@
         </state>
       </provider>
     </entry>
+=======
+    <entry file="file://$PROJECT_DIR$/src/Controller/SignupController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+          <folding>
+            <element signature="e#118#183#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/pages/signup.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+          <folding>
+            <element signature="e#118#183#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/pages/login.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/pages/home.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
     <entry file="file://$PROJECT_DIR$/templates/property/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
+<<<<<<< HEAD
         </state>
       </provider>
     </entry>
@@ -2911,10 +3113,70 @@
             <element signature="e#118#183#0#PHP" expanded="true" />
           </folding>
         </state>
+=======
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-292" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20190225003216.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/prod/doctrine.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-316" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/doctrine_migrations.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/doctrine.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/bundles.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20190225002545.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20190225142855.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repository/ItemsRepository.php" />
+    <entry file="file://$PROJECT_DIR$/src/Entity/Items.php" />
+    <entry file="file://$PROJECT_DIR$/var/cache/dev/ContainerO5uDZpZ/getConsumablesRepositoryService.php" />
+    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20190225161556.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20190225161614.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-245" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="289">
           <caret line="25" column="51" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
 =======
@@ -2944,6 +3206,10 @@
         <state relative-caret-position="153">
           <caret line="12" selection-start-line="12" selection-end-line="13" />
 >>>>>>> Nadir
+=======
+        <state relative-caret-position="272">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
           <folding>
             <element signature="e#30#62#0#PHP" expanded="true" />
           </folding>
@@ -2951,10 +3217,20 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1020">
           <caret line="60" column="7" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Repository/ConsumablesRepository.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Statistics.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
         </state>
       </provider>
     </entry>
@@ -2966,6 +3242,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/property/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="51">
           <caret line="3" column="116" selection-start-line="3" selection-start-column="116" selection-end-line="3" selection-end-column="116" />
           <folding>
@@ -3062,15 +3339,69 @@
           <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
           <folding>
             <element signature="e#118#183#0#PHP" expanded="true" />
+=======
+        <state relative-caret-position="697">
+          <caret line="51" column="1" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repository/WeaponsRepository.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repository/CharacterRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="43" column="41" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repository/CharacterClassRepository.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Character.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="53" column="5" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Consumables.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Weapons.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-658">
+          <caret line="31" column="95" selection-start-line="31" selection-start-column="95" selection-end-line="31" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/CharacterClass.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-119">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#30#78#0#PHP" expanded="true" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
           <caret line="48" column="24" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
 >>>>>>> Nadir
+=======
+    <entry file="file://$PROJECT_DIR$/src/Entity/Move.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="145" column="21" selection-start-line="145" selection-start-column="21" selection-end-line="145" selection-end-column="21" />
+>>>>>>> 0a55b9332d0b044f539ee4e9dc5647cbddb28416
         </state>
       </provider>
     </entry>
