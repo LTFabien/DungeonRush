@@ -19,8 +19,14 @@ class LoginController extends AbstractController
     /**
      * @Route("/login", name="login")
      */
-    public function connexion(): Response
-    {
+
+    public function login() {
         return $this->render('pages/login.html.twig');
+    }
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout() {
     }
 }
