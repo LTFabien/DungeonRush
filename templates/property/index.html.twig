@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title 'Les classes' %}
+{% block body %}
+    <div class="container mt-4">
+        <div class ="jumbotron text-center">
+            <h1> La liste des classes</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="div row flex">
+            {% for characterclass in characterclasses %}
+                <div class="col-3">
+                    <div class="card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="#"> {{ characterclass.name }}</a>
+                            </h5>
+                            <p class ="card-text"> {{ characterclass.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock body %}
