@@ -33,9 +33,15 @@ class Weapons
      */
     private $class_authorized;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Inventory", mappedBy="weapons")
+     */
+    private $inventories;
+
     public function __construct()
     {
         $this->class_authorized = new ArrayCollection();
+        $this->inventories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -90,6 +96,34 @@ class Weapons
         if ($this->class_authorized->contains($classAuthorized)) {
             $this->class_authorized->removeElement($classAuthorized);
             $classAuthorized->removeAuthorizedWeapon($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Inventory[]
+     */
+    public function getInventories(): Collection
+    {
+        return $this->inventories;
+    }
+
+    public function addInventory(Inventory $inventory): self
+    {
+        if (!$this->inventories->contains($inventory)) {
+            $this->inventories[] = $inventory;
+            $inventory->addWeapon($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInventory(Inventory $inventory): self
+    {
+        if ($this->inventories->contains($inventory)) {
+            $this->inventories->removeElement($inventory);
+            $inventory->removeWeapon($this);
         }
 
         return $this;

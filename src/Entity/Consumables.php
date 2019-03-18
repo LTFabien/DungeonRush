@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,6 +37,16 @@ class Consumables
      * @ORM\Column(type="integer")
      */
     private $number_buff;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Inventory", mappedBy="consumables")
+     */
+    private $inventories;
+
+    public function __construct()
+    {
+        $this->inventories = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -85,6 +97,34 @@ class Consumables
     public function setNumberBuff(int $number_buff): self
     {
         $this->number_buff = $number_buff;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Inventory[]
+     */
+    public function getInventories(): Collection
+    {
+        return $this->inventories;
+    }
+
+    public function addInventory(Inventory $inventory): self
+    {
+        if (!$this->inventories->contains($inventory)) {
+            $this->inventories[] = $inventory;
+            $inventory->addConsumable($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInventory(Inventory $inventory): self
+    {
+        if ($this->inventories->contains($inventory)) {
+            $this->inventories->removeElement($inventory);
+            $inventory->removeConsumable($this);
+        }
 
         return $this;
     }
