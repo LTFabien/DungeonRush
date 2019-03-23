@@ -4,7 +4,17 @@
     <div class="container">
         <div class ="jumbotron text-center">
             <h1> Bienvenue sur DungeonRush !</h1>
-            <p> Blabloubli</p>
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <p> test user authenticated</p>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <p> test admin</p>
+                    <a class="btn btn-success" href="{{ path('addmember') }}">Ajouter des utilisateurs</a>
+                    <a class="btn btn-success" href="{{ path('addweapon') }}">Ajouter des armes</a>
+                    <a class="btn btn-success" href="{{ path('addmonster') }}">Ajouter des monstres</a>
+                {% endif %}
+             {% else %}
+                 <p> Connectez-vous où inscrivez-vous pour jouer à DungeonRush !</p>
+            {% endif %}
         </div>
     </div>
 
