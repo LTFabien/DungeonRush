@@ -24,6 +24,6 @@ class AccessDeniedHandler implements AccessDeniedHandlerInterface
      */
     public function handle(Request $request, AccessDeniedException $accessDeniedException)
     {
-        return new Response("Vous n'avez pas l'accès à cette page", 403);
+        return new Response("Vous n'avez pas l'accès à cette page");
     }
 }
