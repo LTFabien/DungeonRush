@@ -15,10 +15,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class AddWeapon extends AbstractController
 {
     /**
-     * @Route("/admin/addweapon", name="addweapon")
+     * @Route("/admin/addWeapon", name="addWeapon")
      */
 
     public function addWeapon() {
-        return $this->render('pages/addweapon.html.twig');
+        return $this->render('pages/addWeapon.html.twig');
     }
 }

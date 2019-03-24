@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Ajouter une classe de charactère</h1>
+
+    {{ form_start(formClass) }}
+    <div class="form-group">
+        <label for="">Nom</label>
+        {{ form_widget(formClass.name) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">description</label>
+        {{ form_widget(formClass.description) }}
+    </div>
+    <button type="submit" class="btn btn-success">Ajouter !</button>
+    {{ form_end(formClass) }}
+
+{% endblock %}

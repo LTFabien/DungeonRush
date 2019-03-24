@@ -15,10 +15,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class AddMonster extends AbstractController
 {
     /**
-     * @Route("/admin/addmonster", name="addmonster")
+     * @Route("/admin/addMonster", name="addMonster")
      */
 
     public function addMonster() {
-        return $this->render('pages/addmonster.html.twig');
+        return $this->render('pages/addMonster.html.twig');
     }
 }
