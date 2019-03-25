@@ -35,7 +35,7 @@ class AddCharacterClass extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $manager->persist($class);
             $manager->flush();
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('characterclass.index');
         }
 
         return $this->render('pages/addCharacterClass.html.twig', [

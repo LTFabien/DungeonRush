@@ -74,4 +74,15 @@ class CharacterClassController extends AbstractController
             'formModifyClass' => $form->createView()
         ]);
         }
+
+    /**
+     * @Route("/classes/{id}/removeClass", name="remove_class")
+     */
+        public function removeClass(CharacterClass $characterClass){
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($characterClass);
+            $entityManager->flush();
+            return $this->redirectToRoute('characterclass.index');
+
+        }
 }

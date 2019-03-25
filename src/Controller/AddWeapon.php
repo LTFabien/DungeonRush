@@ -10,6 +10,7 @@ namespace App\Controller;
 
 
 use App\Entity\Weapons;
+use App\Form\WeaponsType;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,17 +28,8 @@ class AddWeapon extends AbstractController
 
     public function addWeapon(Request $request, ObjectManager $manager) {
         $weapon = new Weapons();
-        $character_class = new CharacterClass();
-        $form = $this->createFormBuilder($weapon)
-            ->add('name')
-            ->add('description', TextareaType::class)
-            ->add('class_authorized', EntityType::class, array(
-                'class'        => CharacterClass::class,
-                'choice_label' => 'name',
-                'multiple'     => true,
-                'expanded' => true,
-            ))
-            ->getForm();
+
+        $form = $this->createForm(WeaponsType::class, $weapon);
 
         $form->handleRequest($request);
 
@@ -55,3 +47,14 @@ class AddWeapon extends AbstractController
         ]);
     }
 }
+
+##         $form = $this->createFormBuilder($weapon)
+##->add('name')
+##    ->add('description', TextareaType::class)
+##    ->add('class_authorized', EntityType::class, array(
+##        'class'        => CharacterClass::class,
+##        'choice_label' => 'name',
+##        'multiple'     => true,
+##        'expanded' => true,
+##    ))
+##    ->getForm();

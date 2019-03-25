@@ -2,7 +2,7 @@
 
 
 {% block body %}
-
+    {% if is_granted('ROLE_ADMIN') %}
     <h1>Modifier une classe de charactère</h1>
 
     {{ form_start(formModifyClass) }}
@@ -17,5 +17,5 @@
     </div>
     <button type="submit" class="btn btn-success">Modifier !</button>
     {{ form_end(formModifyClass) }}
-
+    {% endif %}
 {% endblock %}
