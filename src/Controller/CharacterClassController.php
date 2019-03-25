@@ -18,6 +18,8 @@ use App\Entity\CharacterClass;
 use App\Repository\CharacterClassRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -49,4 +51,27 @@ class CharacterClassController extends AbstractController
         ]);
 
     }
+
+    /**
+     * @Route("/classes/{id}/modifyClass", name="modify_class")
+     */
+    public function modifyClass(CharacterClass $characterClass, Request $request, ObjectManager $manager){
+
+            $form = $this->createFormBuilder($characterClass)
+                ->add('name')
+                ->add('description', TextareaType::class)
+                ->getForm();
+
+            $form->handleRequest($request);
+
+            if($form->isSubmitted() && $form->isValid()){
+                $manager->persist($characterClass);
+                $manager->flush();
+                return $this->redirectToRoute('home');
+            }
+
+        return $this->render('pages/modifyClass.html.twig', [
+            'formModifyClass' => $form->createView()
+        ]);
+        }
 }
