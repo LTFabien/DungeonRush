@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title 'Jeu' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('css/game') }}
+{% endblock stylesheets %}
+{% block body %}
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<img id="perso1" class="sprite" src="https://i.pinimg.com/originals/25/e8/98/25e8984c04d99639da6be5a0540fbc17.png" alt="">
+<img id="perso2" class="sprite" src="https://i.pinimg.com/originals/25/e8/98/25e8984c04d99639da6be5a0540fbc17.png" alt="">
+<img id="perso3" class="sprite" src="https://i.pinimg.com/originals/25/e8/98/25e8984c04d99639da6be5a0540fbc17.png" alt="">
+
+</body>
+<div id="menu">
+    <div id="submenu">
+        <ul class="move">
+        </ul>
+    </div>
+    <div id="player">
+        <ul class="info"></ul>
+    </div>
+</div>
+{% endblock body %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('js/game') }}
+{% endblock javascripts %}
+
