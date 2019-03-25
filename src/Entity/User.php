@@ -45,6 +45,12 @@ class User implements UserInterface
      */
     public $confirm_password;
 
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = ['ROLE_USER'];
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -100,10 +106,12 @@ class User implements UserInterface
      *
      * @return (Role|string)[] The user roles
      */
-    public function getRoles()
+    public function getRoles(): array
     {
-        return ['ROLE_USER'];
+        $roles=$this->roles;
+        return array_unique($roles);
     }
+
 
     /**
      * Returns the salt that was originally used to encode the password.
@@ -123,4 +131,9 @@ class User implements UserInterface
      */
     public function eraseCredentials()
     {}
+
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
+    }
 }
