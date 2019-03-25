@@ -8,10 +8,15 @@
                 <p>user authenticated</p>
                 {% if is_granted('ROLE_ADMIN') %}
                     <p> Que voulez-vous faire ? </p>
-                    <a class="btn btn-success" href="{{ path('addMember') }}">Ajouter des utilisateurs</a>
-                    <a class="btn btn-success" href="{{ path('addWeapon') }}">Ajouter des armes</a>
-                    <a class="btn btn-success" href="{{ path('addMonster') }}">Ajouter des monstres</a>
+                    <a class="btn btn-success" href="{{ path('addWeapon') }}">Ajouter une arme</a>
+                    <a class="btn btn-success" href="{{ path('addMonster') }}">Ajouter un monstre</a>
                     <a class="btn btn-success" href="{{ path('addCharacterClass') }}">Ajouter une classe</a>
+                    <a class="btn btn-success" href="{{ path('addMember') }}">Ajouter un move</a>
+                    <br><br>
+                    <a class="btn btn-success" href="#">Modifier une arme</a>
+                    <a class="btn btn-success" href="#">Modifier un monstre</a>
+                    <a class="btn btn-success" href="#">Modifier une classe</a>
+                    <a class="btn btn-success" href="#">Modifier un move</a>
                 {% endif %}
              {% else %}
                  <br>
