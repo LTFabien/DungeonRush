@@ -11,6 +11,7 @@ Encore
 
     // will create public/build/app.js and public/build/app.css
     .addStyleEntry('css/app', './assets/css/app.css')
+    .addStyleEntry('css/game', './assets/css/game.css')
     /*
      * ENTRY CONFIG
      *
@@ -20,7 +21,8 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
-    .addEntry('app', './assets/js/app.js')
+    .addEntry('js/app', './assets/js/app.js')
+    .addEntry('js/game', './assets/js/game.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
