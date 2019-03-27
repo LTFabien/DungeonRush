@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Détail de la classe {{ characterclass.name }}</h1>
+    <div class="container">
+        <div class="div row flex">
+                {% set imageClass = 'build/images/' ~ characterclass.name|lower ~ '.png' %}
+                <div class="col-3">
+                    <div class="card">
+                        <img class="card-img-top" src="{{asset(imageClass)}}"  alt="Image Class" style="height: 380px">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a> {{ characterclass.name }}</a>
+                            </h5>
+                            <p class ="card-text"> {{ characterclass.description }}</p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('modify_class', {'id': characterclass.id}) }}" class="btn btn-primary">Modifier</a>
+            <a href="{{ path('remove_class', {'id': characterclass.id}) }}" class="btn btn-primary">Supprimer</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

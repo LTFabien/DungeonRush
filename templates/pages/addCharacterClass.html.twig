@@ -16,6 +16,12 @@
         <label for="">description</label>
         {{ form_widget(formClass.description) }}
     </div>
+
+    <div class="form-group">
+        <label for="">Armes autorisées</label>
+        {{ form_widget(formClass.authorized_weapons) }}
+    </div>
+
     <button type="submit" class="btn btn-success">Ajouter !</button>
     {{ form_end(formClass) }}
 
