@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Ajouter un consommable</h1>
+
+    {{ form_start(formConsumable) }}
+    <div class="form-group">
+        <label for="">Nom</label>
+        {{ form_widget(formConsumable.name) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">description</label>
+        {{ form_widget(formConsumable.description) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Stat modifiée</label>
+        {{ form_widget(formConsumable.stat_buffed) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">points ajoutés</label>
+        {{ form_widget(formConsumable.number_buff) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Inventaire</label>
+        {{ form_widget(formConsumable.inventories) }}
+    </div>
+
+    <button type="submit" class="btn btn-success">Ajouter !</button>
+    {{ form_end(formConsumable) }}
+
+{% endblock %}

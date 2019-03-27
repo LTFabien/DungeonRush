@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Créer un inventaire</h1>
+
+    {{ form_start(formInventory) }}
+    <div class="form-group">
+        <label for="">Choisissez vos armes :</label>
+        {{ form_widget(formInventory.weapons) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Choisissez vos consommables :</label>
+        {{ form_widget(formInventory.consumables) }}
+    </div>
+
+    <button type="submit" class="btn btn-success">Ajouter !</button>
+    {{ form_end(formInventory) }}
+
+{% endblock %}
