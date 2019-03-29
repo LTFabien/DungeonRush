@@ -3,19 +3,30 @@
 
 {% block body %}
     {% if is_granted('ROLE_ADMIN') %}
-    <h1>Modifier une classe de charactère</h1>
+        <h1>Modifier une classe de charactère</h1>
 
-    {{ form_start(formModifyClass) }}
-    <div class="form-group">
+        {{ form_start(formModifyClass) }}
+        <div class="form-group">
         <label for="">Nom</label>
         {{ form_widget(formModifyClass.name) }}
-    </div>
+        </div>
 
-    <div class="form-group">
+        <div class="form-group">
         <label for="">description</label>
         {{ form_widget(formModifyClass.description) }}
-    </div>
-    <button type="submit" class="btn btn-success">Modifier !</button>
-    {{ form_end(formModifyClass) }}
+        </div>
+
+        <div class="form-group">
+            <label for="">Armes autorisées</label>
+            {{ form_widget(formModifyClass.authorized_weapons) }}
+        </div>
+
+        <div class="form-group">
+            <label for="">Move autorisés</label>
+            {{ form_widget(formModifyClass.authorized_move) }}
+        </div>
+
+        <button type="submit" class="btn btn-success">Modifier !</button>
+        {{ form_end(formModifyClass) }}
     {% endif %}
 {% endblock %}

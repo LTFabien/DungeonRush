@@ -4,6 +4,70 @@
 
 <h1>Ajouter un Personnage</h1>
 
+    {{ form_start(formCharacter) }}
+    <div class="form-group">
+        <label for="">Nom</label>
+        {{ form_widget(formCharacter.name) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">HP max</label>
+        {{ form_widget(formCharacter.HPMax) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">HP</label>
+        {{ form_widget(formCharacter.HP) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">MP max</label>
+        {{ form_widget(formCharacter.MPMax) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">MP</label>
+        {{ form_widget(formCharacter.MP) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Force</label>
+        {{ form_widget(formCharacter.Strength) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Intelligence</label>
+        {{ form_widget(formCharacter.Intelligence) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Esprit</label>
+        {{ form_widget(formCharacter.Spirit) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Vitalité</label>
+        {{ form_widget(formCharacter.Vitality) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Speed</label>
+        {{ form_widget(formCharacter.Speed) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Classe</label>
+        {{ form_widget(formCharacter.class) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Move</label>
+        {{ form_widget(formCharacter.move_learned) }}
+    </div>
+
+    <button type="submit" class="btn btn-success">Ajouter !</button>
+    {{ form_end(formCharacter) }}
+
 
 
 {% endblock %}

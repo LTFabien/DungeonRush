@@ -10,6 +10,7 @@ namespace App\Controller;
 
 
 use App\Entity\CharacterClass;
+use App\Entity\Move;
 use App\Entity\Weapons;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -33,6 +34,12 @@ class AddCharacterClass extends AbstractController
             ->add('authorized_weapons', EntityType::class, array(
                 'class'        => Weapons::class,
                 'choice_label' => 'name',
+                'multiple'     => true,
+                'expanded' => true,
+            ))
+            ->add('authorized_move', EntityType::class, array(
+                'class'        => Move::class,
+                'choice_label' => 'nom',
                 'multiple'     => true,
                 'expanded' => true,
             ))
