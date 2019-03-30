@@ -6,22 +6,6 @@
             <h1> Bienvenue sur DungeonRush !</h1>
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <p>user authenticated</p>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <p> Que voulez-vous faire ? </p>
-                    <a class="btn btn-success" href="{{ path('addWeapon') }}">Ajouter une arme</a>
-                    <a class="btn btn-success" href="{{ path('addMonster') }}">Ajouter un monstre</a>
-                    <a class="btn btn-success" href="{{ path('addMember') }}">Ajouter un move</a>
-                    <a class="btn btn-success" href="{{ path('addCharacter') }}">Ajouter un Personnage</a>
-                    <a class="btn btn-success" href="{{ path('addConsumable') }}">Ajouter un consomable</a>
-                    <br><br>
-                    <a class="btn btn-success" href="#">Modifier une arme</a>
-                    <a class="btn btn-success" href="#">Modifier un monstre</a>
-                    <a class="btn btn-success" href="#">Modifier un move</a>
-                    <br><br>
-                    <a class="btn btn-success" href="{{ path('createInventory') }}">Créer un inventaire</a>
-                    <a class="btn btn-success" href="{{ path('move') }}">Créer un move</a>
-                    <a class="btn btn-success" href="{{ path('group') }}">Créer un groupe</a>
-                {% endif %}
              {% else %}
                  <br>
                  <p> Connectez-vous où inscrivez-vous pour jouer à DungeonRush !</p>
