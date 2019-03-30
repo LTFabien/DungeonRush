@@ -38,6 +38,11 @@ class Weapons
      */
     private $inventories;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $damage;
+
     public function __construct()
     {
         $this->class_authorized = new ArrayCollection();
@@ -125,6 +130,18 @@ class Weapons
             $this->inventories->removeElement($inventory);
             $inventory->removeWeapon($this);
         }
+
+        return $this;
+    }
+
+    public function getDamage(): ?int
+    {
+        return $this->damage;
+    }
+
+    public function setDamage(int $damage): self
+    {
+        $this->damage = $damage;
 
         return $this;
     }

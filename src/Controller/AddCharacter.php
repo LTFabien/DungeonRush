@@ -9,7 +9,7 @@
 namespace App\Controller;
 
 
-use App\Entity\Character;
+use App\Entity\Player;
 use App\Form\CharacterType;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,7 +23,7 @@ class AddCharacter extends AbstractController
      */
 
     public function addCharacter(Request $request, ObjectManager $manager) {
-        $character = new Character();
+        $character = new Player();
 
         $form = $this->createForm(CharacterType::class, $character);
 

@@ -39,14 +39,26 @@ class Move
     private $class_authorized;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Character", mappedBy="move_learned")
+     * @ORM\ManyToMany(targetEntity="Player", mappedBy="move")
      */
-    private $character_taught;
+    private $characters;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $cost;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $puissance;
+
+
 
     public function __construct()
     {
         $this->class_authorized = new ArrayCollection();
-        $this->character_taught = new ArrayCollection();
+        $this->characters = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -119,30 +131,56 @@ class Move
     }
 
     /**
-     * @return Collection|Character[]
+     * @return Collection|Player[]
      */
-    public function getCharacterTaught(): Collection
+    public function getCharacters(): Collection
     {
-        return $this->character_taught;
+        return $this->characters;
     }
 
-    public function addCharacterTaught(Character $characterTaught): self
+    public function addCharacter(Player $character): self
     {
-        if (!$this->character_taught->contains($characterTaught)) {
-            $this->character_taught[] = $characterTaught;
-            $characterTaught->addMoveLearned($this);
+        if (!$this->characters->contains($character)) {
+            $this->characters[] = $character;
+            $character->addMove($this);
         }
 
         return $this;
     }
 
-    public function removeCharacterTaught(Character $characterTaught): self
+    public function removeCharacter(Player $character): self
     {
-        if ($this->character_taught->contains($characterTaught)) {
-            $this->character_taught->removeElement($characterTaught);
-            $characterTaught->removeMoveLearned($this);
+        if ($this->characters->contains($character)) {
+            $this->characters->removeElement($character);
+            $character->removeMove($this);
         }
 
         return $this;
     }
+
+    public function getCost(): ?int
+    {
+        return $this->cost;
+    }
+
+    public function setCost(?int $cost): self
+    {
+        $this->cost = $cost;
+
+        return $this;
+    }
+
+    public function getPuissance(): ?int
+    {
+        return $this->puissance;
+    }
+
+    public function setPuissance(int $puissance): self
+    {
+        $this->puissance = $puissance;
+
+        return $this;
+    }
+
+
 }

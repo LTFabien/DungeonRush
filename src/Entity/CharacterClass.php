@@ -39,6 +39,8 @@ class CharacterClass
      */
     private $authorized_move;
 
+
+
     public function __construct()
     {
         $this->authorized_weapons = new ArrayCollection();
@@ -125,4 +127,6 @@ class CharacterClass
 
         return $this;
     }
+
+
 }

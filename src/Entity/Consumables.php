@@ -43,6 +43,11 @@ class Consumables
      */
     private $inventories;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $turn;
+
     public function __construct()
     {
         $this->inventories = new ArrayCollection();
@@ -125,6 +130,18 @@ class Consumables
             $this->inventories->removeElement($inventory);
             $inventory->removeConsumable($this);
         }
+
+        return $this;
+    }
+
+    public function getTurn(): ?int
+    {
+        return $this->turn;
+    }
+
+    public function setTurn(?int $turn): self
+    {
+        $this->turn = $turn;
 
         return $this;
     }

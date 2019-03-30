@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\GroupRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TeamRepository")
  */
-class Group
+class Team
 {
     /**
      * @ORM\Id()
@@ -25,18 +25,20 @@ class Group
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Inventory", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $inventory;
+    private $Inventory;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $money;
+    private $Money;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Character", mappedBy="team")
+     * @ORM\ManyToMany(targetEntity="Player", inversedBy="teams")
      */
     private $characters;
+
 
     public function __construct()
     {
@@ -62,57 +64,51 @@ class Group
 
     public function getInventory(): ?Inventory
     {
-        return $this->inventory;
+        return $this->Inventory;
     }
 
-    public function setInventory(?Inventory $inventory): self
+    public function setInventory(Inventory $Inventory): self
     {
-        $this->inventory = $inventory;
+        $this->Inventory = $Inventory;
 
         return $this;
     }
 
     public function getMoney(): ?int
     {
-        return $this->money;
+        return $this->Money;
     }
 
-    public function setMoney(int $money): self
+    public function setMoney(int $Money): self
     {
-        $this->money = $money;
+        $this->Money = $Money;
 
         return $this;
     }
 
     /**
-     * @return Collection|Character[]
+     * @return Collection|Player[]
      */
     public function getCharacters(): Collection
     {
         return $this->characters;
     }
 
-    public function addCharacter(Character $character): self
+    public function addCharacter(Player $character): self
     {
         if (!$this->characters->contains($character)) {
             $this->characters[] = $character;
-            $character->setTeam($this);
         }
 
         return $this;
     }
 
-    public function removeCharacter(Character $character): self
+    public function removeCharacter(Player $character): self
     {
         if ($this->characters->contains($character)) {
             $this->characters->removeElement($character);
-            // set the owning side to null (unless already changed)
-            if ($character->getTeam() === $this) {
-                $character->setTeam(null);
-            }
         }
 
         return $this;
     }
-
 }

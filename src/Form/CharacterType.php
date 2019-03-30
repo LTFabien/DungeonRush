@@ -2,13 +2,12 @@
 
 namespace App\Form;
 
-use App\Entity\Character;
+use App\Entity\Player;
 use App\Entity\CharacterClass;
-use App\Entity\Group;
 use App\Entity\Move;
+use App\Entity\Team;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,9 +17,9 @@ class CharacterType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('HPMax')
+            ->add('HPmax')
             ->add('HP')
-            ->add('MPMax')
+            ->add('MPmax')
             ->add('MP')
             ->add('Strength')
             ->add('Intelligence')
@@ -31,7 +30,7 @@ class CharacterType extends AbstractType
                 'class'        => CharacterClass::class,
                 'choice_label' => 'name',
             ))
-            ->add('move_learned', EntityType::class, array(
+            ->add('move', EntityType::class, array(
                 'class'        => Move::class,
                 'choice_label' => 'nom',
                 'multiple'     => true,
@@ -43,7 +42,7 @@ class CharacterType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Character::class,
+            'data_class' => Player::class,
         ]);
     }
 }
