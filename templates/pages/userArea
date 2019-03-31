@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="div row flex">
+            {% for dungeon in dungeons %}
+                <div class="col-3">
+                    <div class="card">
+                        <a href="{{ path('classDetails', {'id': characterclass.id}) }}"><img class="card-img-top" src="{{asset(imageClass)}}"  alt="Image Class" style="height: 380px" ></a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ path('classDetails', {'id': characterclass.id}) }}"> {{ characterclass.name }}</a>
+                            </h5>
+                            {% if is_granted('ROLE_ADMIN') %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

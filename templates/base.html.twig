@@ -30,19 +30,24 @@
                     <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}" href="{{ path('add') }}">Ajouter</a>
                 </li>
                 {% endif %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        A propos
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Présentation des personnages</a>
-                        <a class="dropdown-item" href="#">Règles du jeu</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Conditions d'utilisation</a>
-                    </div>
-                </li>
 
             </ul>
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <nav class="navbar">
+                        <span class="navbar-text">
+                            Connecté en tant qu'administrateur : {{ app.user.username }}
+                        </span>
+                    </nav>
+
+                {% elseif is_granted('ROLE_USER') %}
+                    <nav class="navbar">
+                        <span class="navbar-text">
+                            Connecté en tant que : {{ app.user.username }}
+                        </span>
+                    </nav>
+                {% endif %}
+            {% endif %}
             <ul class="navbar-nav ml-auto">
                 {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <li class="nav-item active">
