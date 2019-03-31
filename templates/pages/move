@@ -26,8 +26,13 @@
     </div>
 
     <div class="form-group">
-        <label for="">Personnages :</label>
-        {{ form_widget(formMove.character_taught) }}
+        <label for="">Coût :</label>
+        {{ form_widget(formMove.cost) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Puissance :</label>
+        {{ form_widget(formMove.puissance) }}
     </div>
 
     <button type="submit" class="btn btn-success">Ajouter !</button>

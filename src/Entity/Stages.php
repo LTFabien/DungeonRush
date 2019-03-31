@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -27,6 +28,7 @@ class Stages
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Monsters", inversedBy="stages")
+     * @ApiSubresource
      */
     private $Monster;
 

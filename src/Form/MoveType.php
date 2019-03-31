@@ -25,10 +25,13 @@ class MoveType extends AbstractType
                 'multiple'     => true,
                 'expanded' => true,
             ))
-            ->add('character_taught', CollectionType::class, [
+            ->add('characters', CollectionType::class, [
                 'entry_type' => Player::class,
                 'entry_options' => ['label' => false],
-            ]);
+            ])
+            ->add('cost')
+            ->add('puissance')
+        ;
 
         ;
     }

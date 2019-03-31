@@ -6,6 +6,7 @@
             <h1> Bienvenue sur DungeonRush !</h1>
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <p>user authenticated</p>
+                <a class="btn btn-success" href="{{ path('group') }}">Choisis tes persos !</a>
              {% else %}
                  <br>
                  <p> Connectez-vous où inscrivez-vous pour jouer à DungeonRush !</p>

@@ -7,6 +7,7 @@ use App\Entity\Inventory;
 use App\Entity\Team;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,18 +17,11 @@ class TeamType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('Money')
-            ->add('Inventory', EntityType::class, array(
-                'class'        => Inventory::class,
-                'choice_label' => 'id',
-            ))
-            ->add('characters', EntityType::class, array(
-                'class'        => Player::class,
-                'choice_label' => 'name',
-                'multiple'     => true,
-                'expanded' => true,
-            ))
-        ;
+            ->add('characters', CollectionType::class, [
+                'entry_type' => CharacterType::class,
+                'entry_options' => ['label' => false],
+            ]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -10,22 +10,15 @@
         {{ form_widget(formGroup.name) }}
     </div>
 
-    <div class="form-group">
-        <label for="">Choisissez un inventaire :</label>
-        {{ form_widget(formGroup.Inventory) }}
-    </div>
-
-    <div class="form-group">
-        <label for="">Argent :</label>
-        {{ form_widget(formGroup.Money) }}
-    </div>
-
-    <div class="form-group">
-        <label for="">Choisis tes personnages :</label>
-        {{ form_widget(formGroup.characters) }}
-    </div>
+    <ul class="Characters">
+        {% for Character in formGroup.characters %}
+            <li>{{ form_row(Character.name) }}</li>
+            <li>{{ form_row(Character.class) }}</li>
+        {% endfor %}
+    </ul>
 
     <button type="submit" class="btn btn-success">Ajouter !</button>
     {{ form_end(formGroup) }}
+
 
 {% endblock %}

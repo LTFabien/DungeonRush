@@ -19,12 +19,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class AddCharacter extends AbstractController
 {
     /**
-     * @Route("/admin/addCharacter", name="addCharacter")
+     * @Route("/addCharacter", name="addCharacter")
      */
 
     public function addCharacter(Request $request, ObjectManager $manager) {
         $character = new Player();
 
+        $character->setHP(10);
+        $character->setHPmax(10);
+        $character->setMP(10);
+        $character->setMPmax(10);
+        $character->setSpeed(10);
+        $character->setSpirit(10);
+        $character->setStrength(10);
+        $character->setIntelligence(10);
+        $character->setVitality(10);
         $form = $this->createForm(CharacterType::class, $character);
 
         $form->handleRequest($request);
