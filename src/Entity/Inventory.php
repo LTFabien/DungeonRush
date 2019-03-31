@@ -2,12 +2,15 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\InventoryRepository")
+ * @ApiResource
  */
 class Inventory
 {
@@ -20,11 +23,13 @@ class Inventory
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Weapons", inversedBy="inventories")
+     * @ApiSubresource
      */
     private $weapons;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Consumables", inversedBy="inventories")
+     * @ApiSubresource
      */
     private $consumables;
 

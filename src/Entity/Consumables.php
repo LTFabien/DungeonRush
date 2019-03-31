@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ConsumablesRepository")
+ * @ApiResource
  */
 class Consumables
 {
@@ -42,6 +44,11 @@ class Consumables
      * @ORM\ManyToMany(targetEntity="App\Entity\Inventory", mappedBy="consumables")
      */
     private $inventories;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $turn;
 
     public function __construct()
     {
@@ -125,6 +132,18 @@ class Consumables
             $this->inventories->removeElement($inventory);
             $inventory->removeConsumable($this);
         }
+
+        return $this;
+    }
+
+    public function getTurn(): ?int
+    {
+        return $this->turn;
+    }
+
+    public function setTurn(?int $turn): self
+    {
+        $this->turn = $turn;
 
         return $this;
     }

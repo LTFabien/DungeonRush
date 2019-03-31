@@ -25,26 +25,31 @@
                 <li class="nav-item">
                     <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}" href="{{ path('characterclass.index') }}">Classes</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ path('game') }}">Jouer<span class="sr-only">(current)</span></a>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}" href="{{ path('add') }}">Ajouter</a>
                 </li>
-                <!--<li class="nav-item dropdown">
+                {% endif %}
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        A propos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Présentation des personnages</a>
+                        <a class="dropdown-item" href="#">Règles du jeu</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">Conditions d'utilisation</a>
                     </div>
                 </li>-->
 
             </ul>
             <ul class="navbar-nav ml-auto">
+                {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ path('signup') }}">Inscription <span class="sr-only">(current)</span></a>
                 </li>
+                {% endif %}
                 {% if not app.user %}
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ path('login') }}">Connexion <span class="sr-only">(current)</span></a>

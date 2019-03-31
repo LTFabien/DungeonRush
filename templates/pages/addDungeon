@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Ajouter un Donjon</h1>
+
+    {{ form_start(formDungeon) }}
+    <div class="form-group">
+        <label for="">Nom du donjon</label>
+        {{ form_widget(formDungeon.name) }}
+    </div>
+
+    <button type="submit" class="btn btn-success">Ajouter !</button>
+    {{ form_end(formDungeon) }}
+
+
+
+{% endblock %}

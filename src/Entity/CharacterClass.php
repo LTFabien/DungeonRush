@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CharacterClassRepository")
+ * @ApiResource
  */
 class CharacterClass
 {
@@ -38,6 +40,8 @@ class CharacterClass
      * @ORM\ManyToMany(targetEntity="App\Entity\Move", inversedBy="class_authorized")
      */
     private $authorized_move;
+
+
 
     public function __construct()
     {
@@ -125,4 +129,6 @@ class CharacterClass
 
         return $this;
     }
+
+
 }

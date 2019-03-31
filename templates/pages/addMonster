@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Ajouter un Monstre</h1>
+
+    {{ form_start(formMonster) }}
+    <div class="form-group">
+        <label for="">Nom</label>
+        {{ form_widget(formMonster.name) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">HP max</label>
+        {{ form_widget(formMonster.HPmax) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">HP</label>
+        {{ form_widget(formMonster.HP) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">MP max</label>
+        {{ form_widget(formMonster.MPmax) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">MP</label>
+        {{ form_widget(formMonster.MP) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Force</label>
+        {{ form_widget(formMonster.Strength) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Intelligence</label>
+        {{ form_widget(formMonster.Intelligence) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Esprit</label>
+        {{ form_widget(formMonster.Spirit) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Vitalité</label>
+        {{ form_widget(formMonster.Vitality) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Speed</label>
+        {{ form_widget(formMonster.Speed) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Stage</label>
+        {{ form_widget(formMonster.stages) }}
+    </div>
+
+
+    <button type="submit" class="btn btn-success">Ajouter !</button>
+    {{ form_end(formMonster) }}
+
+
+
+{% endblock %}

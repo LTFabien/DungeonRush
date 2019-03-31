@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Créer un move</h1>
+
+    {{ form_start(formMove) }}
+    <div class="form-group">
+        <label for="">Nom :</label>
+        {{ form_widget(formMove.nom) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Type :</label>
+        {{ form_widget(formMove.type) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Description :</label>
+        {{ form_widget(formMove.description) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Classes autotisées :</label>
+        {{ form_widget(formMove.class_authorized) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Coût :</label>
+        {{ form_widget(formMove.cost) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Puissance :</label>
+        {{ form_widget(formMove.puissance) }}
+    </div>
+
+    <button type="submit" class="btn btn-success">Ajouter !</button>
+    {{ form_end(formMove) }}
+
+{% endblock %}

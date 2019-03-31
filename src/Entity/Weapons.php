@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WeaponsRepository")
+ * @ApiResource
  */
 class Weapons
 {
@@ -37,6 +39,11 @@ class Weapons
      * @ORM\ManyToMany(targetEntity="App\Entity\Inventory", mappedBy="weapons")
      */
     private $inventories;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $damage;
 
     public function __construct()
     {
@@ -125,6 +132,18 @@ class Weapons
             $this->inventories->removeElement($inventory);
             $inventory->removeWeapon($this);
         }
+
+        return $this;
+    }
+
+    public function getDamage(): ?int
+    {
+        return $this->damage;
+    }
+
+    public function setDamage(int $damage): self
+    {
+        $this->damage = $damage;
 
         return $this;
     }

@@ -2,14 +2,17 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CharacterRepository")
+ * @ApiResource
  */
-class Character
+class Player
 {
     /**
      * @ORM\Id()
@@ -29,19 +32,15 @@ class Character
     private $class;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Move", inversedBy="character_taught")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Move", inversedBy="characters")
+     * @ApiSubresource()
      */
-    private $move_learned;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Group", inversedBy="characters")
-     */
-    private $team;
+    private $move;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $HPMax;
+    private $HPmax;
 
     /**
      * @ORM\Column(type="integer")
@@ -51,7 +50,7 @@ class Character
     /**
      * @ORM\Column(type="integer")
      */
-    private $MPMax;
+    private $MPmax;
 
     /**
      * @ORM\Column(type="integer")
@@ -83,9 +82,15 @@ class Character
      */
     private $Speed;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Team", mappedBy="characters")
+     */
+    private $teams;
+
     public function __construct()
     {
-        $this->move_learned = new ArrayCollection();
+        $this->move = new ArrayCollection();
+        $this->teams = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -105,6 +110,7 @@ class Character
         return $this;
     }
 
+
     public function getClass(): ?CharacterClass
     {
         return $this->class;
@@ -113,56 +119,43 @@ class Character
     public function setClass(?CharacterClass $class): self
     {
         $this->class = $class;
-
         return $this;
     }
 
     /**
      * @return Collection|Move[]
      */
-    public function getMoveLearned(): Collection
+    public function getMove(): Collection
     {
-        return $this->move_learned;
+        return $this->move;
     }
 
-    public function addMoveLearned(Move $moveLearned): self
+    public function addMove(Move $move): self
     {
-        if (!$this->move_learned->contains($moveLearned)) {
-            $this->move_learned[] = $moveLearned;
+        if (!$this->move->contains($move)) {
+            $this->move[] = $move;
         }
 
         return $this;
     }
 
-    public function removeMoveLearned(Move $moveLearned): self
+    public function removeMove(Move $move): self
     {
-        if ($this->move_learned->contains($moveLearned)) {
-            $this->move_learned->removeElement($moveLearned);
+        if ($this->move->contains($move)) {
+            $this->move->removeElement($move);
         }
 
         return $this;
     }
 
-    public function getTeam(): ?Group
+    public function getHPmax(): ?int
     {
-        return $this->team;
+        return $this->HPmax;
     }
 
-    public function setTeam(?Group $team): self
+    public function setHPmax(int $HPmax): self
     {
-        $this->team = $team;
-
-        return $this;
-    }
-
-    public function getHPMax(): ?int
-    {
-        return $this->HPMax;
-    }
-
-    public function setHPMax(int $HPMax): self
-    {
-        $this->HPMax = $HPMax;
+        $this->HPmax = $HPmax;
 
         return $this;
     }
@@ -179,14 +172,14 @@ class Character
         return $this;
     }
 
-    public function getMPMax(): ?int
+    public function getMPmax(): ?int
     {
-        return $this->MPMax;
+        return $this->MPmax;
     }
 
-    public function setMPMax(int $MPMax): self
+    public function setMPmax(int $MPmax): self
     {
-        $this->MPMax = $MPMax;
+        $this->MPmax = $MPmax;
 
         return $this;
     }
@@ -259,6 +252,34 @@ class Character
     public function setSpeed(int $Speed): self
     {
         $this->Speed = $Speed;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Team[]
+     */
+    public function getTeams(): Collection
+    {
+        return $this->teams;
+    }
+
+    public function addTeam(Team $team): self
+    {
+        if (!$this->teams->contains($team)) {
+            $this->teams[] = $team;
+            $team->addCharacter($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTeam(Team $team): self
+    {
+        if ($this->teams->contains($team)) {
+            $this->teams->removeElement($team);
+            $team->removeCharacter($this);
+        }
 
         return $this;
     }

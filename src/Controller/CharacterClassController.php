@@ -15,13 +15,20 @@ namespace App\Controller;
 //        $em->flush();
 
 use App\Entity\CharacterClass;
+use App\Entity\Move;
+use App\Entity\Player;
+use App\Entity\Weapons;
 use App\Repository\CharacterClassRepository;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class CharacterClassController extends AbstractController
 {
@@ -46,6 +53,17 @@ class CharacterClassController extends AbstractController
     public function index(CharacterClassRepository $repository): Response
     {
         $characterclasses = $repository->findAll();
+
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+
+        $player = new Player();
+
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $jsonContent = $serializer->serialize($player, 'json');
+        echo $jsonContent;
+
         return $this->render('property/index.html.twig', [
             'characterclasses' => $characterclasses
         ]);
@@ -60,6 +78,18 @@ class CharacterClassController extends AbstractController
             $form = $this->createFormBuilder($characterClass)
                 ->add('name')
                 ->add('description', TextareaType::class)
+                ->add('authorized_weapons', EntityType::class, array(
+                    'class'        => Weapons::class,
+                    'choice_label' => 'name',
+                    'multiple'     => true,
+                    'expanded' => true,
+                ))
+                ->add('authorized_move', EntityType::class, array(
+                    'class'        => Move::class,
+                    'choice_label' => 'nom',
+                    'multiple'     => true,
+                    'expanded' => true,
+                ))
                 ->getForm();
 
             $form->handleRequest($request);

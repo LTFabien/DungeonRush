@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Ajouter un Stage</h1>
+
+    {{ form_start(formStage) }}
+    <div class="form-group">
+        <label for="">Nom</label>
+        {{ form_widget(formStage.name) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Choisissez les monstres</label>
+        {{ form_widget(formStage.Monster) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Choisissez le donjon</label>
+        {{ form_widget(formStage.dungeons) }}
+    </div>
+
+    <button type="submit" class="btn btn-success">Ajouter !</button>
+    {{ form_end(formStage) }}
+
+
+
+{% endblock %}
