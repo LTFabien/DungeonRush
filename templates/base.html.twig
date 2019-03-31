@@ -19,9 +19,9 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <!--<li class="nav-item active">
                     <a class="nav-link" href="{{ path('home') }}">Accueil <span class="sr-only">(current)</span></a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}" href="{{ path('characterclass.index') }}">Classes</a>
                 </li>
@@ -41,6 +41,23 @@
                 </li>-->
 
             </ul>
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <nav class="navbar">
+                        <span class="navbar-text">
+                            Connecté en tant qu'administrateur : {{ app.user.username }}
+                        </span>
+                    </nav>
+
+                {% elseif is_granted('ROLE_USER') %}
+                    <nav class="navbar">
+                        <span class="navbar-text">
+                            Connecté en tant que : {{ app.user.username }}
+                        </span>
+                    </nav>
+                {% endif %}
+            {% endif %}
+
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ path('signup') }}">Inscription <span class="sr-only">(current)</span></a>

@@ -6,12 +6,18 @@
     font-weight: bold;
 
 }
-
+.card-title-text{
+    text-align: center;
+    color:#EC1D27;
+    font-weight: bold;
+}
 .nav-item a:hover {
     color: grey !important;
     cursor: pointer;
 }
-
+.navbar-text{
+    color: lightgray !important;
+}
 .jumbotron {
     margin-bottom: 0;
     background-color: #FFFFFF;
@@ -25,7 +31,29 @@
     color: white;
 }
 
-.jumbotron p {
+
+.jumbotron .lead {
     color: white !important;
     text-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
+}
+
+#div1 {
+    width: 32px;
+    height: 48px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+    margin-top: 30px;
+    margin-left: 200px;
+}
+#div2 {
+    width: 350px;
+    height: 70px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+#div3 {
+    width: 350px;
+    height: 70px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
 }
