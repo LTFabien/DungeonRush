@@ -5,31 +5,32 @@ body{
 
 }
 
-#menu {
+#menu { /* menu bleu en bas */
     position: absolute;
     bottom: 0;
     border: 3px solid white;
     background: rgb(29, 90, 170);
     width: 99%;
-    height: 150px;
+    height: 20%;
     border-radius: 15px;
-    margin-bottom:5px;
-    padding-bottom: 175px;
+    margin-bottom:1%;
     box-shadow: 1px 1px 12px #555;
+    /*font-family: Verdana, Geneva, sans-serif;*/
     cursor: url('https://vignette.wikia.nocookie.net/finalfantasy/images/3/34/FF4Cursor.png/revision/latest?cb=20080419141612'), auto;
 }
 
-#submenu{
+#submenu{ /* menu contenant les moves */
     border-radius: 15px;
     box-shadow: 1px 1px 12px #555;
     border: 3px solid white;
     background: rgb(29, 90, 170);
-    width: 50%;
+    width: 20%;
     position: inherit;
-    right: 0;
-    height: 75%;
+    right: 35%;
+    height: 85%;
     margin:10px;
     overflow: auto;
+    scrollbar-color: transparent transparent; /*fonctionne seulement pour firefox*/
 }
 
 .sprite{
@@ -46,7 +47,6 @@ body{
     height: 15%;
     transition: 1s;
 }
-
 
 
 #perso2{
@@ -75,21 +75,34 @@ body{
     list-style-position: outside;
 
 }
+.infoEnnemy{
+    color: white;
+    font-size: x-large;
+    list-style-type: none;
+    margin-left: 70%;
+    padding: 0;
+    columns: 2;
+    margin-top:1.5%;
+
+}
 
 .move{
     color: white;
     font-size: x-large;
     list-style-type: none;
-    columns: 2;
-    -webkit-columns: 2;
-    -moz-columns: 2;
-    padding-top:20px;
+    margin-top:3%;
 }
 
 li{
     padding-bottom: 10px;
 }
+#current{
+    list-style-type: circle;
+}
 
+#dead{
+    color: red
+}
 #player{
     position: inherit;
     left: 0;
@@ -97,5 +110,19 @@ li{
     columns: 2;
     -webkit-columns: 2;
     -moz-columns: 2;
-    margin: 30px;
+    margin: 1.5%;
+}
+
+#display{
+    position: inherit;
+    right: 0;
+    bottom: 0;
+    border: 3px solid white;
+    background: rgb(29, 90, 170);
+    width: 60%;
+    height: 90%;
+    border-radius: 15px;
+    margin:5px;
+    box-shadow: 1px 1px 12px #555;
+
 }
