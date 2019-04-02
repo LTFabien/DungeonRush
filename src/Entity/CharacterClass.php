@@ -42,6 +42,9 @@ class CharacterClass
      */
     private $authorized_move;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
     private $HPmax;
 
     /**
