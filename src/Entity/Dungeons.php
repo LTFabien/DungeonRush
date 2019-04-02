@@ -30,6 +30,11 @@ class Dungeons
      */
     private $Stages;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $lvl;
+
     public function __construct()
     {
         $this->Stages = new ArrayCollection();
@@ -79,6 +84,18 @@ class Dungeons
                 $stage->setDungeons(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLvl(): ?int
+    {
+        return $this->lvl;
+    }
+
+    public function setLvl(int $lvl): self
+    {
+        $this->lvl = $lvl;
 
         return $this;
     }

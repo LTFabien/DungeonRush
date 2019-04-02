@@ -33,10 +33,16 @@ class Inventory
      */
     private $consumables;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Armor", inversedBy="inventories")
+     */
+    private $armors;
+
     public function __construct()
     {
         $this->weapons = new ArrayCollection();
         $this->consumables = new ArrayCollection();
+        $this->armors = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -91,6 +97,32 @@ class Inventory
     {
         if ($this->consumables->contains($consumable)) {
             $this->consumables->removeElement($consumable);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Armor[]
+     */
+    public function getArmors(): Collection
+    {
+        return $this->armors;
+    }
+
+    public function addArmor(Armor $armor): self
+    {
+        if (!$this->armors->contains($armor)) {
+            $this->armors[] = $armor;
+        }
+
+        return $this;
+    }
+
+    public function removeArmor(Armor $armor): self
+    {
+        if ($this->armors->contains($armor)) {
+            $this->armors->removeElement($armor);
         }
 
         return $this;

@@ -8,10 +8,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ConsumablesRepository")
- * @ApiResource
+ * @ApiResource()
+ * @ORM\Entity(repositoryClass="App\Repository\ArmorRepository")
  */
-class Consumables
+class Armor
 {
     /**
      * @ORM\Id()
@@ -31,24 +31,29 @@ class Consumables
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $stat_buffed;
-
-    /**
      * @ORM\Column(type="integer")
      */
-    private $number_buff;
+    private $defense;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Inventory", mappedBy="consumables")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Inventory", mappedBy="armors")
      */
     private $inventories;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\ManyToMany(targetEntity="App\Entity\CharacterClass", mappedBy="authorized_armors")
      */
-    private $turn;
+    private $characterClasses;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $element;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $lvl;
 
     /**
      * @ORM\Column(type="integer")
@@ -58,6 +63,7 @@ class Consumables
     public function __construct()
     {
         $this->inventories = new ArrayCollection();
+        $this->characterClasses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -89,26 +95,14 @@ class Consumables
         return $this;
     }
 
-    public function getStatBuffed(): ?string
+    public function getDefense(): ?int
     {
-        return $this->stat_buffed;
+        return $this->defense;
     }
 
-    public function setStatBuffed(string $stat_buffed): self
+    public function setDefense(int $defense): self
     {
-        $this->stat_buffed = $stat_buffed;
-
-        return $this;
-    }
-
-    public function getNumberBuff(): ?int
-    {
-        return $this->number_buff;
-    }
-
-    public function setNumberBuff(int $number_buff): self
-    {
-        $this->number_buff = $number_buff;
+        $this->defense = $defense;
 
         return $this;
     }
@@ -125,7 +119,7 @@ class Consumables
     {
         if (!$this->inventories->contains($inventory)) {
             $this->inventories[] = $inventory;
-            $inventory->addConsumable($this);
+            $inventory->addArmor($this);
         }
 
         return $this;
@@ -135,20 +129,60 @@ class Consumables
     {
         if ($this->inventories->contains($inventory)) {
             $this->inventories->removeElement($inventory);
-            $inventory->removeConsumable($this);
+            $inventory->removeArmor($this);
         }
 
         return $this;
     }
 
-    public function getTurn(): ?int
+    /**
+     * @return Collection|CharacterClass[]
+     */
+    public function getCharacterClasses(): Collection
     {
-        return $this->turn;
+        return $this->characterClasses;
     }
 
-    public function setTurn(?int $turn): self
+    public function addCharacterClass(CharacterClass $characterClass): self
     {
-        $this->turn = $turn;
+        if (!$this->characterClasses->contains($characterClass)) {
+            $this->characterClasses[] = $characterClass;
+            $characterClass->addAuthorizedArmor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCharacterClass(CharacterClass $characterClass): self
+    {
+        if ($this->characterClasses->contains($characterClass)) {
+            $this->characterClasses->removeElement($characterClass);
+            $characterClass->removeAuthorizedArmor($this);
+        }
+
+        return $this;
+    }
+
+    public function getElement(): ?string
+    {
+        return $this->element;
+    }
+
+    public function setElement(string $element): self
+    {
+        $this->element = $element;
+
+        return $this;
+    }
+
+    public function getLvl(): ?int
+    {
+        return $this->lvl;
+    }
+
+    public function setLvl(int $lvl): self
+    {
+        $this->lvl = $lvl;
 
         return $this;
     }

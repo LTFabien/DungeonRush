@@ -87,12 +87,18 @@ class CharacterClass
      */
     private $Spirit;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Armor", inversedBy="characterClasses")
+     */
+    private $authorized_armors;
+
 
 
     public function __construct()
     {
         $this->authorized_weapons = new ArrayCollection();
         $this->authorized_move = new ArrayCollection();
+        $this->authorized_armors = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -311,6 +317,32 @@ class CharacterClass
     public function setSpirit(int $Spirit): self
     {
         $this->Spirit = $Spirit;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Armor[]
+     */
+    public function getAuthorizedArmors(): Collection
+    {
+        return $this->authorized_armors;
+    }
+
+    public function addAuthorizedArmor(Armor $authorizedArmor): self
+    {
+        if (!$this->authorized_armors->contains($authorizedArmor)) {
+            $this->authorized_armors[] = $authorizedArmor;
+        }
+
+        return $this;
+    }
+
+    public function removeAuthorizedArmor(Armor $authorizedArmor): self
+    {
+        if ($this->authorized_armors->contains($authorizedArmor)) {
+            $this->authorized_armors->removeElement($authorizedArmor);
+        }
 
         return $this;
     }
