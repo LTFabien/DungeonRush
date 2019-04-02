@@ -28,7 +28,6 @@ class GroupController extends AbstractController
         $group = new Team();
         $group->setMoney(100);
         $Player1 = new Player();
-        $Player1->setHP(10);
         $Player1->setHPmax(10);
         $Player1->setMP(10);
         $Player1->setMPmax(10);
@@ -39,7 +38,6 @@ class GroupController extends AbstractController
         $Player1->setVitality(10);
         $group->getCharacters()->add($Player1);
         $Player2 = new Player();
-        $Player2->setHP(10);
         $Player2->setHPmax(10);
         $Player2->setMP(10);
         $Player2->setMPmax(10);
@@ -50,7 +48,6 @@ class GroupController extends AbstractController
         $Player2->setVitality(10);
         $group->getCharacters()->add($Player2);
         $Player3 = new Player();
-        $Player3->setHP(10);
         $Player3->setHPmax(10);
         $Player3->setMP(10);
         $Player3->setMPmax(10);
@@ -60,21 +57,15 @@ class GroupController extends AbstractController
         $Player3->setIntelligence(10);
         $Player3->setVitality(10);
         $group->getCharacters()->add($Player3);
-
         $inventory = new Inventory();
         $group->setInventory($inventory);
-
         $form = $this->createForm(TeamType::class, $group);
-
         $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()){
-
+        if($form->isSubmitted()&&$form->isValid()){
             $manager->persist($inventory);
             $manager->persist($Player1);
             $manager->persist($Player2);
             $manager->persist($Player3);
-
             $manager->persist($group);
             $manager->flush();
 

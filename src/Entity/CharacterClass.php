@@ -41,6 +41,11 @@ class CharacterClass
      */
     private $authorized_move;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $HP;
+
 
 
     public function __construct()
@@ -126,6 +131,18 @@ class CharacterClass
         if ($this->authorized_move->contains($authorizedMove)) {
             $this->authorized_move->removeElement($authorizedMove);
         }
+
+        return $this;
+    }
+
+    public function getHP(): ?int
+    {
+        return $this->HP;
+    }
+
+    public function setHP(int $HP): self
+    {
+        $this->HP = $HP;
 
         return $this;
     }

@@ -9,6 +9,8 @@ use App\Entity\Team;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CharacterType extends AbstractType
@@ -19,10 +21,14 @@ class CharacterType extends AbstractType
             ->add('name')
             ->add('class', EntityType::class, array(
                 'class'        => CharacterClass::class,
-                'choice_label' => 'name',
+                'choice_label' => 'name'
             ))
+
         ;
+
     }
+
+
 
     public function configureOptions(OptionsResolver $resolver)
     {
