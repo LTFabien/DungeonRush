@@ -21,6 +21,8 @@ class CharacterType extends AbstractType
                 'class'        => CharacterClass::class,
                 'choice_label' => 'name',
             ))
+
+
         ;
     }
 

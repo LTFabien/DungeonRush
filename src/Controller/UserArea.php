@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Dungeons;
 use App\Repository\DungeonsRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,32 +19,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserArea extends AbstractController
 {
     /**
-     * @var DungeonsRepository
-     */
-    public $repository;
-
-    public $em;
-
-    public function __construct(DungeonsRepository $repository, ObjectManager $em)
-    {
-        $this->repository = $repository;
-        $this->em = $em;
-    }
-
-    /**
      * @Route("/UserArea", name="UserArea")
-     * @param DungeonsRepository $repository
-     * @return Response
      */
-    public function index(DungeonsRepository $repository): Response
-    {
-        $dungeons = $repository->findAll();
+
+    public function ShowDetails(){
+        $dungeon = $this->getDoctrine()
+            ->getRepository(Dungeons::class)
+            ->findAll();
 
 
-        return $this->render('pages/userArea', [
-            'dungeon' => $dungeons
-        ]);
-
+        return $this->render('pages/userArea', array('dungeons' => $dungeon));
     }
 
 }

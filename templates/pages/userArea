@@ -3,14 +3,14 @@
 {% block body %}
 
     <div class="container">
+        <h1 class = "jumbotron-heading"> Choisis ton donjon !</h1>
         <div class="div row flex">
             {% for dungeon in dungeons %}
                 <div class="col-3">
                     <div class="card">
-                        <a href="{{ path('classDetails', {'id': characterclass.id}) }}"><img class="card-img-top" src="{{asset(imageClass)}}"  alt="Image Class" style="height: 380px" ></a>
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="{{ path('classDetails', {'id': characterclass.id}) }}"> {{ characterclass.name }}</a>
+                                <a href="{{ path('classDetails', {'id': dungeon.id}) }}"> {{ dungeon.name }}</a>
                             </h5>
                             {% if is_granted('ROLE_ADMIN') %}
                             {% endif %}

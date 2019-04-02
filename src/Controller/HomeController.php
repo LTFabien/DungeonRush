@@ -9,7 +9,7 @@
 namespace App\Controller;
 
 
-use App\Entity\Player;
+use App\Entity\CharacterClass;
 use App\Repository\CharacterClassRepository;
 use App\Repository\CharacterRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
