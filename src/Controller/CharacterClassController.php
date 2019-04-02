@@ -54,15 +54,18 @@ class CharacterClassController extends AbstractController
     {
         $characterclasses = $repository->findAll();
 
+
         $encoders = [new JsonEncoder()];
         $normalizers = [new ObjectNormalizer()];
 
-        $player = new Player();
 
         $serializer = new Serializer($normalizers, $encoders);
 
-        $jsonContent = $serializer->serialize($player, 'json');
-        echo $jsonContent;
+        $jsonContent = $serializer->serialize($characterclasses[1], 'json');
+        dump($jsonContent);
+
+        $characterclasses[0]->setStats($characterclasses[1]->getStats());
+        dump($characterclasses[0]->getStats());
 
         return $this->render('property/index.html.twig', [
             'characterclasses' => $characterclasses

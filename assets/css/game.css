@@ -2,9 +2,15 @@ body{
     background-image: url(https://opengameart.org/sites/default/files/com_fire_cave.png);
     background-size: cover;
     background-repeat: no-repeat;
+<<<<<<< HEAD
 
 }
 
+=======
+ 
+}
+ 
+>>>>>>> 9528c7a352b47e0677329f7e4b4c09d809100daa
 #menu { /* menu bleu en bas */
     position: absolute;
     bottom: 0;
@@ -16,9 +22,15 @@ body{
     margin-bottom:1%;
     box-shadow: 1px 1px 12px #555;
     /*font-family: Verdana, Geneva, sans-serif;*/
+<<<<<<< HEAD
     cursor: url('https://vignette.wikia.nocookie.net/finalfantasy/images/3/34/FF4Cursor.png/revision/latest?cb=20080419141612'), auto;
 }
 
+=======
+    cursor: url('https://vignette.wikia.nocookie.net/finalfantasy/images/3/34/FF4Cursor.png/revision/latest?cb=20080419141612'), auto; 
+}
+ 
+>>>>>>> 9528c7a352b47e0677329f7e4b4c09d809100daa
 #submenu{ /* menu contenant les moves */
     border-radius: 15px;
     box-shadow: 1px 1px 12px #555;
@@ -31,6 +43,7 @@ body{
     margin:10px;
     overflow: auto;
     scrollbar-color: transparent transparent; /*fonctionne seulement pour firefox*/
+<<<<<<< HEAD
 }
 
 .sprite{
@@ -38,6 +51,15 @@ body{
     height: 100%;
 }
 
+=======
+ }
+ 
+.sprite{
+width:100%;
+height: 100%;
+}
+ 
+>>>>>>> 9528c7a352b47e0677329f7e4b4c09d809100daa
 #perso1{
     background: rgba(0, 2, 5, 0);
     position: absolute;
@@ -47,8 +69,13 @@ body{
     height: 15%;
     transition: 1s;
 }
+<<<<<<< HEAD
 
 
+=======
+ 
+ 
+>>>>>>> 9528c7a352b47e0677329f7e4b4c09d809100daa
 #perso2{
     background: rgba(0, 2, 5, 0);
     position: absolute;
@@ -65,7 +92,11 @@ body{
     width: 5%;
     height: 15%;
 }
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 9528c7a352b47e0677329f7e4b4c09d809100daa
 .info{
     color: white;
     font-size: x-large;
@@ -73,7 +104,11 @@ body{
     margin: 0;
     padding: 0;
     list-style-position: outside;
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 9528c7a352b47e0677329f7e4b4c09d809100daa
 }
 .infoEnnemy{
     color: white;
@@ -83,15 +118,22 @@ body{
     padding: 0;
     columns: 2;
     margin-top:1.5%;
+<<<<<<< HEAD
 
 }
 
+=======
+ 
+}
+ 
+>>>>>>> 9528c7a352b47e0677329f7e4b4c09d809100daa
 .move{
     color: white;
     font-size: x-large;
     list-style-type: none;
     margin-top:3%;
 }
+<<<<<<< HEAD
 
 li{
     padding-bottom: 10px;
@@ -103,16 +145,32 @@ li{
 #dead{
     color: red
 }
+=======
+ 
+li{
+    padding-bottom: 10px; 
+    overflow:hidden;
+}
+ 
+>>>>>>> 9528c7a352b47e0677329f7e4b4c09d809100daa
 #player{
     position: inherit;
     left: 0;
     width: 40%;
     columns: 2;
+<<<<<<< HEAD
     -webkit-columns: 2;
     -moz-columns: 2;
     margin: 1.5%;
 }
 
+=======
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  margin: 1.5%;
+}
+ 
+>>>>>>> 9528c7a352b47e0677329f7e4b4c09d809100daa
 #display{
     position: inherit;
     right: 0;
@@ -124,5 +182,9 @@ li{
     border-radius: 15px;
     margin:5px;
     box-shadow: 1px 1px 12px #555;
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 9528c7a352b47e0677329f7e4b4c09d809100daa
 }

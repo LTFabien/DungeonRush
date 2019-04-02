@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use mysql_xdevapi\CollectionAdd;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CharacterClassRepository")
@@ -41,10 +42,47 @@ class CharacterClass
      */
     private $authorized_move;
 
+    private $HPmax;
+
     /**
      * @ORM\Column(type="integer")
      */
     private $HP;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $MPmax;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $MP;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Strength;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Intelligence;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Speed;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Vitality;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Spirit;
 
 
 
@@ -91,6 +129,35 @@ class CharacterClass
         return $this->authorized_weapons;
     }
 
+
+
+    public function getStats()
+    {
+        $stats = [$this->getHPmax(),
+            $this->getHP(),
+            $this->getMPmax(),
+            $this->getMP(),
+            $this->getStrength(),
+            $this->getIntelligence(),
+            $this->getSpeed(),
+            $this->getVitality(),
+            $this->getSpirit()];
+        return $stats;
+    }
+
+    public function setStats($stats)
+    {
+        $this->setHPmax($stats[0]);
+        $this->setHP($stats[1]);
+        $this->setMPmax($stats[2]);
+        $this->setMP($stats[3]);
+        $this->setStrength($stats[4]);
+        $this->setIntelligence($stats[5]);
+        $this->setSpeed($stats[6]);
+        $this->setVitality($stats[7]);
+        $this->setSpirit($stats[8]);
+    }
+
     public function addAuthorizedWeapon(Weapons $authorizedWeapon): self
     {
         if (!$this->authorized_weapons->contains($authorizedWeapon)) {
@@ -135,6 +202,19 @@ class CharacterClass
         return $this;
     }
 
+
+    public function getHPmax(): ?int
+    {
+        return $this->HPmax;
+    }
+
+    public function setHPmax(int $HPmax): self
+    {
+        $this->HPmax = $HPmax;
+
+        return $this;
+    }
+
     public function getHP(): ?int
     {
         return $this->HP;
@@ -143,6 +223,91 @@ class CharacterClass
     public function setHP(int $HP): self
     {
         $this->HP = $HP;
+
+        return $this;
+    }
+
+
+    public function getMPmax(): ?int
+    {
+        return $this->MPmax;
+    }
+
+    public function setMPmax(int $MPmax): self
+    {
+        $this->MPmax = $MPmax;
+
+        return $this;
+    }
+
+    public function getMP(): ?int
+    {
+        return $this->MP;
+    }
+
+    public function setMP(int $MP): self
+    {
+        $this->MP = $MP;
+
+        return $this;
+    }
+
+    public function getStrength(): ?int
+    {
+        return $this->Strength;
+    }
+
+    public function setStrength(int $Strength): self
+    {
+        $this->Strength = $Strength;
+
+        return $this;
+    }
+
+    public function getIntelligence(): ?int
+    {
+        return $this->Intelligence;
+    }
+
+    public function setIntelligence(int $Intelligence): self
+    {
+        $this->Intelligence = $Intelligence;
+
+        return $this;
+    }
+
+    public function getSpeed(): ?int
+    {
+        return $this->Speed;
+    }
+
+    public function setSpeed(int $Speed): self
+    {
+        $this->Speed = $Speed;
+
+        return $this;
+    }
+
+    public function getVitality(): ?int
+    {
+        return $this->Vitality;
+    }
+
+    public function setVitality(int $Vitality): self
+    {
+        $this->Vitality = $Vitality;
+
+        return $this;
+    }
+
+    public function getSpirit(): ?int
+    {
+        return $this->Spirit;
+    }
+
+    public function setSpirit(int $Spirit): self
+    {
+        $this->Spirit = $Spirit;
 
         return $this;
     }

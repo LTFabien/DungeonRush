@@ -148,6 +148,33 @@ class Player
         return $this;
     }
 
+    public function getStats()
+    {
+        $stats = [$this->getHPmax(),
+            $this->getHP(),
+            $this->getMPmax(),
+            $this->getMP(),
+            $this->getStrength(),
+            $this->getIntelligence(),
+            $this->getSpeed(),
+            $this->getVitality(),
+            $this->getSpirit()];
+        return $stats;
+    }
+
+    public function setStats($stats)
+    {
+        $this->setHPmax($stats[0]);
+        $this->setHP($stats[1]);
+        $this->setMPmax($stats[2]);
+        $this->setMP($stats[3]);
+        $this->setStrength($stats[4]);
+        $this->setIntelligence($stats[5]);
+        $this->setSpeed($stats[6]);
+        $this->setVitality($stats[7]);
+        $this->setSpirit($stats[8]);
+    }
+
     public function getHPmax(): ?int
     {
         return $this->HPmax;
