@@ -17,6 +17,9 @@ class MoveType extends AbstractType
     {
         $builder
             ->add('nom')
+            ->add('lvl')
+            ->add('price')
+            ->add('element')
             ->add('type')
             ->add('description')
             ->add('class_authorized', EntityType::class, array(

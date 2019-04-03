@@ -50,6 +50,11 @@ class Team
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $lvl;
+
 
 
     public function __construct()
@@ -132,6 +137,18 @@ class Team
     public function setUser(User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getLvl(): ?int
+    {
+        return $this->lvl;
+    }
+
+    public function setLvl(int $lvl): self
+    {
+        $this->lvl = $lvl;
 
         return $this;
     }

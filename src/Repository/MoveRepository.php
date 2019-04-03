@@ -19,22 +19,21 @@ class MoveRepository extends ServiceEntityRepository
         parent::__construct($registry, Move::class);
     }
 
-    // /**
-    //  * @return Move[] Returns an array of Move objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+      * @return Move[] Returns an array of Move objects
+     */
+
+    public function findByLevel($value)
     {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.lvl >= :lvl')
+            ->setParameter('lvl', $value)
+            ->orderBy('l.lvl', 'ASC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Move

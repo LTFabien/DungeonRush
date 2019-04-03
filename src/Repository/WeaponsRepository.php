@@ -19,6 +19,23 @@ class WeaponsRepository extends ServiceEntityRepository
         parent::__construct($registry, Weapons::class);
     }
 
+
+
+    /**
+     * @return Move[] Returns an array of Move objects
+     */
+
+    public function findByLevel($value)
+    {
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.lvl >= :lvl')
+            ->setParameter('lvl', $value)
+            ->orderBy('l.lvl', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Weapons[] Returns an array of Weapons objects
     //  */

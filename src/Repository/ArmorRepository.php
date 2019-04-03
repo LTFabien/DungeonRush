@@ -19,6 +19,22 @@ class ArmorRepository extends ServiceEntityRepository
         parent::__construct($registry, Armor::class);
     }
 
+
+    /**
+     * @return Move[] Returns an array of Move objects
+     */
+
+    public function findByLevel($value)
+    {
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.lvl >= :lvl')
+            ->setParameter('lvl', $value)
+            ->orderBy('l.lvl', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Armor[] Returns an array of Armor objects
     //  */
