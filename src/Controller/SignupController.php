@@ -17,14 +17,14 @@ class SignupController extends AbstractController
     /**
      * @Route("/signup", name="signup")
      */
-    public function registration(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder){
+    public function registration(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder){ //request et OM pour récup et envoyer dans notre base de données., UPEI pour hash notre mdp
         $user=new User();
 
         $form= $this->createForm(RegistrationType::class, $user);
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted() && $form->isValid()){ //dans User.php les conditions
             $hash=$encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
             $manager->persist($user);

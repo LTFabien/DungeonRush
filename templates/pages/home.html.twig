@@ -2,18 +2,23 @@
 
 {% block body %}
     <div class="container">
-        <div class ="jumbotron text-center">
-            <h1> Bienvenue sur DungeonRush !</h1>
+        <div class ="jumbotron text-center" >
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                <p>user authenticated</p>
-                <a class="btn btn-success" href="{{ path('group') }}">Choisis tes persos !</a>
+                <section class = "jumbotron text-center mb-4" style="background-image: url('{{ asset('build/images/ffbanner.png') }}')">
+                    <div class="container">
+                        <div>
+                            <h1 class = "jumbotron-heading"> Rejoignez l'aventure !</h1>
+                            <a href="{{ path('group') }}" class = "lead text-muted"> Créez votre équipe.</a>
+                        </div>
+                    </div>
+                </section>
             {% else %}
                 <br>
                 <p> Connectez-vous où inscrivez-vous pour jouer à DungeonRush !</p>
             {% endif %}
             <br>
             <!-- <p> Connectez-vous ou inscrivez-vous pour jouer à DungeonRush !</p> -->
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide mt-5" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>

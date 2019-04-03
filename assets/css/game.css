@@ -11,7 +11,7 @@ body{
     border: 3px solid white;
     background: rgb(29, 90, 170);
     width: 99%;
-    height: 20%;
+    height: 25%;
     border-radius: 15px;
     margin-bottom:1%;
     box-shadow: 1px 1px 12px #555;
@@ -119,10 +119,13 @@ li{
     bottom: 0;
     border: 3px solid white;
     background: rgb(29, 90, 170);
-    width: 60%;
+    width: 20%;
     height: 90%;
+    right: 35%;
     border-radius: 15px;
-    margin:5px;
-    box-shadow: 1px 1px 12px #555;
-
+    margin:10px;
+    overflow:auto;
+    font-weight: bold;
+    color: white;
+    text-align: center;
 }

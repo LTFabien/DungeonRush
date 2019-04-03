@@ -25,6 +25,9 @@
                 <li class="nav-item">
                     <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}" href="{{ path('characterclass.index') }}">Classes</a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('game') }}">Jouer<span class="sr-only">(current)</span></a>
+                </li>
 
                 {% if is_granted('ROLE_ADMIN') %}
                 <li class="nav-item">

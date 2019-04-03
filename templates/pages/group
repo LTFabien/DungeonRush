@@ -2,23 +2,25 @@
 
 {% block body %}
 
-    <h1>Créer un groupe</h1>
-
-    {{ form_start(formGroup) }}
-    <div class="form-group">
-        <label for="">Choisissez un nom :</label>
-        {{ form_widget(formGroup.name) }}
-    </div>
-
-    <ul class="Characters">
-        {% for Character in formGroup.characters %}
-            <li>{{ form_row(Character.name) }}</li>
-            <li>{{ form_row(Character.class) }}</li>
-        {% endfor %}
-    </ul>
-
+    <h1 style="text-align:center">Créez votre équipe</h1>
+    <div class="container text-center">
+        {{ form_start(formGroup) }}
+        <div class="form-group">
+            <label for="">Choisissez un nom :</label>
+                 {{ form_widget(formGroup.name) }}
+        </div>
+        <div class="wrapper">
+            <ul class="Characters">
+                {% for Character in formGroup.characters %}
+                <div>
+                    {{ form_row(Character.name) }}
+                    {{ form_row(Character.class) }}
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
     <button type="submit" class="btn btn-success">Ajouter !</button>
     {{ form_end(formGroup) }}
-
+    </div>
 
 {% endblock %}

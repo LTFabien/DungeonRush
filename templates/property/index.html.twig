@@ -9,8 +9,10 @@
             </div>
         </div>
     </section>
-    <div class="container">
-        <a class="btn btn-success" href="{{ path('addCharacterClass') }}">Ajouter une classe</a>
+    <div class="container text-center">
+        {% if is_granted('ROLE_ADMIN') %}
+        <a id = "redbutton" class="btn btn-success" href="{{ path('addCharacterClass') }}">Ajouter une classe</a>
+        {% endif %}
         <br><br>
         <div class="div row flex">
             {% for characterclass in characterclasses %}
@@ -19,7 +21,7 @@
                     <div class="card">
                         <a href="{{ path('classDetails', {'id': characterclass.id}) }}"><img class="card-img-top" src="{{asset(imageClass)}}"  alt="Image Class" style="height: 380px" ></a>
                         <div class="card-body">
-                            <h5 class="card-title">
+                            <h5 id ="classTitle" class="card-title">
                                 <a href="{{ path('classDetails', {'id': characterclass.id}) }}"> {{ characterclass.name }}</a>
                             </h5>
                             {% if is_granted('ROLE_ADMIN') %}

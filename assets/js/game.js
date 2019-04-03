@@ -44,12 +44,12 @@ var Inventaire = [
 	{ item: Phoenix, quantite: 1 },
 	{ item: AttUp, quantite: 1 }]
 
-var persoA = { PV: 500, MP: 500, name: "Yacine", MaxPV: 1000, MaxMP: 40, move: [Charge, ViveAttaque, Brasier], speed: 10, strength: 30, inteligence: 20, Exp: 200, weapon: Ragnarok, armor: Warmog }
-var persoB = { PV: 500, MP: 500, name: "Fabien", MaxPV: 1000, MaxMP: 20, move: [Retour, Glace], speed: 40, strength: 60, inteligence: 20, Exp: 300, weapon: Ragnarok, armor: SpiritVisage }
-var persoC = { PV: 500, MP: 500, name: "Nadir", MaxPV: 1000, MaxMP: 999, move: [Exploforce, Poison, Foudre], speed: 30, strength: 10, inteligence: 20, Exp: 100, weapon: Ragnarok, armor: Banshee }
-var ennemy1 = { name: "Brice", speed: 44, strength: 20, inteligence: 20, move: [Cogne, Charge], PV: 500, Exp: 500, armor: Warmog, weapon: Masamune }
-var ennemy2 = { name: "Jeremy", speed: 9, strength: 10, inteligence: 20,move: [Eclate, Charge, Cogne], PV: 500, Exp: 500, armor: Warmog, weapon: Ultima }
-var ennemy3 = { name: "Hugo", speed: 22, strength: 25, inteligence: 20,move: [MitraPoing, Charge, Exploforce], PV: 500, Exp: 500, armor: Warmog, weapon: Ultima }
+var persoA = { PV: 140, MP: 60, name: "Yacine", MaxPV: 140, MaxMP: 60, move: [Charge, ViveAttaque, Brasier], speed: 10, strength: 30, inteligence: 20, Exp: 200, weapon: Ragnarok, armor: Warmog }
+var persoB = { PV: 150, MP: 40, name: "Fabien", MaxPV: 150, MaxMP: 40, move: [Retour, Glace], speed: 40, strength: 60, inteligence: 20, Exp: 300, weapon: Ragnarok, armor: SpiritVisage }
+var persoC = { PV: 160, MP: 200, name: "Nadir", MaxPV: 160, MaxMP: 200, move: [Exploforce, Poison, Foudre], speed: 30, strength: 10, inteligence: 20, Exp: 100, weapon: Ragnarok, armor: Banshee }
+var ennemy1 = { name: "Brice", speed: 44, strength: 8, inteligence: 20, move: [Cogne, Charge], PV: 160, MaxPV: 160, Exp: 500, armor: Warmog, weapon: Masamune }
+var ennemy2 = { name: "Valentin", speed: 9, strength: 10, inteligence: 20,move: [Eclate, Charge, Cogne], PV: 240, MaxPV: 240, Exp: 500, armor: Warmog, weapon: Ultima }
+var ennemy3 = { name: "Hugo", speed: 22, strength: 25, inteligence: 20,move: [MitraPoing, Charge, Exploforce], PV: 190, MaxPV: 190, Exp: 500, armor: Warmog, weapon: Ultima }
 var options = ["Attack", "Magic", "Defend", "Item"]
 var persos = [persoA, persoB, persoC]
 var persosv = [persoA, persoB, persoC]
@@ -184,7 +184,7 @@ function displayinfo() {
 		item.appendChild(document.createTextNode(persos[i].name));
 		document.querySelector('.info').appendChild(item);
 		if (persos[i].PV == 0) {
-			YourDead(i)
+			item.style.color="red";
 		}
 	}
 	for (var i = 0; i < persos.length; i++) {
@@ -201,6 +201,9 @@ function displayinfoEnnemy() {
 		var item = document.createElement('li');
 		item.appendChild(document.createTextNode(ennemy[i].name));
 		document.querySelector('.infoEnnemy').appendChild(item);
+		if (ennemy[i].PV == 0) {
+			item.style.color="red";
+		}
 	}
 	for (var i = 0; i < ennemy.length; i++) {
 		var item = document.createElement('li');
@@ -282,20 +285,23 @@ function getRandomInt(max) {
 }
 
 
-function InflictDamage(attacker, defender, move) {
-	defender.PV = defender.PV - DamageCalculation(attacker, move, defender)
+function InflictDamage(attacker, defender) {
+	if(attacker.PV - attacker.currentmove.cost<=0){
+		attacker.currentmove = Charge;
+	}
+	defender.PV = defender.PV - DamageCalculation(attacker, attacker.currentmove, defender)
 	if (defender.PV < 0) {
 		defender.PV = 0
 	}
-	switch (move.type) {
+	switch (attacker.currentmove.type) {
 		case "Physical":
-			attacker.PV = attacker.PV - move.cost;
+			attacker.PV = attacker.PV - attacker.currentmove.cost;
 			if (defender.PV < 0) {
 				defender.PV = 0
 			}
 			break;
 		case "Magical":
-			attacker.MP = attacker.MP - move.cost;
+			attacker.MP = attacker.MP - attacker.currentmove.cost;
 			if (defender.MP < 0) {
 				defender.MP = 0
 			}
@@ -306,11 +312,11 @@ function InflictDamage(attacker, defender, move) {
 function DamageCalculation(attacker, move, defender) {
 	if (move.type == "Physical") {
 		console.log(TypeTable[attacker.weapon.element][defender.armor.element])
-		return Math.floor(attacker.strength * (1 + (move.puissance / 100))) * (TypeTable[attacker.weapon.element][defender.armor.element])
+		return Math.floor(attacker.strength * (1 + (move.puissance / 100)) * (TypeTable[attacker.weapon.element][defender.armor.element]))
 	}
 	if (move.type == "Magical") {
 		console.log(TypeTable[move.element][defender.armor.element])
-		return Math.floor(attacker.inteligence * (1 + (move.puissance / 100))) * (TypeTable[move.element][defender.armor.element])
+		return Math.floor(attacker.inteligence * (1 + (move.puissance / 100)) * (TypeTable[move.element][defender.armor.element]))
 	}
 }
 
@@ -344,7 +350,7 @@ function Display(i) {
 				attack_order[i].currentTarget = PersoAttackable[getRandomInt(PersoAttackable.length)]
 			}
 		}
-		InflictDamage(attack_order[i], attack_order[i].currentTarget, attack_order[i].currentmove)
+		InflictDamage(attack_order[i], attack_order[i].currentTarget)
 	}
 	console.log(attack_order[i].name + " utilise " + attack_order[i].currentmove.name + " sur " + attack_order[i].currentTarget.name)
 	console.log(attack_order[i])
@@ -376,10 +382,6 @@ var displayHandler = function (e) {
 
 function YourTurn(i) {
 	document.querySelector('.info').childNodes[i].id = "current"
-}
-
-function YourDead(i) {
-	document.querySelector('.info').childNodes[i].id = "dead"
 }
 
 
@@ -499,5 +501,5 @@ function animation(i) {
 			animation(++i)
 		}
 		return
-	},500);
-}
+	},200);
+}animation(0)
