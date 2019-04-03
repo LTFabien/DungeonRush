@@ -2,7 +2,6 @@ body{
     background-image: url(https://opengameart.org/sites/default/files/com_fire_cave.png);
     background-size: cover;
     background-repeat: no-repeat;
-
 }
 
 #menu { /* menu bleu en bas */
@@ -19,6 +18,7 @@ body{
     cursor: url('https://vignette.wikia.nocookie.net/finalfantasy/images/3/34/FF4Cursor.png/revision/latest?cb=20080419141612'), auto;
 }
 
+
 #submenu{ /* menu contenant les moves */
     border-radius: 15px;
     box-shadow: 1px 1px 12px #555;
@@ -33,10 +33,12 @@ body{
     scrollbar-color: transparent transparent; /*fonctionne seulement pour firefox*/
 }
 
+ 
 .sprite{
-    width:100%;
-    height: 100%;
+width:100%;
+height: 100%;
 }
+ 
 
 #perso1{
     background: rgba(0, 2, 5, 0);
@@ -47,8 +49,6 @@ body{
     height: 15%;
     transition: 1s;
 }
-
-
 #perso2{
     background: rgba(0, 2, 5, 0);
     position: absolute;
@@ -66,15 +66,15 @@ body{
     height: 15%;
 }
 
-.info{
+.info {
     color: white;
     font-size: x-large;
     list-style-type: none;
     margin: 0;
     padding: 0;
     list-style-position: outside;
-
 }
+
 .infoEnnemy{
     color: white;
     font-size: x-large;
@@ -83,7 +83,6 @@ body{
     padding: 0;
     columns: 2;
     margin-top:1.5%;
-
 }
 
 .move{
@@ -93,9 +92,6 @@ body{
     margin-top:3%;
 }
 
-li{
-    padding-bottom: 10px;
-}
 #current{
     list-style-type: circle;
 }
@@ -103,14 +99,19 @@ li{
 #dead{
     color: red
 }
+ 
+li{
+    padding-bottom: 10px; 
+    overflow:hidden;
+}
 #player{
     position: inherit;
     left: 0;
     width: 40%;
     columns: 2;
-    -webkit-columns: 2;
-    -moz-columns: 2;
-    margin: 1.5%;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  margin: 1.5%;
 }
 
 #display{
@@ -128,4 +129,5 @@ li{
     font-weight: bold;
     color: white;
     text-align: center;
+
 }

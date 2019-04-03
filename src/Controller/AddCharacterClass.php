@@ -30,6 +30,15 @@ class AddCharacterClass extends AbstractController
         $class = new CharacterClass();
         $form = $this->createFormBuilder($class)
             ->add('name')
+            ->add('HPmax')
+            ->add('HP')
+            ->add('MPmax')
+            ->add('MP')
+            ->add('Strength')
+            ->add('Vitality')
+            ->add('Intelligence')
+            ->add('Spirit')
+            ->add('Speed')
             ->add('description', TextareaType::class)
             ->add('authorized_weapons', EntityType::class, array(
                 'class'        => Weapons::class,

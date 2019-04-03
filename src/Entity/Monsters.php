@@ -75,6 +75,16 @@ class Monsters
      */
     private $stages;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Exp;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Gold;
+
     public function __construct()
     {
         $this->stages = new ArrayCollection();
@@ -229,6 +239,30 @@ class Monsters
             $this->stages->removeElement($stage);
             $stage->removeMonster($this);
         }
+
+        return $this;
+    }
+
+    public function getExp(): ?int
+    {
+        return $this->Exp;
+    }
+
+    public function setExp(int $Exp): self
+    {
+        $this->Exp = $Exp;
+
+        return $this;
+    }
+
+    public function getGold(): ?int
+    {
+        return $this->Gold;
+    }
+
+    public function setGold(int $Gold): self
+    {
+        $this->Gold = $Gold;
 
         return $this;
     }

@@ -44,6 +44,18 @@ class Team
      */
     private $characters;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="team", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $lvl;
+
+
 
     public function __construct()
     {
@@ -116,4 +128,30 @@ class Team
 
         return $this;
     }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getLvl(): ?int
+    {
+        return $this->lvl;
+    }
+
+    public function setLvl(int $lvl): self
+    {
+        $this->lvl = $lvl;
+
+        return $this;
+    }
+
+
 }

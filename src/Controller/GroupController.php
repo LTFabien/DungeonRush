@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Entity\Inventory;
 use App\Entity\Player;
+use App\Entity\Stages;
 use App\Entity\Team;
 use App\Form\TeamType;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -28,53 +29,28 @@ class GroupController extends AbstractController
         $group = new Team();
         $group->setMoney(100);
         $Player1 = new Player();
-        $Player1->setHP(10);
-        $Player1->setHPmax(10);
-        $Player1->setMP(10);
-        $Player1->setMPmax(10);
-        $Player1->setSpeed(10);
-        $Player1->setSpirit(10);
-        $Player1->setStrength(10);
-        $Player1->setIntelligence(10);
-        $Player1->setVitality(10);
         $group->getCharacters()->add($Player1);
         $Player2 = new Player();
-        $Player2->setHP(10);
-        $Player2->setHPmax(10);
-        $Player2->setMP(10);
-        $Player2->setMPmax(10);
-        $Player2->setSpeed(10);
-        $Player2->setSpirit(10);
-        $Player2->setStrength(10);
-        $Player2->setIntelligence(10);
-        $Player2->setVitality(10);
         $group->getCharacters()->add($Player2);
         $Player3 = new Player();
-        $Player3->setHP(10);
-        $Player3->setHPmax(10);
-        $Player3->setMP(10);
-        $Player3->setMPmax(10);
-        $Player3->setSpeed(10);
-        $Player3->setSpirit(10);
-        $Player3->setStrength(10);
-        $Player3->setIntelligence(10);
-        $Player3->setVitality(10);
         $group->getCharacters()->add($Player3);
-
         $inventory = new Inventory();
         $group->setInventory($inventory);
-
+        $group->setUser($this->getUser());
         $form = $this->createForm(TeamType::class, $group);
-
         $form->handleRequest($request);
 
+
         if($form->isSubmitted() && $form->isValid()){
+
+            $Player1->setStats($form->get('characters')->get(0)->getData()->getClass()->getStats());
+            $Player2->setStats($form->get('characters')->get(1)->getData()->getClass()->getStats());
+            $Player3->setStats($form->get('characters')->get(2)->getData()->getClass()->getStats());
 
             $manager->persist($inventory);
             $manager->persist($Player1);
             $manager->persist($Player2);
             $manager->persist($Player3);
-
             $manager->persist($group);
             $manager->flush();
 
@@ -86,4 +62,24 @@ class GroupController extends AbstractController
             'formGroup' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/UserArea/{id}/stages", name="StageDetails")
+     */
+
+    public function ShowDetails($id){
+        $stage = $this->getDoctrine()
+            ->getRepository(Stages::class)
+            ->find($id);
+
+        if (!$stage) {
+            throw $this->createNotFoundException(
+                'Aucune stage trouvée pour cet id :( '.$id
+            );
+        }
+
+        return $this->render('pages/classDetails', array('stage' => $stage));
+    }
+
+
 }

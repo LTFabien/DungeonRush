@@ -64,6 +64,7 @@ class CharacterClassController extends AbstractController
         $jsonContent = $serializer->serialize($player, 'json');
         //echo $jsonContent;
 
+
         return $this->render('property/index.html.twig', [
             'characterclasses' => $characterclasses
         ]);
@@ -77,6 +78,15 @@ class CharacterClassController extends AbstractController
 
             $form = $this->createFormBuilder($characterClass)
                 ->add('name')
+                ->add('HPmax')
+                ->add('HP')
+                ->add('MPmax')
+                ->add('MP')
+                ->add('Strength')
+                ->add('Vitality')
+                ->add('Intelligence')
+                ->add('Spirit')
+                ->add('Speed')
                 ->add('description', TextareaType::class)
                 ->add('authorized_weapons', EntityType::class, array(
                     'class'        => Weapons::class,

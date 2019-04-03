@@ -45,6 +45,21 @@ class Weapons
      */
     private $damage;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $element;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $price;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $lvl;
+
     public function __construct()
     {
         $this->class_authorized = new ArrayCollection();
@@ -144,6 +159,42 @@ class Weapons
     public function setDamage(int $damage): self
     {
         $this->damage = $damage;
+
+        return $this;
+    }
+
+    public function getElement(): ?string
+    {
+        return $this->element;
+    }
+
+    public function setElement(string $element): self
+    {
+        $this->element = $element;
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getLvl(): ?int
+    {
+        return $this->lvl;
+    }
+
+    public function setLvl(int $lvl): self
+    {
+        $this->lvl = $lvl;
 
         return $this;
     }

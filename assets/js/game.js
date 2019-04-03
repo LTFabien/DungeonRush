@@ -44,12 +44,16 @@ var Inventaire = [
 	{ item: Phoenix, quantite: 1 },
 	{ item: AttUp, quantite: 1 }]
 
-var persoA = { PV: 140, MP: 60, name: "Yacine", MaxPV: 140, MaxMP: 60, move: [Charge, ViveAttaque, Brasier], speed: 10, strength: 30, inteligence: 20, Exp: 200, weapon: Ragnarok, armor: Warmog }
-var persoB = { PV: 150, MP: 40, name: "Fabien", MaxPV: 150, MaxMP: 40, move: [Retour, Glace], speed: 40, strength: 60, inteligence: 20, Exp: 300, weapon: Ragnarok, armor: SpiritVisage }
-var persoC = { PV: 160, MP: 200, name: "Nadir", MaxPV: 160, MaxMP: 200, move: [Exploforce, Poison, Foudre], speed: 30, strength: 10, inteligence: 20, Exp: 100, weapon: Ragnarok, armor: Banshee }
-var ennemy1 = { name: "Brice", speed: 44, strength: 8, inteligence: 20, move: [Cogne, Charge], PV: 160, MaxPV: 160, Exp: 500, armor: Warmog, weapon: Masamune }
-var ennemy2 = { name: "Valentin", speed: 9, strength: 10, inteligence: 20,move: [Eclate, Charge, Cogne], PV: 240, MaxPV: 240, Exp: 500, armor: Warmog, weapon: Ultima }
-var ennemy3 = { name: "Hugo", speed: 22, strength: 25, inteligence: 20,move: [MitraPoing, Charge, Exploforce], PV: 190, MaxPV: 190, Exp: 500, armor: Warmog, weapon: Ultima }
+
+
+var persoA = { PV: 500, MP: 500, name: "Yacine", MaxPV: 1000, MaxMP: 40, move: [Charge, ViveAttaque, Brasier], speed: 10, strength: 30, inteligence: 20, Exp: 200, weapon: Ragnarok, armor: Warmog }
+var persoB = { PV: 500, MP: 500, name: "Fabien", MaxPV: 1000, MaxMP: 20, move: [Retour, Glace], speed: 40, strength: 60, inteligence: 20, Exp: 300, weapon: Ragnarok, armor: SpiritVisage }
+var persoC = { PV: 500, MP: 500, name: "Nadir", MaxPV: 1000, MaxMP: 999, move: [Exploforce, Poison, Foudre], speed: 30, strength: 10, inteligence: 20, Exp: 100, weapon: Ragnarok, armor: Banshee }
+
+var ennemy1 = { name: "Brice", speed: 44, strength: 20, inteligence: 20, move: [Cogne, Charge], PV: 500, Exp: 500, armor: Warmog, weapon: Masamune }
+var ennemy2 = { name: "Jeremy", speed: 9, strength: 10, inteligence: 20,move: [Eclate, Charge, Cogne], PV: 500, Exp: 500, armor: Warmog, weapon: Ultima }
+var ennemy3 = { name: "Hugo", speed: 22, strength: 25, inteligence: 20,move: [MitraPoing, Charge, Exploforce], PV: 500, Exp: 500, armor: Warmog, weapon: Ultima }
+
 var options = ["Attack", "Magic", "Defend", "Item"]
 var persos = [persoA, persoB, persoC]
 var persosv = [persoA, persoB, persoC]

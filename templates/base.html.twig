@@ -18,35 +18,21 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <!--<li class="nav-item active">
-                    <a class="nav-link" href="{{ path('home') }}">Accueil <span class="sr-only">(current)</span></a>
-                </li>-->
-                <li class="nav-item">
-                    <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}" href="{{ path('characterclass.index') }}">Classes</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ path('game') }}">Jouer<span class="sr-only">(current)</span></a>
-                </li>
+            <div class="navbar-nav mr-auto">
+                {% block ul %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}" href="{{ path('characterclass.index') }}">Classes</a>
+                    </li>
 
-                {% if is_granted('ROLE_ADMIN') %}
-                <li class="nav-item">
-                    <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}" href="{{ path('add') }}">Ajouter</a>
-                </li>
-                {% endif %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        A propos
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Présentation des personnages</a>
-                        <a class="dropdown-item" href="#">Règles du jeu</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Conditions d'utilisation</a>
-                    </div>
-                </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}" href="{{ path('add') }}">Ajouter</a>
+                        </li>
 
-            </ul>
+                    {% endif %}
+
+                {% endblock ul %}
+            </div>
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 {% if is_granted('ROLE_ADMIN') %}
                     <nav class="navbar">
@@ -63,7 +49,6 @@
                     </nav>
                 {% endif %}
             {% endif %}
-
             <ul class="navbar-nav ml-auto">
                 {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <li class="nav-item active">

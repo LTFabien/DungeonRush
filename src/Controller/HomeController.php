@@ -9,9 +9,10 @@
 namespace App\Controller;
 
 
-use App\Entity\Player;
+use App\Entity\CharacterClass;
 use App\Repository\CharacterClassRepository;
 use App\Repository\CharacterRepository;
+use App\Repository\TeamRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,8 +26,10 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function homepage(): Response
+    public function homepage(TeamRepository $teamRepository): Response
     {
-        return $this->render('pages/home.html.twig');
+        $team=$teamRepository->findBy(['user' => $this->getUser()]);
+
+        return $this->render('pages/home.html.twig', array('team' => $team));
     }
 }

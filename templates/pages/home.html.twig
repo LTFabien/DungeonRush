@@ -3,7 +3,7 @@
 {% block body %}
     <div class="container">
         <div class ="jumbotron text-center" >
-            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}<!--
                 <section class = "jumbotron text-center mb-4" style="background-image: url('{{ asset('build/images/ffbanner.png') }}')">
                     <div class="container">
                         <div>
@@ -12,6 +12,13 @@
                         </div>
                     </div>
                 </section>
+                -->
+                <p>user authenticated</p>
+                {% if team|length==0 %}
+                    <a class="btn btn-success" href="{{ path('group') }}">Choisis tes persos !</a>
+                {% else %}
+                    <a class="btn btn-success" href="{{ path('UserArea') }}">Continuer votre partie</a>
+                {% endif %}
             {% else %}
                 <br>
                 <p> Connectez-vous où inscrivez-vous pour jouer à DungeonRush !</p>

@@ -9,6 +9,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class TeamType extends AbstractType
@@ -19,7 +21,7 @@ class TeamType extends AbstractType
             ->add('name')
             ->add('characters', CollectionType::class, [
                 'entry_type' => CharacterType::class,
-                'entry_options' => ['label' => false],
+                'entry_options' => ['label' => false]
             ]);
 
     }
@@ -30,4 +32,6 @@ class TeamType extends AbstractType
             'data_class' => Team::class,
         ]);
     }
+
 }
+
