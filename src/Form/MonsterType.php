@@ -24,6 +24,9 @@ class MonsterType extends AbstractType
             ->add('Spirit')
             ->add('Vitality')
             ->add('Speed')
+            ->add('exp')
+            ->add('gold')
+
             ->add('stages', EntityType::class, array(
                 'class'        => Stages::class,
                 'choice_label' => 'name',

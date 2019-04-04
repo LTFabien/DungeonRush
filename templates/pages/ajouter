@@ -6,17 +6,14 @@
 
     {% if is_granted('ROLE_ADMIN') %}
         <p> Que voulez-vous faire ? </p>
-        <a class="btn btn-success" href="{{ path('addWeapon') }}">Ajouter une arme</a>
-        <a class="btn btn-success" href="{{ path('addMonster') }}">Ajouter un monstre</a>
-        <a class="btn btn-success" href="{{ path('addMember') }}">Ajouter un move</a>
-        <a class="btn btn-success" href="{{ path('addCharacter') }}">Ajouter un Personnage</a>
-        <a class="btn btn-success" href="{{ path('addConsumable') }}">Ajouter un consomable</a>
+        <a class="btn btn-success" href="{{ path('addWeapon') }}">Créer une arme</a>
+        <a class="btn btn-success" href="{{ path('addMonster') }}">Créer un monstre</a>
+        <a class="btn btn-success" href="{{ path('addConsumable') }}">Créer un consommable</a>
         <br><br>
-        <a class="btn btn-success" href="{{ path('createInventory') }}">Créer un inventaire</a>
         <a class="btn btn-success" href="{{ path('addDungeon') }}">Créer un Donjon</a>
-        <a class="btn btn-success" href="{{ path('move') }}">Créer un move</a>
+        <a class="btn btn-success" href="{{ path('addMove') }}">Créer un move</a>
         <a class="btn btn-success" href="{{ path('addStage') }}">Créer un stage</a>
-        <a class="btn btn-success" href="{{ path('group') }}">Créer un groupe</a>
+        <a class="btn btn-success" href="{{ path('addArmor') }}">Créer une armure</a>
     {% endif %}
 
     </div>

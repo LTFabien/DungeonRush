@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Armor;
 use App\Entity\CharacterClass;
 use App\Entity\Move;
 use App\Entity\Weapons;
@@ -31,9 +32,7 @@ class AddCharacterClass extends AbstractController
         $form = $this->createFormBuilder($class)
             ->add('name')
             ->add('HPmax')
-            ->add('HP')
             ->add('MPmax')
-            ->add('MP')
             ->add('Strength')
             ->add('Vitality')
             ->add('Intelligence')
@@ -52,11 +51,19 @@ class AddCharacterClass extends AbstractController
                 'multiple'     => true,
                 'expanded' => true,
             ))
+            ->add('authorized_armors', EntityType::class, array(
+                'class'        => Armor::class,
+                'choice_label' => 'name',
+                'multiple'     => true,
+                'expanded' => true,
+            ))
             ->getForm();
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+            $class->setHP($form->get('HPmax')->getData());
+            $class->setMP($form->get('MPmax')->getData());
             $manager->persist($class);
             $manager->flush();
             return $this->redirectToRoute('characterclass.index');

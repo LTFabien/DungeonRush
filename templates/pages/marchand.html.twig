@@ -1,50 +1,26 @@
 {% extends 'pages/baseInGame.html.twig' %}
 
 {% block body %}
-    <h3>Voici les moves, armes et armures autorisés pour {{ player[0].name }} :</h3>
-    <p>Moves :</p>
-     {% for move in moves1 %}
 
-         <p> -> {{ move.nom }}  <a href="{{ path('buy', {'id': move.id}) }}" class="btn btn-primary">Acheter !</a></p>
-    {% endfor %}
-    <p>Armes : </p>
-    {% for weapon in weapons1 %}
-    <p> -> {{ weapon.name }} <a href="#" class="btn btn-primary">Acheter !</a> </p>
-    {% endfor %}
+    {% for player in team.Characters%}
+        <h3>Voici les moves, armes et armures autorisés pour {{ player.name }} :</h3>
+        <p>Moves :</p>
+        {% for move in player.class.AuthorizedMove %}
+            {% if move.lvl <= team.lvl %}
+                <p> -> {{ move.nom }}  <a href="{{ path('buy', {'id': move.id}) }}" class="btn btn-primary">Acheter !</a></p>
+            {% endif %}
+        {% endfor %}
+        <p>Armes : </p>
+        {% for weapon in player.class.AuthorizedWeapons %}
+            <p> -> {{ weapon.name }} <a href="#" class="btn btn-primary">Acheter !</a> </p>
+        {% endfor %}
 
-    <p>Armures : </p>
-    {% for armor in armors1 %}
-        <p> -> {{ armor.name }} <a href="#" class="btn btn-primary">Acheter !</a> </p>
+        <p>Armures : </p>
+        {% for armor in player.class.AuthorizedArmors %}
+            <p> -> {{ armor.name }} <a href="#" class="btn btn-primary">Acheter !</a> </p>
+        {% endfor %}
     {% endfor %}
-
-    <h3>Voici les moves, armes et armures autorisés pour {{ player[1].name }} :</h3>
-    <p>Moves :</p>
-    {% for move in moves2 %}
-        <p> -> {{ move.nom }} <a href="{{ path('buy', {'id': move.id}) }}" class="btn btn-primary">Acheter !</a></p>
+    {% for consumable in consumable %}
+        <p> -> {{ consumable.name }} <a href="#" class="btn btn-primary">Acheter !</a> </p>
     {% endfor %}
-    <p>Armes : </p>
-    {% for weapon in weapons2 %}
-        <p> -> {{ weapon.name }} <a href="#" class="btn btn-primary">Acheter !</a></p>
-    {% endfor %}
-
-    <p>Armures : </p>
-    {% for armor in armors2 %}
-        <p> -> {{ armor.name }} <a href="#" class="btn btn-primary">Acheter !</a> </p>
-    {% endfor %}
-
-    <h3>Voici les moves, armes et armures autorisés pour {{ player[2].name }} :</h3>
-    <p>Moves :</p>
-    {% for move in moves3 %}
-        <p> -> {{ move.nom }} <a href="{{ path('buy', {'id': move.id}) }}" class="btn btn-primary">Acheter !</a></p>
-    {% endfor %}
-    <p>Armes : </p>
-    {% for weapon in weapons3 %}
-        <p> -> {{ weapon.name }} <a href="#" class="btn btn-primary">Acheter !</a></p>
-    {% endfor %}
-
-    <p>Armures : </p>
-    {% for armor in armors3 %}
-        <p> -> {{ armor.name }} <a href="#" class="btn btn-primary">Acheter !</a> </p>
-    {% endfor %}
-
-{% endblock %}
+{% endblock%}
