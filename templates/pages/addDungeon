@@ -10,6 +10,11 @@
         {{ form_widget(formDungeon.name) }}
     </div>
 
+    <div class="form-group">
+        <label for="">Niveau du donjon</label>
+        {{ form_widget(formDungeon.lvl) }}
+    </div>
+
     <button type="submit" class="btn btn-success">Ajouter !</button>
     {{ form_end(formDungeon) }}
 

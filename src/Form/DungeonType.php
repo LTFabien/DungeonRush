@@ -13,6 +13,7 @@ class DungeonType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('lvl')
         ;
     }
 

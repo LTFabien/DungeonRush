@@ -1,0 +1,26 @@
+{% extends 'pages/baseInGame.html.twig' %}
+
+{% block body %}
+
+<h2>Voici vos consomables disponibles :</h2>
+
+{% for consumable in consumables %}
+    <p> - {{ consumable.name }}</p>
+{% endfor %}
+
+    <p>{{ player[0].name }}</p>
+
+    <h2>Voici vos armes disponibles :</h2>
+
+{% for weapon in weapons %}
+    <p> - {{ weapon.name }} <a href="#" class="btn btn-primary">Equiper</a></p>
+{% endfor %}
+
+    <h2>Voici vos armures disponibles :</h2>
+
+    {% for armor in armors %}
+        <p> - {{ armor.name }} <a href="#" class="btn btn-primary">Equiper</a></p>
+    {% endfor %}
+
+{% endblock %}
+

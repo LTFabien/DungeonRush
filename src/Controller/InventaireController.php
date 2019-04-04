@@ -21,10 +21,13 @@ class InventaireController extends AbstractController
     public function inventory(TeamRepository $teamRepository): Response
     {
         $team=$teamRepository->findOneBy(['user' => $this->getUser()]);
-        dump($team->getInventory()->getArmors()->getValues()); // Armures de L'inventaire
-        dump($team->getInventory()->getConsumables()->getValues()); //Consomable de L'inventaire
-        dump($team->getInventory()->getWeapons()->getValues());  //Armes de l'inventaire
+        $player=$team->getCharacters();
 
-        return $this->render('pages/inventory.html.twig',array()); // les faires passez en parametre dans le twig
+        $weapons=$team->getInventory()->getWeapons()->getValues();
+        $consumables=$team->getInventory()->getConsumables()->getValues();
+        $armors=$team->getInventory()->getArmors()->getValues();
+
+        return $this->render('pages/inventory.html.twig',array('player' => $player,
+            'weapons' => $weapons, 'consumables' => $consumables, 'armors' => $armors)); // les faires passez en parametre dans le twig
     }
 }

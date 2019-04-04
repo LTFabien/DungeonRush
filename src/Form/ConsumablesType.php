@@ -18,6 +18,8 @@ class ConsumablesType extends AbstractType
             ->add('description')
             ->add('stat_buffed')
             ->add('number_buff')
+            ->add('turn')
+            ->add('price')
         ;
     }
 
