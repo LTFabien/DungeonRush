@@ -30,6 +30,10 @@ class WeaponsType extends AbstractType
                 'multiple'     => true,
                 'expanded' => true,
             ))
+            ->add('damage')
+            ->add('element')
+            ->add('price')
+            ->add('lvl')
         ;
     }
 

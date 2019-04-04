@@ -1,0 +1,22 @@
+{% extends 'pages/baseInGame.html.twig' %}
+
+{% block body %}
+    <h1>Voici les moves autorisés pour {{ player1 }} :</h1>
+     {% for move in moves1 %}
+    <p> {{ move.nom }} </p>
+         <a href="{{ path('buy', {'id': move.id}) }}" class="btn btn-primary">Acheter !</a>
+{% endfor %}
+
+    <h2>Voici les moves autorisés pour {{ player2 }} :</h2>
+    {% for move in moves2 %}
+        <p> {{ move.nom }} </p>
+        <a class="btn btn-success" href=#>Acheter !</a>
+    {% endfor %}
+
+    <h3>Voici les moves autorisés pour {{ player3 }} :</h3>
+    {% for move in moves3 %}
+        <p> {{ move.nom }} </p>
+        <a class="btn btn-success" href=#>Acheter !</a>
+    {% endfor %}
+
+{% endblock %}
