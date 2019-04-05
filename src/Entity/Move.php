@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,11 +23,13 @@ class Move
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Team")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Team")
      */
     private $type;
 
@@ -47,16 +50,19 @@ class Move
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups("Team")
      */
     private $cost;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $puissance;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Team")
      */
     private $element;
 

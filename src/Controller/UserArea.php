@@ -22,13 +22,24 @@ class UserArea extends AbstractController
      * @Route("/UserArea", name="UserArea")
      */
 
-    public function ShowDetails(){
+    public function ShowDetails():Response
+    {
         $dungeon = $this->getDoctrine()
             ->getRepository(Dungeons::class)
             ->findAll();
 
-
         return $this->render('pages/userArea', array('dungeons' => $dungeon));
     }
 
+    /**
+     * @Route("/Game/{id}", name="Game")
+     * @param Dungeons $dungeons
+     * @return Response
+     */
+
+    public function Play(Dungeons $dungeons):Response
+    {
+        $team=$this->getUser()->getTeam();
+        return $this->render('pages/game.html.twig', array('dungeons' => $dungeons,'team'=>$team));
+    }
 }

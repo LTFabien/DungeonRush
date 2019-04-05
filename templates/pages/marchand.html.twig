@@ -7,17 +7,21 @@
         <p>Moves :</p>
         {% for move in player.class.AuthorizedMove %}
             {% if move.lvl <= team.lvl %}
-                <p> -> {{ move.nom }}  <a href="{{ path('buy_move', {'id': move.id,'team':team.id}) }}" class="btn btn-primary">Acheter !</a></p>
+                <p> -> {{ move.nom }}  <a href="{{ path('buy_move', {'id': move.id}) }}" class="btn btn-primary">Acheter !</a></p>
             {% endif %}
         {% endfor %}
         <p>Armes : </p>
         {% for weapon in player.class.AuthorizedWeapons %}
-            <p> -> {{ weapon.name }} <a href="#" class="btn btn-primary">Acheter !</a> </p>
+            {% if weapon.lvl <= team.lvl %}
+                <p> -> {{ weapon.name }}  <a href="{{ path('buy_weapon', {'id': weapon.id,'team':team.id}) }}" class="btn btn-primary">Acheter !</a></p>
+            {% endif %}
         {% endfor %}
 
         <p>Armures : </p>
         {% for armor in player.class.AuthorizedArmors %}
-            <p> -> {{ armor.name }} <a href="#" class="btn btn-primary">Acheter !</a> </p>
+            {% if armor.lvl <= team.lvl %}
+                <p> -> {{ armor.name }}  <a href="{{ path('buy_armor', {'id': armor.id,'team':team.id}) }}" class="btn btn-primary">Acheter !</a></p>
+            {% endif %}
         {% endfor %}
     {% endfor %}
     {% for consumable in consumable %}

@@ -4,13 +4,17 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TeamRepository")
- * @ApiResource
+ * @ApiResource(
+ *     normalizationContext={"groups"={"Team"}},
+ *     denormalizationContext={"groups"={"write"}}
+ *     )
  */
 class Team
 {
@@ -30,6 +34,7 @@ class Team
      * @ORM\OneToOne(targetEntity="App\Entity\Inventory", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      * @ApiSubresource
+     * @Groups("Team")
      */
     private $Inventory;
 
@@ -41,6 +46,7 @@ class Team
     /**
      * @ORM\ManyToMany(targetEntity="Player", inversedBy="teams")
      * @ApiSubresource
+     * @Groups("Team")
      */
     private $characters;
 

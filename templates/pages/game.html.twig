@@ -5,6 +5,9 @@
     {{ encore_entry_link_tags('css/game') }}
 {% endblock stylesheets %}
 {% block body %}
+<pre>
+{{ dump(dungeons|json_encode|raw) }}
+</pre>
 <html lang="fr">
 
 <head>
