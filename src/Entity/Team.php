@@ -40,6 +40,7 @@ class Team
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"Team","write"})
      */
     private $Money;
 
@@ -58,8 +59,15 @@ class Team
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"Team","write"})
      */
     private $lvl;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @Groups({"Team","write"})
+     */
+    private $Exp;
 
 
 
@@ -155,6 +163,18 @@ class Team
     public function setLvl(int $lvl): self
     {
         $this->lvl = $lvl;
+
+        return $this;
+    }
+
+    public function getExp(): ?int
+    {
+        return $this->Exp;
+    }
+
+    public function setExp(int $Exp): self
+    {
+        $this->Exp = $Exp;
 
         return $this;
     }
