@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,6 +23,7 @@ class Weapons
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Team")
      */
     private $name;
 
@@ -42,11 +44,13 @@ class Weapons
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $damage;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Team")
      */
     private $element;
 
@@ -60,10 +64,16 @@ class Weapons
      */
     private $lvl;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Player", mappedBy="weapon")
+     */
+    private $players;
+
     public function __construct()
     {
         $this->class_authorized = new ArrayCollection();
         $this->inventories = new ArrayCollection();
+        $this->players = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -195,6 +205,37 @@ class Weapons
     public function setLvl(int $lvl): self
     {
         $this->lvl = $lvl;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Player[]
+     */
+    public function getPlayers(): Collection
+    {
+        return $this->players;
+    }
+
+    public function addPlayer(Player $player): self
+    {
+        if (!$this->players->contains($player)) {
+            $this->players[] = $player;
+            $player->setWeapon($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlayer(Player $player): self
+    {
+        if ($this->players->contains($player)) {
+            $this->players->removeElement($player);
+            // set the owning side to null (unless already changed)
+            if ($player->getWeapon() === $this) {
+                $player->setWeapon(null);
+            }
+        }
 
         return $this;
     }

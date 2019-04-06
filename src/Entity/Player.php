@@ -99,6 +99,18 @@ class Player
      */
     private $teams;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Weapons", inversedBy="players")
+     * @Groups("Team")
+     */
+    private $weapon;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Armor", inversedBy="players")
+     * @Groups("Team")
+     */
+    private $armor;
+
     public function __construct()
     {
         $this->move = new ArrayCollection();
@@ -319,6 +331,30 @@ class Player
             $this->teams->removeElement($team);
             $team->removeCharacter($this);
         }
+
+        return $this;
+    }
+
+    public function getWeapon(): ?Weapons
+    {
+        return $this->weapon;
+    }
+
+    public function setWeapon(?Weapons $weapon): self
+    {
+        $this->weapon = $weapon;
+
+        return $this;
+    }
+
+    public function getArmor(): ?Armor
+    {
+        return $this->armor;
+    }
+
+    public function setArmor(?Armor $armor): self
+    {
+        $this->armor = $armor;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,51 +24,61 @@ class Monsters
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Dungeons")
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Dungeons")
      */
     private $HPmax;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Dungeons")
      */
     private $HP;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Dungeons")
      */
     private $MPmax;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Dungeons")
      */
     private $MP;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Dungeons")
      */
     private $Strength;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Dungeons")
      */
     private $Intelligence;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Dungeons")
      */
     private $Spirit;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Dungeons")
      */
     private $Vitality;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Dungeons")
      */
     private $Speed;
 
@@ -77,17 +89,27 @@ class Monsters
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Dungeons")
      */
     private $Exp;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Dungeons")
      */
     private $Gold;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Move", inversedBy="monsters")
+     * @Groups("Dungeons")
+     * @ApiSubresource
+     */
+    private $move;
 
     public function __construct()
     {
         $this->stages = new ArrayCollection();
+        $this->move = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -263,6 +285,32 @@ class Monsters
     public function setGold(int $Gold): self
     {
         $this->Gold = $Gold;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Move[]
+     */
+    public function getMove(): Collection
+    {
+        return $this->move;
+    }
+
+    public function addMove(Move $move): self
+    {
+        if (!$this->move->contains($move)) {
+            $this->move[] = $move;
+        }
+
+        return $this;
+    }
+
+    public function removeMove(Move $move): self
+    {
+        if ($this->move->contains($move)) {
+            $this->move->removeElement($move);
+        }
 
         return $this;
     }
