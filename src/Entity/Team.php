@@ -34,7 +34,7 @@ class Team
      * @ORM\OneToOne(targetEntity="App\Entity\Inventory", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      * @ApiSubresource
-     * @Groups("Team")
+     * @Groups({"Team","write"})
      */
     private $Inventory;
 

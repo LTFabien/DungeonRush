@@ -19,6 +19,7 @@ class Inventory
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $id;
 
@@ -35,7 +36,8 @@ class Inventory
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\InventoryConsumables", mappedBy="inventory",cascade={"persist","merge"})
-     * @Groups("Team")
+     * @ApiSubresource
+     * @Groups({"Team","write"})
      */
     private $consumables;
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Id;
@@ -15,7 +16,8 @@ class InventoryConsumables
 
     /**
      * @Id @ORM\ManyToOne(targetEntity="App\Entity\Consumables", inversedBy="quantity")
-     * @Groups("Team")
+     * @ApiSubresource
+     * @Groups({"Team","write"})
      */
     private $consumables;
 
@@ -24,7 +26,9 @@ class InventoryConsumables
      */
     private $inventory;
 
-    /** @ORM\Column(type="integer") */
+    /** @ORM\Column(type="integer")
+     * @Groups({"Team","write"})
+     */
     private $quantite;
 
 
