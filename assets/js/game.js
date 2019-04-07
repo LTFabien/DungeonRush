@@ -1,7 +1,8 @@
 
+require("regenerator-runtime/runtime");
+var BaseArmor = { damage: 10, element: "Normal" }
+var BaseWeapon = { damage: 10, element: "Normal" }
 
-var BaseArmor = { damage: 10, element: "Normal" };
-var BaseWeapon = { damage: 10, element: "Normal" };
 
 var Debufflist = [];
 
@@ -14,14 +15,15 @@ var TypeTable = {
 	Electrique: { Feu: 1, Eau: 2, Plante: 0.5, Glace: 1, Terre: 0, Electrique: 0.5, Normal: 1 },
 	Glace: { Feu: 1, Eau: 0.5, Plante: 2, Glace: 0.5, Terre: 2, Electrique: 1, Normal: 1 },
 };
-var options = ["Attack", "Magic", "Defend", "Item"];
+
+var options = ["Attack", "Magic", "Defend", "Item"]
 var persos;
 var ennemy;
 var ennemyAttackable;
 var PersoAttackable;
 var attack_order;
 var TourNumber = 0;
-var StageNumber = 0;
+var StageNumber = 0
 var Team;
 var Stage;
 var Inventaire;
@@ -38,30 +40,30 @@ function EnnemyHandler() {
 
 
 function Tour() {
-	TourNumber = TourNumber + 1;
-	console.log(TourNumber);
-	console.log(Debufflist);
+	TourNumber = TourNumber + 1
+	console.log(TourNumber)
+	console.log(Debufflist)
 	Debuff();
-	ennemyAttackable = ennemy.filter(a => a.HP > 0);
-	PersoAttackable = persos.filter(a => a.HP > 0);
-	GameInventory = Inventaire.filter(a => a.quantite > 0);
+	ennemyAttackable = ennemy.filter(a => a.HP > 0)
+	PersoAttackable = persos.filter(a => a.HP > 0)
+	GameInventory = Inventaire.filter(a => a.quantite > 0)
 	if (PersoAttackable.length == 0) {
 		var event = new CustomEvent('findeStage', { 'detail': "Lost" });
-		document.dispatchEvent(event);
+		document.dispatchEvent(event)
 		return;
 	}
 	if (ennemyAttackable.length == 0) {
 		var event = new CustomEvent('findeStage', { 'detail': "Win" });
-		document.dispatchEvent(event);
+		document.dispatchEvent(event)
 		return;
 	}
-	document.addEventListener('build', TurnHandler);
+	document.addEventListener('build', TurnHandler)
 	MainPhase(0);
 }
 var TurnHandler = function (e) {
-	console.log(e.detail);
+	console.log(e.detail)
 	if (e.detail == 2) {
-		document.removeEventListener('build', this);
+		document.removeEventListener('build', this)
 		AttackPhase()
 	} else {
 		MainPhase(++e.detail);
@@ -71,19 +73,19 @@ var TurnHandler = function (e) {
 function MainPhase(character_id) {
 	if (persos[character_id].HP == 0) {
 		var event = new CustomEvent('build', { 'detail': character_id });
-		document.dispatchEvent(event);
+		document.dispatchEvent(event)
 		return;
 	}
-	YourTurn(character_id);
-	console.log(persos[character_id].name);
+	YourTurn(character_id)
+	console.log(persos[character_id].name)
 	createli(options, document.querySelector('.move'));
 	setMenuListeners(character_id);
 }
 
 function AttackPhase() {
 	EnnemyHandler();
-	attack_order.sort((a, b) => (a.Speed < b.Speed) ? 1 : -1);
-	document.addEventListener('display', displayHandler);
+	attack_order.sort((a, b) => (a.speed < b.speed) ? 1 : -1)
+	document.addEventListener('display', displayHandler)
 	Display(0)
 }
 
@@ -94,7 +96,7 @@ function attack(i) {
 }
 
 function item(i) {
-	createli(GameInventory.map(a => a.consumables.name + " " + a.quantite), document.querySelector('.move'));
+	createli(GameInventory.map(a => a.consumables.name + " " + a.quantite), document.querySelector('.move'))
 	returnMenu(i);
 	Consumable(i);
 }
@@ -103,7 +105,7 @@ function createli(array, ul) {
 	ul.innerHTML = "";
 	for (var i = 0; i < array.length; i++) {
 		var item = document.createElement('li');
-		item.id = array[i];
+		item.id = array[i]
 		item.appendChild(document.createTextNode(array[i]));
 		ul.appendChild(item);
 	}
@@ -112,9 +114,9 @@ function createli(array, ul) {
 function returnMenu(i) {
 	var item = document.createElement('li');
 	item.appendChild(document.createTextNode("Back"));
-	document.querySelector('.move').appendChild(item);
+	document.querySelector('.move').appendChild(item)
 	item.addEventListener('click', function (e) {
-		createli(options, document.querySelector('.move'));
+		createli(options, document.querySelector('.move'))
 		setMenuListeners(i);
 	})
 
@@ -183,7 +185,7 @@ function Consumable(i) {
 	for (var j = 0; j < GameInventory.length; j++) {
 		(function (x) {
 			document.getElementById(GameInventory[x].consumables.name + " " + GameInventory[x].quantite).addEventListener('click', function (e) {
-				console.log("vous allez utiliser " + GameInventory[x].consumables.name);
+				console.log("vous allez utiliser " + GameInventory[x].consumables.name)
 				choosennemy(i, GameInventory[x], "Item");
 
 
@@ -197,21 +199,21 @@ function move(i, MoveType) {
 	for (var j = 0; j < choice.length; j++) {
 		(function (x) {
 			if (choice[x].type == "Physical") {
-				document.getElementById(choice[x].nom + " " + choice[x].cost).innerText += " HP";
+				document.getElementById(choice[x].nom + " " + choice[x].cost).innerText += " HP"
 				if (choice[x].cost > persos[i].HP) {
-					document.getElementById(choice[x].nom + " " + choice[x].cost).style.color = "black";
+					document.getElementById(choice[x].nom + " " + choice[x].cost).style.color = "black"
 					return;
 				}
 			}
 			if (choice[x].type == "Magical") {
-				document.getElementById(choice[x].nom + " " + choice[x].cost).innerText += " MP";
+				document.getElementById(choice[x].nom + " " + choice[x].cost).innerText += " MP"
 				if (choice[x].cost > persos[i].MP) {
-					document.getElementById(choice[x].nom + " " + choice[x].cost).style.color = "black";
+					document.getElementById(choice[x].nom + " " + choice[x].cost).style.color = "black"
 					return;
 				}
 			}
 			document.getElementById(choice[x].nom + " " + choice[x].cost).addEventListener('click', function (e) {
-				console.log("vous allez utiliser " + choice[x].nom);
+				console.log("vous allez utiliser " + choice[x].nom)
 				choosennemy(i, choice[x], "Attack");
 
 
@@ -231,13 +233,13 @@ function choosennemy(character_id, move, move_type) {
 			item.addEventListener('click', function (e) {
 				if (move_type == "Item") {
 					move.quantite = move.quantite - 1;
-					GameInventory = Inventaire.filter(a => a.quantite > 0);
+					GameInventory = Inventaire.filter(a => a.quantite > 0)
 					move = move.consumables
 				}
-				console.log("Vous utilisez " + move.nom + " Sur " + chosable[j].name);
+				console.log("Vous utilisez " + move.nom + " Sur " + chosable[j].name)
 				persos[character_id].currentmove = move;
 				persos[character_id].currentTarget = chosable[j];
-				persos[character_id].currentmoveType = move_type;
+				persos[character_id].currentmoveType = move_type
 				var event = new CustomEvent('build', { 'detail': character_id });
 				document.dispatchEvent(event)
 			})
@@ -280,11 +282,11 @@ function DamageCalculation(attacker, move, defender) {
 		defender.armor = BaseArmor;
 	}
 	if (move.type == "Physical") {
-		console.log(TypeTable[attacker.weapon.element][defender.armor.element]);
+		console.log(TypeTable[attacker.weapon.element][defender.armor.element])
 		return Math.floor(attacker.Strength * (1 + (move.puissance / 100)) * (TypeTable[attacker.weapon.element][defender.armor.element]))
 	}
 	if (move.type == "Magical") {
-		console.log(TypeTable[move.element][defender.armor.element]);
+		console.log(TypeTable[move.element][defender.armor.element])
 		return Math.floor(attacker.Intelligence * (1 + (move.puissance / 100)) * (TypeTable[move.element][defender.armor.element]))
 	}
 }
@@ -293,7 +295,7 @@ function Display(i) {
 
 	if (attack_order[i].HP == 0) {
 		var event = new CustomEvent('display', { 'detail': i });
-		document.dispatchEvent(event);
+		document.dispatchEvent(event)
 		return;
 	}
 	if (attack_order[i].currentmoveType == "Item") {
@@ -301,19 +303,19 @@ function Display(i) {
 	} else {
 		if (attack_order[i].currentTarget.HP == 0) {
 			if (persos.includes(attack_order[i])) {
-				ennemyAttackable = ennemy.filter(a => a.HP > 0);
+				ennemyAttackable = ennemy.filter(a => a.HP > 0)
 				if (ennemyAttackable.length == 0) {
 					var event = new CustomEvent('findeStage', { 'detail': "Win" });
-					document.dispatchEvent(event);
+					document.dispatchEvent(event)
 					return;
 				}
 				attack_order[i].currentTarget = ennemyAttackable[getRandomInt(ennemyAttackable.length)]
 			}
 			else {
-				PersoAttackable = persos.filter(a => a.HP > 0);
+				PersoAttackable = persos.filter(a => a.HP > 0)
 				if (PersoAttackable.length == 0) {
 					var event = new CustomEvent('findeStage', { 'detail': "Lost" });
-					document.dispatchEvent(event);
+					document.dispatchEvent(event)
 					return;
 				}
 				attack_order[i].currentTarget = PersoAttackable[getRandomInt(PersoAttackable.length)]
@@ -321,18 +323,18 @@ function Display(i) {
 		}
 		InflictDamage(attack_order[i], attack_order[i].currentTarget, attack_order[i].currentmove)
 	}
-	console.log(attack_order[i].name + " utilise " + attack_order[i].currentmove.name + " sur " + attack_order[i].currentTarget.name);
-	console.log(attack_order[i]);
+	console.log(attack_order[i].name + " utilise " + attack_order[i].currentmove.name + " sur " + attack_order[i].currentTarget.name)
+	console.log(attack_order[i])
 	console.log(attack_order[i].currentTarget)
 	displayinfo();
-	displayinfoEnnemy();
+	displayinfoEnnemy()
 	var item = document.createElement('div');
 	item.appendChild(document.createTextNode(attack_order[i].name + " utilise " + attack_order[i].currentmove.nom + " sur " + attack_order[i].currentTarget.name));
 	document.querySelector('#menu').appendChild(item);
-	item.id = 'display';
+	item.id = 'display'
 	item.addEventListener('click', function (e) {
 		item.remove();
-		document.removeEventListener('click', this);
+		document.removeEventListener('click', this)
 		var event = new CustomEvent('display', { 'detail': i });
 		document.dispatchEvent(event)
 	})
@@ -364,13 +366,13 @@ function Buff(Item, buffer) {
 			if (buffer.HP == 0) {
 				break;
 			}
-			buffer.HP = buffer.HP + Item.number;
+			buffer.HP = buffer.HP + Item.number
 			if (buffer.HP > buffer.HPmax) {
 				buffer.HP = buffer.HPmax
 			}
 			break;
 		case "MP":
-			buffer.MP = buffer.MP + Item.number;
+			buffer.MP = buffer.MP + Item.number
 			if (buffer.MP > buffer.MPmax) {
 				buffer.MP = buffer.MPmax
 			}
@@ -379,36 +381,30 @@ function Buff(Item, buffer) {
 			if (buffer.HP > 0) {
 				break;
 			}
-			buffer.HP = buffer.HP + Item.number;
+			buffer.HP = buffer.HP + Item.number
 			break;
 		case "Strength":
-			buffer.Strength = buffer.Strength + Item.number;
+			buffer.strength = buffer.strength + Item.number;
 			if (!(Debufflist.includes(Item))) {
 				Debufflist.push({ turn: TourNumber + Item.turn, stat: "Strength", number: -Item.number, buffer: buffer })
 			}
 			break;
 		case "Vitality":
-			buffer.Vitality = buffer.Vitality + Item.number;
+			buffer.vitality = buffer.vitality + Item.number;
 			if (!(Debufflist.includes(Item))) {
 				Debufflist.push({ turn: TourNumber + Item.turn, stat: "Vitality", number: -Item.number, buffer: buffer })
 			}
 			break;
 		case "Intelligence":
-			buffer.Intelligence = buffer.Intelligence + Item.number;
+			buffer.inteligence = buffer.inteligence + Item.number;
 			if (!(Debufflist.includes(Item))) {
 				Debufflist.push({ turn: TourNumber + Item.turn, stat: "Intelligence", number: -Item.number, buffer: buffer })
 			}
 			break;
 		case "Spirit":
-			buffer.Spirit = buffer.Spirit + Item.number;
+			buffer.spirit = buffer.spirit + Item.number;
 			if (!(Debufflist.includes(Item))) {
 				Debufflist.push({ turn: TourNumber + Item.turn, stat: "Spirit", number: -Item.number, buffer: buffer })
-			}
-			break;
-		case "Speed":
-			buffer.Speed = buffer.Speed + Item.number;
-			if (!(Debufflist.includes(Item))) {
-				Debufflist.push({ turn: TourNumber + Item.turn, stat: "Speed", number: -Item.number, buffer: buffer })
 			}
 			break;
 	}
@@ -436,8 +432,8 @@ var Fin = function (e) {
 			}
 		}
 		var xhr = new XMLHttpRequest();
-		Result= {lvl:1,Money:Team.Money,Exp:Team.Exp};
-		xhr.open("PUT","http://127.0.0.1:8000/api/teams/" + UserID, true);
+		Result = { lvl: 1, Money: Team.Money, Exp: Team.Exp };
+		xhr.open("PUT", "http://127.0.0.1:8000/api/teams/" + UserID, true);
 		xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 		xhr.onload = function () {
 			var users = JSON.parse(xhr.responseText);
@@ -457,22 +453,22 @@ var Fin = function (e) {
 }
 
 function StagePhase() {
-	ennemy = Stage[StageNumber].Monster;
-	ennemyAttackable = ennemy;
-	PersoAttackable = persos;
+	ennemy = Stage[StageNumber].Monster
+	ennemyAttackable = ennemy
+	PersoAttackable = persos
 	attack_order = persos.concat(ennemy);
-	displayinfoEnnemy();
+	displayinfoEnnemy()
 	displayinfo();
-	document.addEventListener('findetour', Tour);
+	document.addEventListener('findetour', Tour)
 	Tour();
 }
 
 function TeamListener() {
-	var response = JSON.parse(this.response);
-	console.log(response.characters);
+	var response = JSON.parse(this.response)
+	console.log(response.characters)
 	Team = response;
-	Inventaire = response.Inventory.consumables;
-	GameInventory=Inventaire;
+	Inventaire = response.Inventory.consumables
+	GameInventory = Inventaire;
 	persos = response.characters;
 	var Req = new XMLHttpRequest();
 	Req.addEventListener("load", DungeonListener);
@@ -480,9 +476,9 @@ function TeamListener() {
 	Req.send();
 }
 function DungeonListener() {
-	var response = JSON.parse(this.response);
-	console.log(response);
-	Stage = response.Stages;
+	var response = JSON.parse(this.response)
+	console.log(response)
+	Stage = response.Stages
 	var event = new CustomEvent('LoadingEnd');
 	document.dispatchEvent(event)
 
@@ -492,15 +488,15 @@ oReq.addEventListener("load", TeamListener);
 oReq.open("GET", "http://127.0.0.1:8000/api/teams/" + UserID, true);
 oReq.send();
 
-document.addEventListener('LoadingEnd', Start);
+document.addEventListener('LoadingEnd', Start)
 function Start() {
-	document.addEventListener('findeStage', StageHandler);
+	document.addEventListener('findeStage', StageHandler)
 	StagePhase();
 	document.addEventListener('findecombat', Fin)
 }
 
 var StageHandler = function (e) {
-	StageNumber = StageNumber + 1;
+	StageNumber = StageNumber + 1
 	if (StageNumber == Stage.length) {
 		document.removeEventListener('findeStage', this)
 		var event = new CustomEvent('findecombat', { 'detail': e.detail });
@@ -511,18 +507,23 @@ var StageHandler = function (e) {
 }
 
 
-function InventoryResponse(){
+async function  InventoryResponse() {
+	for (const element of Inventaire){
+		await InventoryResult(element)
+	}
+	console.log("Sayez")
+}
+async function InventoryResult(e) {
 	var oReq = new XMLHttpRequest();
-	Inventaire.forEach(function(element) {
-		var uri= "http://127.0.0.1:8000/api/inventory_consumables/consumables="+element.consumables.id+";inventory="+Team.Inventory.id
-		if(element.quantite==0){
-			oReq.open("DELETE",uri, true);
-			oReq.send();
-		}
-		else{
-			Result= {quantite:element.qua};
-			oReq.open("PUT",uri, true);
-			oReq.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-			oReq.send(JSON.stringify(Result));
-		}
-	})}
+	var uri = "http://127.0.0.1:8000/api/inventory_consumables/consumables=" + e.consumables.id + ";inventory=" + Team.Inventory.id
+	if (e.quantite == 0) {
+		oReq.open("DELETE", uri, true);
+		oReq.send();
+	}
+	else {
+		Result = { quantite: e.quantite};
+		oReq.open("PUT", uri, true);
+		oReq.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+		oReq.send(JSON.stringify(Result));
+	}
+}
