@@ -16,18 +16,8 @@
     </div>
 
     <div class="form-group">
-        <label for="">HP</label>
-        {{ form_widget(formMonster.HP) }}
-    </div>
-
-    <div class="form-group">
         <label for="">MP max</label>
         {{ form_widget(formMonster.MPmax) }}
-    </div>
-
-    <div class="form-group">
-        <label for="">MP</label>
-        {{ form_widget(formMonster.MP) }}
     </div>
 
     <div class="form-group">

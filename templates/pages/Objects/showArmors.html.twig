@@ -1,0 +1,26 @@
+
+{% extends 'pages/baseInGame.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <h1 class = "jumbotron-heading">  Voici les armures disponibles !</h1>
+        <div class="div row flex">
+            {% for armor in armors %}
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a> {{ armor.name }}</a>
+                            </h5>
+                        </div>
+                        <a href="{{ path('editArmor', {'id': armor.id}) }}" class="btn btn-primary">Modifier</a><br>
+                        <a href="{{ path('deleteArmor', {'id': armor.id}) }}" class="btn btn-danger">Supprimer</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

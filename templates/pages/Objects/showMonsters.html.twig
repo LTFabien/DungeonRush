@@ -1,0 +1,24 @@
+{% extends 'pages/baseInGame.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+    <h1 class = "jumbotron-heading"> Voici les monstres disponibles !</h1>
+    <div class="div row flex">
+        {% for monster in monsters %}
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a> {{ monster.name }}</a>
+                        </h5>
+                    </div>
+                    <a href="{{ path('editMonster', {'id': monster.id}) }}" class="btn btn-primary">Modifier</a><br>
+                    <a href="{{ path('deleteMonster', {'id': monster.id}) }}" class="btn btn-danger">Supprimer</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

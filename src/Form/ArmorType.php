@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Armor;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,7 +16,17 @@ class ArmorType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('defense')
-            ->add('element')
+            ->add('element', ChoiceType::class, [
+                'choices'  => [
+                    'Normal' => 'Normal',
+                    'Feu' => 'Feu',
+                    'Eau' => 'Eau',
+                    'Plante' => 'Plante',
+                    'Terre' => 'Terre',
+                    'Electrique' => 'Electrique',
+                    'Glace' => 'Glace',
+                ],
+            ])
             ->add('lvl')
             ->add('price')
         ;

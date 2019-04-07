@@ -16,9 +16,7 @@ class MonsterType extends AbstractType
         $builder
             ->add('name')
             ->add('HPmax')
-            ->add('HP')
             ->add('MPmax')
-            ->add('MP')
             ->add('Strength')
             ->add('Intelligence')
             ->add('Spirit')

@@ -1,0 +1,27 @@
+
+{% extends 'pages/baseInGame.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <h1 class = "jumbotron-heading"> Voici les moves disponibles !</h1>
+        <div class="div row flex">
+            {% for move in moves %}
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a> {{ move.nom }}</a>
+                            </h5>
+                        </div>
+                            <a href="{{ path('editMove', {'id': move.id}) }}" class="btn btn-primary">Modifier</a><br>
+                            <a href="{{ path('deleteMove', {'id': move.id}) }}" class="btn btn-danger">Supprimer</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{#href="{{ path('EditMonster', {'id': monsters.id}) }}"#}

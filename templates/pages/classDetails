@@ -20,7 +20,7 @@
         </div>
         {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('modify_class', {'id': characterclass.id}) }}" class="btn btn-primary">Modifier</a>
-            <a href="{{ path('remove_class', {'id': characterclass.id}) }}" class="btn btn-primary">Supprimer</a>
+            <a href="{{ path('remove_class', {'id': characterclass.id}) }}" class="btn btn-danger">Supprimer</a>
         {% endif %}
     </div>
 

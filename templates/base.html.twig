@@ -26,7 +26,7 @@
 
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ path('add') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Créer</a>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Créer</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ path('addDungeon') }}">Donjon</a>
                                 <a class="dropdown-item" href="{{ path('addStage') }}">Stage</a>
@@ -35,6 +35,19 @@
                                 <a class="dropdown-item" href="{{ path('addWeapon') }}">Arme</a>
                                 <a class="dropdown-item" href="{{ path('addArmor') }}">Armure</a>
                                 <a class="dropdown-item" href="{{ path('addMove') }}">Move</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Modifier</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ path('ShowDungeons') }}" >Donjon</a>
+                                <a class="dropdown-item" href="{{ path('ShowStages') }}">Stage</a>
+                                <a class="dropdown-item" href="{{ path('ShowMonsters') }}">Monstre</a>
+                                <a class="dropdown-item" href="{{ path('ShowConsumables') }}">Consommable</a>
+                                <a class="dropdown-item" href="{{ path('ShowWeapons') }}">Arme</a>
+                                <a class="dropdown-item" href="{{ path('ShowArmors') }}">Armure</a>
+                                <a class="dropdown-item" href="{{ path('ShowMoves') }}">Move</a>
                             </div>
                         </li>
 

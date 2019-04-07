@@ -63,7 +63,7 @@ class CharacterClassController extends AbstractController
     }
 
     /**
-     * @Route("/classes/{id}/modifyClass", name="modify_class")
+     * @Route("admin/classes/{id}/modifyClass", name="modify_class")
      */
     public function modifyClass(CharacterClass $characterClass, Request $request, ObjectManager $manager){
 
@@ -113,7 +113,7 @@ class CharacterClassController extends AbstractController
         }
 
     /**
-     * @Route("/classes/{id}/removeClass", name="remove_class")
+     * @Route("admin/classes/{id}/removeClass", name="remove_class")
      */
         public function removeClass(CharacterClass $characterClass){
             $entityManager = $this->getDoctrine()->getManager();

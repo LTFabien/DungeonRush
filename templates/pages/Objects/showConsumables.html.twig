@@ -1,0 +1,26 @@
+
+{% extends 'pages/baseInGame.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <h1 class = "jumbotron-heading">  Voici les consommables disponibles !</h1>
+        <div class="div row flex">
+            {% for consumable in consumables %}
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a> {{ consumable.name }}</a>
+                            </h5>
+                        </div>
+                        <a href="{{ path('editConsumable', {'id': consumable.id}) }}" class="btn btn-primary">Modifier</a><br>
+                        <a href="{{ path('deleteConsumable', {'id': consumable.id}) }}" class="btn btn-danger">Supprimer</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

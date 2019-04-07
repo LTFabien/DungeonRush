@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <h1>Créer un move</h1>
+    <h1>Ajouter un move</h1>
 
     {{ form_start(formMove) }}
     <div class="form-group">
