@@ -1,24 +1,23 @@
-var Charge = { name: "Charge", puissance: 20, type: "Physical", cost: 0, element: "Normal" }
+/* var Charge = { name: "Charge", puissance: 20, type: "Physical", cost: 0, element: "Normal" }
 var Retour = { name: "Retour", puissance: 20, type: "Physical", cost: 5, element: "Normal" }
 var Exploforce = { name: "Exploforce", puissance: 20, type: "Physical", cost: 50, element: "Normal" }
 var Cogne = { name: "Cogne", puissance: 20, type: "Physical", cost: 10, element: "Normal" }
 var Eclate = { name: "Eclate", puissance: 20, type: "Physical", cost: 10, element: "Normal" }
 var MitraPoing = { name: "MitraPoing", puissance: 20, type: "Physical", cost: 30, element: "Normal" }
-var ViveAttaque = { name: "ViveAttaque", puissance: 20, type: "Physical", cost: 15, element: "Normal" }
+var ViveAttaque = { name: "ViveAttaque", puissance: 20, type: "Physical", cost: 15, element: "Normal" } */
 
 
-var Warmog = { element: "Plante" }
-var SpiritVisage = { element: "Terre" }
-var Banshee = { element: "Electrique" }
+var BaseArmor = {damage:10,element:"Normal"}
+var BaseWeapon = {damage:10,element:"Normal"}
 
-var Ragnarok = { element: "Feu" }
+/* var Ragnarok = { element: "Feu" }
 var Masamune = { element: "Eau" }
 var Ultima = { element: "Glace" }
 
 var Brasier = { name: "Brasier", puissance: 20, type: "Magical", cost: 3, element: "Feu" }
 var Glace = { name: "Glace", puissance: 20, type: "Magical", cost: 11, element: "Glace" }
 var Foudre = { name: "Foudre", puissance: 20, type: "Magical", cost: 3, element: "Electrique" }
-var Poison = { name: "Poison", puissance: 20, type: "Magical", cost: 6, element: "Normal" }
+var Poison = { name: "Poison", puissance: 20, type: "Magical", cost: 6, element: "Normal" } */
 
 var Potion = { stat: "PV", number: 100, name: "Potion" }
 var Ether = { stat: "MP", number: 100, name: "Ether" }
@@ -44,27 +43,31 @@ var Inventaire = [
 	{ item: Phoenix, quantite: 1 },
 	{ item: AttUp, quantite: 1 }]
 
+/* var persoA = { PV: 500, MP: 500, name: "Yacine", MaxPV: 1000, MaxMP: 40, move: [Charge, ViveAttaque, Brasier], speed: 10, strength: 30, inteligence: 20, Exp: 200, weapon: Ragnarok, armor: BaseArmor }
+var persoB = { PV: 500, MP: 500, name: "Fabien", MaxPV: 1000, MaxMP: 20, move: [Retour, Glace], speed: 40, strength: 60, inteligence: 20, Exp: 300, weapon: Ragnarok, armor: BaseArmor }
+var persoC = { PV: 500, MP: 500, name: "Nadir", MaxPV: 1000, MaxMP: 999, move: [Exploforce, Poison, Foudre], speed: 30, strength: 10, inteligence: 20, Exp: 100, weapon: Ragnarok, armor: BaseArmor }
+var ennemy1 = { name: "Brice", speed: 44, strength: 20, inteligence: 20, move: [Cogne, Charge], HP: 500, Exp: 500, armor: BaseArmor, weapon: Masamune }
+var ennemy2 = { name: "Jeremy", speed: 9, strength: 10, inteligence: 20, move: [Eclate, Charge, Cogne], HP: 500, Exp: 500, armor: BaseArmor, weapon: Ultima }
+var ennemy3 = { name: "Hugo", speed: 22, strength: 25, inteligence: 20, move: [MitraPoing, Charge, Exploforce], HP: 500, Exp: 500, armor: BaseArmor, weapon: Ultima } */
 
-
-var persoA = { PV: 500, MP: 500, name: "Yacine", MaxPV: 1000, MaxMP: 40, move: [Charge, ViveAttaque, Brasier], speed: 10, strength: 30, inteligence: 20, Exp: 200, weapon: Ragnarok, armor: Warmog }
-var persoB = { PV: 500, MP: 500, name: "Fabien", MaxPV: 1000, MaxMP: 20, move: [Retour, Glace], speed: 40, strength: 60, inteligence: 20, Exp: 300, weapon: Ragnarok, armor: SpiritVisage }
-var persoC = { PV: 500, MP: 500, name: "Nadir", MaxPV: 1000, MaxMP: 999, move: [Exploforce, Poison, Foudre], speed: 30, strength: 10, inteligence: 20, Exp: 100, weapon: Ragnarok, armor: Banshee }
-
-var ennemy1 = { name: "Brice", speed: 44, strength: 20, inteligence: 20, move: [Cogne, Charge], PV: 500, Exp: 500, armor: Warmog, weapon: Masamune }
-var ennemy2 = { name: "Jeremy", speed: 9, strength: 10, inteligence: 20,move: [Eclate, Charge, Cogne], PV: 500, Exp: 500, armor: Warmog, weapon: Ultima }
-var ennemy3 = { name: "Hugo", speed: 22, strength: 25, inteligence: 20,move: [MitraPoing, Charge, Exploforce], PV: 500, Exp: 500, armor: Warmog, weapon: Ultima }
 var options = ["Attack", "Magic", "Defend", "Item"]
-var persos = [persoA, persoB, persoC]
-var persosv = [persoA, persoB, persoC]
-var ennemy = [ennemy1, ennemy2, ennemy3]
-var ennemyAttackable = ennemy
-var PersoAttackable = persos
-var attack_order = persos.concat(ennemy);
+var persos ;
+var ennemy ;
+var ennemyAttackable;
+var PersoAttackable ;
+var attack_order;
 var TourNumber = 0;
+var StageNumber = 0
+var Team;
+var Stage;
+
+
+
+var Stage;
 
 function EnnemyHandler() {
 	for (var i = 0; i < ennemy.length; i++) {
-		var movefaisable = ennemy[i].move.filter(a => (a.type == "Physical" && a.cost < ennemy[i].PV) || (a.type == "Magical" && a.cost < ennemy[i].MP))
+		var movefaisable = ennemy[i].move.filter(a => (a.type == "Physical" && a.cost < ennemy[i].HP) || (a.type == "Magical" && a.cost < ennemy[i].MP))
 		ennemy[i].currentmove = movefaisable[getRandomInt(movefaisable.length)]
 		ennemy[i].currentTarget = PersoAttackable[getRandomInt(PersoAttackable.length)]
 	}
@@ -76,16 +79,16 @@ function Tour() {
 	console.log(TourNumber)
 	console.log(Debufflist)
 	Debuff();
-	ennemyAttackable = ennemy.filter(a => a.PV > 0)
-	PersoAttackable = persos.filter(a => a.PV > 0)
+	ennemyAttackable = ennemy.filter(a => a.HP > 0)
+	PersoAttackable = persos.filter(a => a.HP > 0)
 	Inventaire = Inventaire.filter(a => a.quantite > 0)
 	if (PersoAttackable.length == 0) {
-		var event = new CustomEvent('findecombat', { 'detail': "Win" });
+		var event = new CustomEvent('findeStage', { 'detail': "Lost" });
 		document.dispatchEvent(event)
 		return;
 	}
 	if (ennemyAttackable.length == 0) {
-		var event = new CustomEvent('findecombat', { 'detail': "Win" });
+		var event = new CustomEvent('findeStage', { 'detail': "Win" });
 		document.dispatchEvent(event)
 		return;
 	}
@@ -103,7 +106,7 @@ var TurnHandler = function (e) {
 }
 
 function MainPhase(character_id) {
-	if (persos[character_id].PV == 0) {
+	if (persos[character_id].HP == 0) {
 		var event = new CustomEvent('build', { 'detail': character_id });
 		document.dispatchEvent(event)
 		return;
@@ -122,7 +125,7 @@ function AttackPhase() {
 }
 
 function attack(i) {
-	createli(persos[i].move.filter(a => a.type == "Physical").map(a => a.name + " " + a.cost), document.querySelector('.move'));
+	createli(persos[i].move.filter(a => a.type == "Physical").map(a => a.nom + " " + a.cost), document.querySelector('.move'));
 	returnMenu(i);
 	move(i, "Physical");
 }
@@ -174,7 +177,7 @@ function setMenuListeners(i) {
 
 
 function magic(i) {
-	createli(persos[i].move.filter(a => a.type == "Magical").map(a => a.name + " " + a.cost), document.querySelector('.move'));
+	createli(persos[i].move.filter(a => a.type == "Magical").map(a => a.nom + " " + a.cost), document.querySelector('.move'));
 	returnMenu(i);
 	move(i, "Magical");
 }
@@ -186,13 +189,13 @@ function displayinfo() {
 		var item = document.createElement('li');
 		item.appendChild(document.createTextNode(persos[i].name));
 		document.querySelector('.info').appendChild(item);
-		if (persos[i].PV == 0) {
+		if (persos[i].HP == 0) {
 			YourDead(i)
 		}
 	}
 	for (var i = 0; i < persos.length; i++) {
 		var item = document.createElement('li');
-		item.appendChild(document.createTextNode("PV :" + persos[i].PV + " / " + persos[i].MaxPV + " \t MP:" + persos[i].MP + " / " + persos[i].MaxMP));
+		item.appendChild(document.createTextNode("HP :" + persos[i].HP + " / " + persos[i].HPmax + " \t MP:" + persos[i].MP + " / " + persos[i].MPmax));
 		document.querySelector('.info').appendChild(item);
 	}
 
@@ -207,7 +210,7 @@ function displayinfoEnnemy() {
 	}
 	for (var i = 0; i < ennemy.length; i++) {
 		var item = document.createElement('li');
-		item.appendChild(document.createTextNode("PV :" + ennemy[i].PV + " / " + ennemy[i].MaxPV));
+		item.appendChild(document.createTextNode("HP :" + ennemy[i].HP + " / " + ennemy[i].HPmax));
 		document.querySelector('.infoEnnemy').appendChild(item);
 	}
 }
@@ -231,21 +234,21 @@ function move(i, MoveType) {
 	for (var j = 0; j < choice.length; j++) {
 		(function (x) {
 			if (choice[x].type == "Physical") {
-				document.getElementById(choice[x].name + " " + choice[x].cost).innerText += " PV"
-				if (choice[x].cost > persos[i].PV) {
-					document.getElementById(choice[x].name + " " + choice[x].cost).style.color = "black"
+				document.getElementById(choice[x].nom + " " + choice[x].cost).innerText += " HP"
+				if (choice[x].cost > persos[i].HP) {
+					document.getElementById(choice[x].nom + " " + choice[x].cost).style.color = "black"
 					return;
 				}
 			}
 			if (choice[x].type == "Magical") {
-				document.getElementById(choice[x].name + " " + choice[x].cost).innerText += " MP"
+				document.getElementById(choice[x].nom + " " + choice[x].cost).innerText += " MP"
 				if (choice[x].cost > persos[i].MP) {
-					document.getElementById(choice[x].name + " " + choice[x].cost).style.color = "black"
+					document.getElementById(choice[x].nom + " " + choice[x].cost).style.color = "black"
 					return;
 				}
 			}
-			document.getElementById(choice[x].name + " " + choice[x].cost).addEventListener('click', function (e) {
-				console.log("vous allez utiliser " + choice[x].name)
+			document.getElementById(choice[x].nom + " " + choice[x].cost).addEventListener('click', function (e) {
+				console.log("vous allez utiliser " + choice[x].nom)
 				choosennemy(i, choice[x], "Attack");
 
 
@@ -268,7 +271,7 @@ function choosennemy(character_id, move, move_type) {
 					Inventaire = Inventaire.filter(a => a.quantite > 0)
 					move = move.item
 				}
-				console.log("Vous utilisez " + move.name + " Sur " + chosable[j].name)
+				console.log("Vous utilisez " + move.nom + " Sur " + chosable[j].name)
 				persos[character_id].currentmove = move;
 				persos[character_id].currentTarget = chosable[j];
 				persos[character_id].currentmoveType = move_type
@@ -286,15 +289,15 @@ function getRandomInt(max) {
 
 
 function InflictDamage(attacker, defender, move) {
-	defender.PV = defender.PV - DamageCalculation(attacker, move, defender)
-	if (defender.PV < 0) {
-		defender.PV = 0
+	defender.HP = defender.HP - DamageCalculation(attacker, move, defender)
+	if (defender.HP < 0) {
+		defender.HP = 0
 	}
 	switch (move.type) {
 		case "Physical":
-			attacker.PV = attacker.PV - move.cost;
-			if (defender.PV < 0) {
-				defender.PV = 0
+			attacker.HP = attacker.HP - move.cost;
+			if (defender.HP < 0) {
+				defender.HP = 0
 			}
 			break;
 		case "Magical":
@@ -307,19 +310,25 @@ function InflictDamage(attacker, defender, move) {
 }
 
 function DamageCalculation(attacker, move, defender) {
+	if(attacker.weapon==null){
+		attacker.weapon=BaseWeapon;
+	}
+	if(defender.armor==null){
+		defender.armor=BaseArmor;
+	}
 	if (move.type == "Physical") {
 		console.log(TypeTable[attacker.weapon.element][defender.armor.element])
-		return Math.floor(attacker.strength * (1 + (move.puissance / 100))) * (TypeTable[attacker.weapon.element][defender.armor.element])
+		return Math.floor(attacker.Strength * (1 + (move.puissance / 100)) * (TypeTable[attacker.weapon.element][defender.armor.element]))
 	}
 	if (move.type == "Magical") {
 		console.log(TypeTable[move.element][defender.armor.element])
-		return Math.floor(attacker.inteligence * (1 + (move.puissance / 100))) * (TypeTable[move.element][defender.armor.element])
+		return Math.floor(attacker.Intelligence * (1 + (move.puissance / 100)) * (TypeTable[move.element][defender.armor.element]))
 	}
 }
 
 function Display(i) {
 
-	if (attack_order[i].PV == 0) {
+	if (attack_order[i].HP == 0) {
 		var event = new CustomEvent('display', { 'detail': i });
 		document.dispatchEvent(event)
 		return;
@@ -327,20 +336,20 @@ function Display(i) {
 	if (attack_order[i].currentmoveType == "Item") {
 		Buff(attack_order[i].currentmove, attack_order[i].currentTarget);
 	} else {
-		if (attack_order[i].currentTarget.PV == 0) {
+		if (attack_order[i].currentTarget.HP == 0) {
 			if (persos.includes(attack_order[i])) {
-				ennemyAttackable = ennemy.filter(a => a.PV > 0)
+				ennemyAttackable = ennemy.filter(a => a.HP > 0)
 				if (ennemyAttackable.length == 0) {
-					var event = new CustomEvent('findecombat', { 'detail': "Win" });
+					var event = new CustomEvent('findeStage', { 'detail': "Win" });
 					document.dispatchEvent(event)
 					return;
 				}
 				attack_order[i].currentTarget = ennemyAttackable[getRandomInt(ennemyAttackable.length)]
 			}
 			else {
-				PersoAttackable = persos.filter(a => a.PV > 0)
+				PersoAttackable = persos.filter(a => a.HP > 0)
 				if (PersoAttackable.length == 0) {
-					var event = new CustomEvent('findecombat', { 'detail': "Lost" });
+					var event = new CustomEvent('findeStage', { 'detail': "Lost" });
 					document.dispatchEvent(event)
 					return;
 				}
@@ -355,7 +364,7 @@ function Display(i) {
 	displayinfo();
 	displayinfoEnnemy()
 	var item = document.createElement('div');
-	item.appendChild(document.createTextNode(attack_order[i].name + " utilise " + attack_order[i].currentmove.name + " sur " + attack_order[i].currentTarget.name));
+	item.appendChild(document.createTextNode(attack_order[i].name + " utilise " + attack_order[i].currentmove.nom + " sur " + attack_order[i].currentTarget.name));
 	document.querySelector('#menu').appendChild(item);
 	item.id = 'display'
 	item.addEventListener('click', function (e) {
@@ -389,25 +398,25 @@ function YourDead(i) {
 function Buff(Item, buffer) {
 	switch (Item.stat) {
 		case "PV":
-			if (buffer.PV == 0) {
+			if (buffer.HP == 0) {
 				break;
 			}
-			buffer.PV = buffer.PV + Item.number
-			if (buffer.PV > buffer.MaxPV) {
-				buffer.PV = buffer.MaxPV
+			buffer.HP = buffer.HP + Item.number
+			if (buffer.HP > buffer.HPmax) {
+				buffer.HP = buffer.HPmax
 			}
 			break;
 		case "MP":
 			buffer.MP = buffer.MP + Item.number
-			if (buffer.MP > buffer.MaxMP) {
-				buffer.MP = buffer.MaxMP
+			if (buffer.MP > buffer.MPmax) {
+				buffer.MP = buffer.MPmax
 			}
 			break;
 		case "Revive":
-			if (buffer.PV > 0) {
+			if (buffer.HP > 0) {
 				break;
 			}
-			buffer.PV = buffer.PV + Item.number
+			buffer.HP = buffer.HP + Item.number
 			break;
 		case "Strength":
 			buffer.strength = buffer.strength + Item.number;
@@ -451,14 +460,12 @@ function getOccurrence(array, value) {
 
 var Fin = function (e) {
 	if (e.detail == "Win") {
-		for (var i = 0; i < ennemy.length; i++) {
-			for (var j = 0; j < persos.length; j++) {
-				if (persos[i].PV > 0) {
-					persos[i].Exp = persos[i].Exp + ennemy[i].Exp
-				}
+		for (var i = 0; i < Stage.length; i++) {
+			for (var j = 0; j < Stage[i].Monster.length; j++) {
+				Team.Exp=Team.Exp+Stage[i].Monster[j].Exp;
 			}
-			console.log(persos[i].name + " a " + persos[i].Exp)
 		}
+		console.log(Team.Exp)
 		window.alert('Win')
 	}
 	else if (e.detail == "Lost") {
@@ -466,22 +473,90 @@ var Fin = function (e) {
 	}
 }
 
-var oReq = new XMLHttpRequest();
-
-function reqListener() {
-	console.log(this.response);
-	console.log(persos);
+function StagePhase(){
+	ennemy = Stage[StageNumber].Monster
+	ennemyAttackable = ennemy
+	PersoAttackable = persos
+	attack_order = persos.concat(ennemy);
 	displayinfoEnnemy()
 	displayinfo();
 	document.addEventListener('findetour', Tour)
 	Tour();
+}
+
+function TeamListener() {
+	var response = JSON.parse(this.response)
+	console.log(response.characters)
+	Team=response;
+	persos = response.characters;
+	var Req = new XMLHttpRequest();
+	Req.addEventListener("load", DungeonListener);
+	Req.open("GET", "http://127.0.0.1:8000/api/dungeons/"+DungeonID, true);
+	Req.send();
+}
+function DungeonListener() {
+	var response = JSON.parse(this.response)
+	console.log(response)
+	Stage = response.Stages
+	var event = new CustomEvent('LoadingEnd');
+	document.dispatchEvent(event)
+
+}
+var oReq = new XMLHttpRequest();
+oReq.addEventListener("load", TeamListener);
+oReq.open("GET", "http://127.0.0.1:8000/api/teams/"+UserID, true);
+oReq.send();
+
+document.addEventListener('LoadingEnd', Start)
+function Start() {
+	document.addEventListener('findeStage',StageHandler)
+	StagePhase();
 	document.addEventListener('findecombat', Fin)
 }
 
-var oReq = new XMLHttpRequest();
-oReq.addEventListener("load", reqListener);
-oReq.open("GET", "http://127.0.0.1:8000/api/dungeons/1", true);
-oReq.send();
+var StageHandler = function (e) {
+	StageNumber=StageNumber+1
+	if (StageNumber == Stage.length) {
+		document.removeEventListener('findeStage', this)
+		var event = new CustomEvent('findecombat',{'detail':e.detail});
+		document.dispatchEvent(event)
+	} else {
+		StagePhase();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var persoanim = [
 	'http://www.videogamesprites.net/FinalFantasy6/Party/GeneralLeo/General%20Leo%20-%20Battle.gif',
@@ -499,9 +574,9 @@ function animation(i) {
 		document.querySelector('#perso1').src = persoanim[i]
 		console.log(persoanim[i])
 		console.log(i)
-		if(i<5){
+		if (i < 5) {
 			animation(++i)
 		}
 		return
-	},500);
+	}, 500);
 }

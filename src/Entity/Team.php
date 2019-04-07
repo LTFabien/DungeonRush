@@ -74,6 +74,7 @@ class Team
     public function __construct()
     {
         $this->characters = new ArrayCollection();
+        $this->Exp = 0;
     }
 
     public function getId(): ?int
