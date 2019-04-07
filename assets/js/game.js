@@ -82,7 +82,7 @@ function MainPhase(character_id) {
 
 function AttackPhase() {
 	EnnemyHandler();
-	attack_order.sort((a, b) => (a.speed < b.speed) ? 1 : -1);
+	attack_order.sort((a, b) => (a.Speed < b.Speed) ? 1 : -1);
 	document.addEventListener('display', displayHandler);
 	Display(0)
 }
@@ -382,27 +382,33 @@ function Buff(Item, buffer) {
 			buffer.HP = buffer.HP + Item.number;
 			break;
 		case "Strength":
-			buffer.strength = buffer.strength + Item.number;
+			buffer.Strength = buffer.Strength + Item.number;
 			if (!(Debufflist.includes(Item))) {
 				Debufflist.push({ turn: TourNumber + Item.turn, stat: "Strength", number: -Item.number, buffer: buffer })
 			}
 			break;
 		case "Vitality":
-			buffer.vitality = buffer.vitality + Item.number;
+			buffer.Vitality = buffer.Vitality + Item.number;
 			if (!(Debufflist.includes(Item))) {
 				Debufflist.push({ turn: TourNumber + Item.turn, stat: "Vitality", number: -Item.number, buffer: buffer })
 			}
 			break;
 		case "Intelligence":
-			buffer.inteligence = buffer.inteligence + Item.number;
+			buffer.Intelligence = buffer.Intelligence + Item.number;
 			if (!(Debufflist.includes(Item))) {
 				Debufflist.push({ turn: TourNumber + Item.turn, stat: "Intelligence", number: -Item.number, buffer: buffer })
 			}
 			break;
 		case "Spirit":
-			buffer.spirit = buffer.spirit + Item.number;
+			buffer.Spirit = buffer.Spirit + Item.number;
 			if (!(Debufflist.includes(Item))) {
 				Debufflist.push({ turn: TourNumber + Item.turn, stat: "Spirit", number: -Item.number, buffer: buffer })
+			}
+			break;
+		case "Speed":
+			buffer.Speed = buffer.Speed + Item.number;
+			if (!(Debufflist.includes(Item))) {
+				Debufflist.push({ turn: TourNumber + Item.turn, stat: "Speed", number: -Item.number, buffer: buffer })
 			}
 			break;
 	}
