@@ -7,6 +7,7 @@ use App\Entity\CharacterClass;
 use App\Entity\Move;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,8 +20,21 @@ class MoveType extends AbstractType
             ->add('nom')
             ->add('lvl')
             ->add('price')
-            ->add('element')
-            ->add('type')
+            ->add('element', ChoiceType::class, [
+                'choices'  => [
+                    'Normal' => 'Normal',
+                    'Feu' => 'Feu',
+                    'Eau' => 'Eau',
+                    'Plante' => 'Plante',
+                    'Terre' => 'Terre',
+                    'Electrique' => 'Electrique',
+                    'Glace' => 'Glace',
+                ],
+            ])
+            ->add('type', ChoiceType::class, [
+                'choices'  => [
+                    'Physical' => 'Physical',
+                    'Magical' => 'Magical']])
             ->add('description')
             ->add('class_authorized', EntityType::class, array(
                 'class'        => CharacterClass::class,
@@ -30,6 +44,7 @@ class MoveType extends AbstractType
             ))
             ->add('cost')
             ->add('puissance')
+
         ;
 
         ;

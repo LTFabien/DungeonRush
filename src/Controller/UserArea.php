@@ -24,11 +24,12 @@ class UserArea extends AbstractController
 
     public function ShowDetails():Response
     {
+        $team=$this->getUser()->getTeam();
         $dungeon = $this->getDoctrine()
             ->getRepository(Dungeons::class)
             ->findAll();
 
-        return $this->render('pages/userArea', array('dungeons' => $dungeon));
+        return $this->render('pages/userArea', array('dungeons' => $dungeon, 'team' => $team));
     }
 
     /**

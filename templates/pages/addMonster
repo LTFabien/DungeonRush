@@ -60,6 +60,11 @@
         {{ form_widget(formMonster.stages) }}
     </div>
 
+    <div class="form-group">
+        <label for="">Move</label>
+        {{ form_widget(formMonster.move) }}
+    </div>
+
 
     <button type="submit" class="btn btn-success">Ajouter !</button>
     {{ form_end(formMonster) }}

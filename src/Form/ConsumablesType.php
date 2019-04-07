@@ -17,7 +17,7 @@ class ConsumablesType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('stat_buffed', ChoiceType::class, [
+            ->add('stat', ChoiceType::class, [
                 'choices'  => [
                     'HP' => 'HP',
                     'MP' => 'MP',
@@ -29,7 +29,7 @@ class ConsumablesType extends AbstractType
                     'Strength' => 'Strength',
                 ],
             ])
-            ->add('number_buff')
+            ->add('number')
             ->add('turn')
             ->add('price')
         ;

@@ -12,15 +12,15 @@
 
 {% for weapon in team.Inventory.weapons %}
     {% if weapon.weapons in player.class.AuthorizedWeapons %}
-    <p> - {{ weapon.weapons.name }}{{ weapon.quantite }} <a href="{{ path('equip_weapon', {'id': weapon.weapons.id,'playerid':player.id}) }}" class="btn btn-primary">Equiper</a></p>
+    <p> - {{ weapon.weapons.name }}{{ weapon.quantite }} <a href="{{ path('equip_weapon', {'id': weapon.weapons.id,'idplayer':player.id}) }}" class="btn btn-primary">Equiper</a></p>
     {% endif %}
 {% endfor %}
 
     <h2>Voici vos armures disponibles :</h2>
 
     {% for armor in team.Inventory.armor %}
-        {% if weapon.weapons in player.class.AuthorizedArmors %}
-        <p> - {{ armor.armor.name }} {{ armor.quantite }}<a href="{{ path('equip_armor', {'id': armor.armor.id,'playerid':player.id}) }}" class="btn btn-primary">Equiper</a></p>
+        {% if armor.armor in player.class.AuthorizedArmors %}
+        <p> - {{ armor.armor.name }} {{ armor.quantite }}<a href="{{ path('equip_armor', {'id': armor.armor.id,'idplayer':player.id}) }}" class="btn btn-primary">Equiper</a></p>
         {% endif %}
     {% endfor %}
 {% endfor %}

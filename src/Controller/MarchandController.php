@@ -83,6 +83,7 @@ class MarchandController extends AbstractController
             }else{
                 $index->setQuantite($index->getQuantite()+1);
             }
+            $team->setMoney(($team->getMoney())-($weapons->getPrice()));
         }
         $entityManager->flush();
 
@@ -106,6 +107,7 @@ class MarchandController extends AbstractController
             }else{
                 $index->setQuantite($index->getQuantite()+1);
             }
+            $team->setMoney(($team->getMoney())-($armor->getPrice()));
         }
         $entityManager->flush();
 
@@ -129,6 +131,7 @@ class MarchandController extends AbstractController
             }else{
                 $index->setQuantite($index->getQuantite()+1);
             }
+            $team->setMoney(($team->getMoney())-($consumables->getPrice()));
         }
         $entityManager->flush();
 
