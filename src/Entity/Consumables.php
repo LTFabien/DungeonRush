@@ -41,10 +41,6 @@ class Consumables
      */
     private $number_buff;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Inventory", mappedBy="consumables")
-     */
-    private $inventories;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -56,9 +52,14 @@ class Consumables
      */
     private $price;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\InventoryConsumables", mappedBy="consumables")
+     */
+    private $quantity;
+
     public function __construct()
     {
-        $this->inventories = new ArrayCollection();
+        $this->quantity = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -114,33 +115,6 @@ class Consumables
         return $this;
     }
 
-    /**
-     * @return Collection|Inventory[]
-     */
-    public function getInventories(): Collection
-    {
-        return $this->inventories;
-    }
-
-    public function addInventory(Inventory $inventory): self
-    {
-        if (!$this->inventories->contains($inventory)) {
-            $this->inventories[] = $inventory;
-            $inventory->addConsumable($this);
-        }
-
-        return $this;
-    }
-
-    public function removeInventory(Inventory $inventory): self
-    {
-        if ($this->inventories->contains($inventory)) {
-            $this->inventories->removeElement($inventory);
-            $inventory->removeConsumable($this);
-        }
-
-        return $this;
-    }
 
     public function getTurn(): ?int
     {
@@ -162,6 +136,37 @@ class Consumables
     public function setPrice(int $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|InventoryConsumables[]
+     */
+    public function getQuantity(): Collection
+    {
+        return $this->quantity;
+    }
+
+    public function addQuantity(InventoryConsumables $quantity): self
+    {
+        if (!$this->quantity->contains($quantity)) {
+            $this->quantity[] = $quantity;
+            $quantity->setConsumables($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuantity(InventoryConsumables $quantity): self
+    {
+        if ($this->quantity->contains($quantity)) {
+            $this->quantity->removeElement($quantity);
+            // set the owning side to null (unless already changed)
+            if ($quantity->getConsumables() === $this) {
+                $quantity->setConsumables(null);
+            }
+        }
 
         return $this;
     }
