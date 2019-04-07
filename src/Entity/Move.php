@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,11 +23,14 @@ class Move
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"Team","Dungeons"})
+     *
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"Team","Dungeons"})
      */
     private $type;
 
@@ -47,16 +51,19 @@ class Move
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"Team","Dungeons"})
      */
     private $cost;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"Team","Dungeons"})
      */
     private $puissance;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"Team","Dungeons"})
      */
     private $element;
 
@@ -70,12 +77,18 @@ class Move
      */
     private $lvl;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Monsters", mappedBy="move")
+     */
+    private $monsters;
+
 
 
     public function __construct()
     {
         $this->class_authorized = new ArrayCollection();
         $this->characters = new ArrayCollection();
+        $this->monsters = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -231,6 +244,34 @@ class Move
     public function setLvl(int $lvl): self
     {
         $this->lvl = $lvl;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Monsters[]
+     */
+    public function getMonsters(): Collection
+    {
+        return $this->monsters;
+    }
+
+    public function addMonster(Monsters $monster): self
+    {
+        if (!$this->monsters->contains($monster)) {
+            $this->monsters[] = $monster;
+            $monster->addMove($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMonster(Monsters $monster): self
+    {
+        if ($this->monsters->contains($monster)) {
+            $this->monsters->removeElement($monster);
+            $monster->removeMove($this);
+        }
 
         return $this;
     }

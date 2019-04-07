@@ -3,13 +3,17 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DungeonsRepository")
- * @ApiResource
+ * @ApiResource(
+ *     normalizationContext={"groups"={"Dungeons"}},
+ *     denormalizationContext={"groups"={"write"}}
+ *     )
  */
 class Dungeons
 {
@@ -22,11 +26,13 @@ class Dungeons
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Dungeons")
      */
     private $name;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Stages", mappedBy="dungeons")
+     * @Groups("Dungeons")
      */
     private $Stages;
 

@@ -469,6 +469,7 @@ var Fin = function (e) {
 var oReq = new XMLHttpRequest();
 
 function reqListener() {
+	console.log(this.response);
 	console.log(persos);
 	displayinfoEnnemy()
 	displayinfo();
@@ -479,7 +480,7 @@ function reqListener() {
 
 var oReq = new XMLHttpRequest();
 oReq.addEventListener("load", reqListener);
-oReq.open("GET", "api.php", true);
+oReq.open("GET", "http://127.0.0.1:8000/api/dungeons/1", true);
 oReq.send();
 
 var persoanim = [
