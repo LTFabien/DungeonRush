@@ -25,8 +25,17 @@
                     </li>
 
                     {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item">
-                            <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}" href="{{ path('add') }}">Ajouter</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="{{ path('add') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Créer</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ path('addDungeon') }}">Donjon</a>
+                                <a class="dropdown-item" href="{{ path('addStage') }}">Stage</a>
+                                <a class="dropdown-item" href="{{ path('addMonster') }}">Monstre</a>
+                                <a class="dropdown-item" href="{{ path('addConsumable') }}">Consommable</a>
+                                <a class="dropdown-item" href="{{ path('addWeapon') }}">Arme</a>
+                                <a class="dropdown-item" href="{{ path('addArmor') }}">Armure</a>
+                                <a class="dropdown-item" href="{{ path('addMove') }}">Move</a>
+                            </div>
                         </li>
 
                     {% endif %}

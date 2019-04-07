@@ -56,6 +56,16 @@
     </div>
 
     <div class="form-group">
+        <label for="">XP</label>
+        {{ form_widget(formMonster.Exp) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Gold</label>
+        {{ form_widget(formMonster.Gold) }}
+    </div>
+
+    <div class="form-group">
         <label for="">Stage</label>
         {{ form_widget(formMonster.stages) }}
     </div>
