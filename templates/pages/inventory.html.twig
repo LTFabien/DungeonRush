@@ -3,22 +3,26 @@
 {% block body %}
 
 <h2>Voici vos consomables disponibles :</h2>
-
 {% for consumable in team.Inventory.consumables %}
-    <p> - {{ consumable.name }}</p>
+    <p> - {{ consumable.consumables.name }} {{ consumable.quantite }} </p>
 {% endfor %}
-
-    <h2>Voici vos armes disponibles :</h2>
+    {% for player in team.Characters%}
+        <h1>{{ player.name }}</h1>
+    <h2>Voici vos armes disponibles:</h2>
 
 {% for weapon in team.Inventory.weapons %}
-    <p> - {{ weapon.name }} <a href="#" class="btn btn-primary">Equiper</a></p>
+    {% if weapon.weapons in player.class.AuthorizedWeapons %}
+    <p> - {{ weapon.weapons.name }}{{ weapon.quantite }} <a href="{{ path('equip_weapon', {'id': weapon.weapons.id,'playerid':player.id}) }}" class="btn btn-primary">Equiper</a></p>
+    {% endif %}
 {% endfor %}
 
     <h2>Voici vos armures disponibles :</h2>
 
-    {% for armor in team.Inventory.armors %}
-        <p> - {{ armor.name }} <a href="#" class="btn btn-primary">Equiper</a></p>
+    {% for armor in team.Inventory.armor %}
+        {% if weapon.weapons in player.class.AuthorizedArmors %}
+        <p> - {{ armor.armor.name }} {{ armor.quantite }}<a href="{{ path('equip_armor', {'id': armor.armor.id,'playerid':player.id}) }}" class="btn btn-primary">Equiper</a></p>
+        {% endif %}
     {% endfor %}
-
+{% endfor %}
 {% endblock %}
 

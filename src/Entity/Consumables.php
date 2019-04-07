@@ -18,11 +18,13 @@ class Consumables
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Team")
      */
     private $name;
 
@@ -33,21 +35,20 @@ class Consumables
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Team")
      */
-    private $stat_buffed;
+    private $stat;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
-    private $number_buff;
+    private $number;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Inventory", mappedBy="consumables")
-     */
-    private $inventories;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups("Team")
      */
     private $turn;
 
@@ -56,9 +57,14 @@ class Consumables
      */
     private $price;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\InventoryConsumables", mappedBy="consumables")
+     */
+    private $quantity;
+
     public function __construct()
     {
-        $this->inventories = new ArrayCollection();
+        $this->quantity = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -90,57 +96,30 @@ class Consumables
         return $this;
     }
 
-    public function getStatBuffed(): ?string
+    public function getStat(): ?string
     {
-        return $this->stat_buffed;
+        return $this->stat;
     }
 
-    public function setStatBuffed(string $stat_buffed): self
+    public function setStat(string $stat): self
     {
-        $this->stat_buffed = $stat_buffed;
+        $this->stat = $stat;
 
         return $this;
     }
 
-    public function getNumberBuff(): ?int
+    public function getNumber(): ?int
     {
-        return $this->number_buff;
+        return $this->number;
     }
 
-    public function setNumberBuff(int $number_buff): self
+    public function setNumber(int $number): self
     {
-        $this->number_buff = $number_buff;
+        $this->number = $number;
 
         return $this;
     }
 
-    /**
-     * @return Collection|Inventory[]
-     */
-    public function getInventories(): Collection
-    {
-        return $this->inventories;
-    }
-
-    public function addInventory(Inventory $inventory): self
-    {
-        if (!$this->inventories->contains($inventory)) {
-            $this->inventories[] = $inventory;
-            $inventory->addConsumable($this);
-        }
-
-        return $this;
-    }
-
-    public function removeInventory(Inventory $inventory): self
-    {
-        if ($this->inventories->contains($inventory)) {
-            $this->inventories->removeElement($inventory);
-            $inventory->removeConsumable($this);
-        }
-
-        return $this;
-    }
 
     public function getTurn(): ?int
     {
@@ -162,6 +141,37 @@ class Consumables
     public function setPrice(int $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|InventoryConsumables[]
+     */
+    public function getQuantity(): Collection
+    {
+        return $this->quantity;
+    }
+
+    public function addQuantity(InventoryConsumables $quantity): self
+    {
+        if (!$this->quantity->contains($quantity)) {
+            $this->quantity[] = $quantity;
+            $quantity->setConsumables($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuantity(InventoryConsumables $quantity): self
+    {
+        if ($this->quantity->contains($quantity)) {
+            $this->quantity->removeElement($quantity);
+            // set the owning side to null (unless already changed)
+            if ($quantity->getConsumables() === $this) {
+                $quantity->setConsumables(null);
+            }
+        }
 
         return $this;
     }

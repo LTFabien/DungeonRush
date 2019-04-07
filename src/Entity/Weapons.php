@@ -37,10 +37,6 @@ class Weapons
      */
     private $class_authorized;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Inventory", mappedBy="weapons")
-     */
-    private $inventories;
 
     /**
      * @ORM\Column(type="integer")
@@ -69,11 +65,16 @@ class Weapons
      */
     private $players;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\InventoryWeapons", mappedBy="weapons")
+     */
+    private $quantity;
+
     public function __construct()
     {
         $this->class_authorized = new ArrayCollection();
-        $this->inventories = new ArrayCollection();
         $this->players = new ArrayCollection();
+        $this->quantity = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -128,34 +129,6 @@ class Weapons
         if ($this->class_authorized->contains($classAuthorized)) {
             $this->class_authorized->removeElement($classAuthorized);
             $classAuthorized->removeAuthorizedWeapon($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Inventory[]
-     */
-    public function getInventories(): Collection
-    {
-        return $this->inventories;
-    }
-
-    public function addInventory(Inventory $inventory): self
-    {
-        if (!$this->inventories->contains($inventory)) {
-            $this->inventories[] = $inventory;
-            $inventory->addWeapon($this);
-        }
-
-        return $this;
-    }
-
-    public function removeInventory(Inventory $inventory): self
-    {
-        if ($this->inventories->contains($inventory)) {
-            $this->inventories->removeElement($inventory);
-            $inventory->removeWeapon($this);
         }
 
         return $this;
@@ -234,6 +207,37 @@ class Weapons
             // set the owning side to null (unless already changed)
             if ($player->getWeapon() === $this) {
                 $player->setWeapon(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|InventoryWeapons[]
+     */
+    public function getQuantity(): Collection
+    {
+        return $this->quantity;
+    }
+
+    public function addQuantity(InventoryWeapons $quantity): self
+    {
+        if (!$this->quantity->contains($quantity)) {
+            $this->quantity[] = $quantity;
+            $quantity->setWeapons($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuantity(InventoryWeapons $quantity): self
+    {
+        if ($this->quantity->contains($quantity)) {
+            $this->quantity->removeElement($quantity);
+            // set the owning side to null (unless already changed)
+            if ($quantity->getWeapons() === $this) {
+                $quantity->setWeapons(null);
             }
         }
 

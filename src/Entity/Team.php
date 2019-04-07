@@ -34,7 +34,7 @@ class Team
      * @ORM\OneToOne(targetEntity="App\Entity\Inventory", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      * @ApiSubresource
-     * @Groups("Team")
+     * @Groups({"Team","write"})
      */
     private $Inventory;
 
@@ -74,6 +74,7 @@ class Team
     public function __construct()
     {
         $this->characters = new ArrayCollection();
+        $this->Exp = 0;
     }
 
     public function getId(): ?int
