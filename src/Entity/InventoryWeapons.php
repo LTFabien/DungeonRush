@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Id;
 
 /**
  * @ApiResource()
@@ -11,12 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class InventoryWeapons
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+
 
     /**
      * @ORM\Column(type="integer")
@@ -24,19 +20,15 @@ class InventoryWeapons
     private $quantite;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Inventory", inversedBy="weapons")
+     * @Id @ORM\ManyToOne(targetEntity="App\Entity\Inventory", inversedBy="weapons")
      */
     private $inventory;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Weapons", inversedBy="quantity")
+     * @Id @ORM\ManyToOne(targetEntity="App\Entity\Weapons", inversedBy="quantity")
      */
     private $weapons;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getQuantite(): ?int
     {

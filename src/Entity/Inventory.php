@@ -24,17 +24,18 @@ class Inventory
 
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\InventoryWeapons", mappedBy="inventory")
+     * @ORM\OneToMany(targetEntity="App\Entity\InventoryWeapons", mappedBy="inventory",cascade={"persist","merge"})
      */
     private $weapons;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\InventoryArmor", mappedBy="inventory")
+     * @ORM\OneToMany(targetEntity="App\Entity\InventoryArmor", mappedBy="inventory",cascade={"persist","merge"})
      */
     private $armor;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\InventoryConsumables", mappedBy="inventory")
+     * @ORM\OneToMany(targetEntity="App\Entity\InventoryConsumables", mappedBy="inventory",cascade={"persist","merge"})
+     * @Groups("Team")
      */
     private $consumables;
 
@@ -60,11 +61,14 @@ class Inventory
         return $this->weapons;
     }
 
-    public function addWeapon(InventoryWeapons $weapon): self
+    public function addWeapon(Weapons $weapon): self
     {
+        $tmp=new InventoryWeapons();
+        $tmp->setWeapons($weapon);
         if (!$this->weapons->contains($weapon)) {
-            $this->weapons[] = $weapon;
-            $weapon->setInventory($this);
+            $this->weapons[] = $tmp;
+            $tmp->setInventory($this);
+            $tmp->setQuantite(1);
         }
 
         return $this;
@@ -91,11 +95,14 @@ class Inventory
         return $this->armor;
     }
 
-    public function addArmor(InventoryArmor $armor): self
+    public function addArmor(Armor $armor): self
     {
+        $tmp=new InventoryArmor();
+        $tmp->setArmor($armor);
         if (!$this->armor->contains($armor)) {
-            $this->armor[] = $armor;
-            $armor->setInventory($this);
+            $this->armor[] = $tmp;
+            $tmp->setInventory($this);
+            $tmp->setQuantite(1);
         }
 
         return $this;
@@ -122,13 +129,14 @@ class Inventory
         return $this->consumables;
     }
 
-    public function addConsumable(InventoryConsumables $consumable): self
-    {
-        if (!$this->consumables->contains($consumable)) {
-            $this->consumables[] = $consumable;
-            $consumable->setInventory($this);
+    public function addConsumable(Consumables $consumable): self
+    {       $tmp=new InventoryConsumables();
+            $tmp->setConsumables($consumable);
+        if (!$this->consumables->contains($tmp)) {
+            $this->consumables[] = $tmp;
+            $tmp->setInventory($this);
+            $tmp->setQuantite(1);
         }
-
         return $this;
     }
 

@@ -3,52 +3,29 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\ORM\Mapping\Id;
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\InventoryConsumablesRepository")
  */
 class InventoryConsumables
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $quantity;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Consumables", inversedBy="quantity")
+     * @Id @ORM\ManyToOne(targetEntity="App\Entity\Consumables", inversedBy="quantity")
+     * @Groups("Team")
      */
     private $consumables;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Inventory", inversedBy="consumables")
+     * @Id @ORM\ManyToOne(targetEntity="App\Entity\Inventory", inversedBy="consumables")
      */
     private $inventory;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getQuantity(): ?int
-    {
-        return $this->quantity;
-    }
-
-    public function setQuantity(int $quantity): self
-    {
-        $this->quantity = $quantity;
-
-        return $this;
-    }
+    /** @ORM\Column(type="integer") */
+    private $quantite;
 
 
     public function getConsumables(): ?Consumables
@@ -74,4 +51,16 @@ class InventoryConsumables
 
         return $this;
     }
+
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
+
+    public function setQuantite($quantite): void
+    {
+        $this->quantite = $quantite;
+    }
+
 }

@@ -23,6 +23,7 @@ class Consumables
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Team")
      */
     private $name;
 
@@ -33,17 +34,20 @@ class Consumables
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Team")
      */
     private $stat_buffed;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $number_buff;
 
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups("Team")
      */
     private $turn;
 
