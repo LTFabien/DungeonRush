@@ -28,6 +28,7 @@ class GroupController extends AbstractController
     public function addGroup(Request $request, ObjectManager $manager) {
         $group = new Team();
         $group->setMoney(100);
+        $group->setLvl(1);
         $Player1 = new Player();
         $group->getCharacters()->add($Player1);
         $Player2 = new Player();

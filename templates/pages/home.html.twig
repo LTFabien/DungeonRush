@@ -1,27 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block body%}
     <div class="container">
         <div class ="jumbotron text-center" >
-            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}<!--
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <section class = "jumbotron text-center mb-4" style="background-image: url('{{ asset('build/images/ffbanner.png') }}')">
                     <div class="container">
                         <div>
+                            {% if team|length==0 %}
                             <h1 class = "jumbotron-heading"> Rejoignez l'aventure !</h1>
                             <a href="{{ path('group') }}" class = "lead text-muted"> Créez votre équipe.</a>
+                            {% else %}
+                                <a href="{{ path('UserArea') }}" class = "lead text-muted">Continuer votre partie</a>
+                            {% endif %}
                         </div>
                     </div>
                 </section>
-                -->
-                <p>user authenticated</p>
-                {% if team|length==0 %}
-                    <a class="btn btn-success" href="{{ path('group') }}">Choisis tes persos !</a>
-                {% else %}
-                    <a class="btn btn-success" href="{{ path('UserArea') }}">Continuer votre partie</a>
-                {% endif %}
             {% else %}
-                <br>
-                <p> Connectez-vous où inscrivez-vous pour jouer à DungeonRush !</p>
             {% endif %}
             <br>
             <!-- <p> Connectez-vous ou inscrivez-vous pour jouer à DungeonRush !</p> -->

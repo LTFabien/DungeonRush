@@ -2,9 +2,9 @@
 
 {% block title 'Connexion' %}
 {% block body %}
-    <div class="container">
-        <div class ="jumbotron text-center">
-            <h1> Connexion </h1>
+    <div id="signuppage" class="container">
+        <div id="signup" class ="jumbotron text-center">
+            <h1 id="formTitle"> Connexion </h1>
             <form action="{{ path('login') }}" method="post">
                 <div class="form-group">
                     <input placeholder="Adresse email" required name="_username" type="text" class="form-control">

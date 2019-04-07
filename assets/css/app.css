@@ -1,3 +1,4 @@
+
 .nav-item a {
     color: #EC1D27 !important;
     cursor: pointer;
@@ -34,6 +35,12 @@
 #classTitle {
     font-weight: bold;
     color: #EC1D27 !important;
+    text-align: center;
+}
+
+#classDetailsTitle {
+    font-weight: bold;
+    color: black !important;
     text-align: center;
 }
 
@@ -74,4 +81,37 @@
     grid-gap: 10px;
     grid-auto-flow: column;
     grid-auto-columns: 300px 100px;
+}
+
+
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    margin-right:10%;
+    margin-left:18%;
+}
+
+#signup {
+    border-radius:8px;
+    border: 5px solid grey;
+    width : 50%;
+    display: inline-block;
+}
+#signuppage {
+    text-align: center;
+    padding-top: 5%;
+
+}
+
+
+#formTitle {
+    font-weight: bold;
+    padding-bottom: 5%;
+    margin-bottom: 5%;
+    border-bottom: 1px solid grey;
+
+}
+#add {
+    padding-top: 5%;
 }

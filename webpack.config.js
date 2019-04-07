@@ -12,6 +12,7 @@ Encore
     // will create public/build/app.js and public/build/app.css
     .addStyleEntry('css/app', './assets/css/app.css')
     .addStyleEntry('css/game', './assets/css/game.css')
+    .addStyleEntry('css/footer', './assets/css/Footer-with-button-logo.css')
     /*
      * ENTRY CONFIG
      *

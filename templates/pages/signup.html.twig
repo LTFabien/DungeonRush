@@ -4,9 +4,9 @@
 
 {% block title 'Inscription' %}
 {% block body %}
-    <div class="container">
-        <div class ="jumbotron text-center">
-            <h1> Inscription </h1>
+    <div id = "signuppage" class="container">
+        <div id="signup" class ="jumbotron text-center" >
+            <h1 id="formTitle"> Inscription </h1>
             {{ form_start(form) }}
             {{ form_row(form.username, {'label' : 'Nom d\'utilisateur ', 'attr': {'placeholder':'Entrer votre nom d\'utilisateur'}}) }}
             {{ form_row(form.email, {'label' : 'Adresse mail ', 'attr': {'placeholder':'Entrer votre email'}}) }}
