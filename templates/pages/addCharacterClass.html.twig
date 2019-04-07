@@ -28,9 +28,51 @@
                 {{ form_widget(formClass.authorized_move) }}
             </div>
 
+            <div class="form-group">
+                <label for="">Armures autorisées autorisés</label>
+                {{ form_widget(formClass.authorized_armors) }}
+            </div>
+
+
+            <div class="form-group">
+                <label for="">HP max</label>
+                {{ form_widget(formClass.HPmax) }}
+            </div>
+
+
+            <div class="form-group">
+                <label for="">MP max</label>
+                {{ form_widget(formClass.MPmax) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Strength</label>
+                {{ form_widget(formClass.Strength) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Vitality</label>
+                {{ form_widget(formClass.Vitality) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Speed</label>
+                {{ form_widget(formClass.Speed) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Spirit</label>
+                {{ form_widget(formClass.Spirit) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Intelligence</label>
+                {{ form_widget(formClass.Intelligence) }}
+            </div>
+
             <button type="submit" class="btn btn-success">Ajouter !</button>
             {{ form_end(formClass) }}
+
         </div>
     </div>
-
 {% endblock %}

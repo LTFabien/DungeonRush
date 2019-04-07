@@ -24,12 +24,10 @@ class WeaponsType extends AbstractType
                 'multiple'     => true,
                 'expanded' => true,
             ))
-            ->add('inventories', EntityType::class, array(
-                'class'        => Inventory::class,
-                'choice_label' => 'id',
-                'multiple'     => true,
-                'expanded' => true,
-            ))
+            ->add('damage')
+            ->add('element')
+            ->add('price')
+            ->add('lvl')
         ;
     }
 

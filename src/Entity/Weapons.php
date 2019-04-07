@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,6 +23,7 @@ class Weapons
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Team")
      */
     private $name;
 
@@ -35,18 +37,16 @@ class Weapons
      */
     private $class_authorized;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Inventory", mappedBy="weapons")
-     */
-    private $inventories;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $damage;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Team")
      */
     private $element;
 
@@ -60,10 +60,21 @@ class Weapons
      */
     private $lvl;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Player", mappedBy="weapon")
+     */
+    private $players;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\InventoryWeapons", mappedBy="weapons")
+     */
+    private $quantity;
+
     public function __construct()
     {
         $this->class_authorized = new ArrayCollection();
-        $this->inventories = new ArrayCollection();
+        $this->players = new ArrayCollection();
+        $this->quantity = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -123,34 +134,6 @@ class Weapons
         return $this;
     }
 
-    /**
-     * @return Collection|Inventory[]
-     */
-    public function getInventories(): Collection
-    {
-        return $this->inventories;
-    }
-
-    public function addInventory(Inventory $inventory): self
-    {
-        if (!$this->inventories->contains($inventory)) {
-            $this->inventories[] = $inventory;
-            $inventory->addWeapon($this);
-        }
-
-        return $this;
-    }
-
-    public function removeInventory(Inventory $inventory): self
-    {
-        if ($this->inventories->contains($inventory)) {
-            $this->inventories->removeElement($inventory);
-            $inventory->removeWeapon($this);
-        }
-
-        return $this;
-    }
-
     public function getDamage(): ?int
     {
         return $this->damage;
@@ -195,6 +178,68 @@ class Weapons
     public function setLvl(int $lvl): self
     {
         $this->lvl = $lvl;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Player[]
+     */
+    public function getPlayers(): Collection
+    {
+        return $this->players;
+    }
+
+    public function addPlayer(Player $player): self
+    {
+        if (!$this->players->contains($player)) {
+            $this->players[] = $player;
+            $player->setWeapon($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlayer(Player $player): self
+    {
+        if ($this->players->contains($player)) {
+            $this->players->removeElement($player);
+            // set the owning side to null (unless already changed)
+            if ($player->getWeapon() === $this) {
+                $player->setWeapon(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|InventoryWeapons[]
+     */
+    public function getQuantity(): Collection
+    {
+        return $this->quantity;
+    }
+
+    public function addQuantity(InventoryWeapons $quantity): self
+    {
+        if (!$this->quantity->contains($quantity)) {
+            $this->quantity[] = $quantity;
+            $quantity->setWeapons($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuantity(InventoryWeapons $quantity): self
+    {
+        if ($this->quantity->contains($quantity)) {
+            $this->quantity->removeElement($quantity);
+            // set the owning side to null (unless already changed)
+            if ($quantity->getWeapons() === $this) {
+                $quantity->setWeapons(null);
+            }
+        }
 
         return $this;
     }

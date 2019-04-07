@@ -14,6 +14,7 @@ namespace App\Controller;
 //        $em->persist($characterClass);
 //        $em->flush();
 
+use App\Entity\Armor;
 use App\Entity\CharacterClass;
 use App\Entity\Move;
 use App\Entity\Player;
@@ -97,6 +98,12 @@ class CharacterClassController extends AbstractController
                 ->add('authorized_move', EntityType::class, array(
                     'class'        => Move::class,
                     'choice_label' => 'nom',
+                    'multiple'     => true,
+                    'expanded' => true,
+                ))
+                ->add('authorized_armors', EntityType::class, array(
+                    'class'        => Armor::class,
+                    'choice_label' => 'name',
                     'multiple'     => true,
                     'expanded' => true,
                 ))

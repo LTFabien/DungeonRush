@@ -6,9 +6,9 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="/build/css/app.css">
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href= "{{ asset('build/css/footer.css') }}">
 
-
-        {% block stylesheets %} <link rel="stylesheet" href= "{{ asset('build/css/footer.css') }}" {% endblock %}
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -27,8 +27,17 @@
                     </li>
 
                     {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item">
-                            <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}" href="{{ path('add') }}">Ajouter</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="{{ path('add') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Créer</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ path('addDungeon') }}">Donjon</a>
+                                <a class="dropdown-item" href="{{ path('addStage') }}">Stage</a>
+                                <a class="dropdown-item" href="{{ path('addMonster') }}">Monstre</a>
+                                <a class="dropdown-item" href="{{ path('addConsumable') }}">Consommable</a>
+                                <a class="dropdown-item" href="{{ path('addWeapon') }}">Arme</a>
+                                <a class="dropdown-item" href="{{ path('addArmor') }}">Armure</a>
+                                <a class="dropdown-item" href="{{ path('addMove') }}">Move</a>
+                            </div>
                         </li>
 
                     {% endif %}
@@ -74,7 +83,7 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </body>
         {% block body %}{% endblock %}
-        {% block footer %}
+    {% block footer %}
     <footer id="myFooter">
         <div class="container">
             <div class="row">

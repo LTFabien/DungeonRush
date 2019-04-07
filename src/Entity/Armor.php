@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,6 +23,7 @@ class Armor
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Team")
      */
     private $name;
 
@@ -32,13 +34,10 @@ class Armor
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $defense;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Inventory", mappedBy="armors")
-     */
-    private $inventories;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\CharacterClass", mappedBy="authorized_armors")
@@ -47,6 +46,7 @@ class Armor
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Team")
      */
     private $element;
 
@@ -60,10 +60,21 @@ class Armor
      */
     private $price;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Player", mappedBy="armor")
+     */
+    private $players;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\InventoryArmor", mappedBy="armor")
+     */
+    private $quantity;
+
     public function __construct()
     {
-        $this->inventories = new ArrayCollection();
         $this->characterClasses = new ArrayCollection();
+        $this->players = new ArrayCollection();
+        $this->quantity = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -107,33 +118,6 @@ class Armor
         return $this;
     }
 
-    /**
-     * @return Collection|Inventory[]
-     */
-    public function getInventories(): Collection
-    {
-        return $this->inventories;
-    }
-
-    public function addInventory(Inventory $inventory): self
-    {
-        if (!$this->inventories->contains($inventory)) {
-            $this->inventories[] = $inventory;
-            $inventory->addArmor($this);
-        }
-
-        return $this;
-    }
-
-    public function removeInventory(Inventory $inventory): self
-    {
-        if ($this->inventories->contains($inventory)) {
-            $this->inventories->removeElement($inventory);
-            $inventory->removeArmor($this);
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|CharacterClass[]
@@ -195,6 +179,68 @@ class Armor
     public function setPrice(int $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Player[]
+     */
+    public function getPlayers(): Collection
+    {
+        return $this->players;
+    }
+
+    public function addPlayer(Player $player): self
+    {
+        if (!$this->players->contains($player)) {
+            $this->players[] = $player;
+            $player->setArmor($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlayer(Player $player): self
+    {
+        if ($this->players->contains($player)) {
+            $this->players->removeElement($player);
+            // set the owning side to null (unless already changed)
+            if ($player->getArmor() === $this) {
+                $player->setArmor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|InventoryArmor[]
+     */
+    public function getQuantity(): Collection
+    {
+        return $this->quantity;
+    }
+
+    public function addQuantity(InventoryArmor $quantity): self
+    {
+        if (!$this->quantity->contains($quantity)) {
+            $this->quantity[] = $quantity;
+            $quantity->setArmor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuantity(InventoryArmor $quantity): self
+    {
+        if ($this->quantity->contains($quantity)) {
+            $this->quantity->removeElement($quantity);
+            // set the owning side to null (unless already changed)
+            if ($quantity->getArmor() === $this) {
+                $quantity->setArmor(null);
+            }
+        }
 
         return $this;
     }

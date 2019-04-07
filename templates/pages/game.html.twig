@@ -1,7 +1,6 @@
-{% extends 'base.html.twig' %}
 {% block title 'Jeu' %}
 {% block stylesheets %}
-    {{ parent() }}
+
     {{ encore_entry_link_tags('css/game') }}
 {% endblock stylesheets %}
 {% block body %}
@@ -34,9 +33,13 @@
         <ul class ="infoEnnemy"></ul>
     </div>
 </div>
+<script>
+    var DungeonID = {{ dungeons.id }}
+    var	UserID = {{ team.id }}
+</script>
 {% endblock body %}
 {% block javascripts %}
-    {{ parent() }}
+
     {{ encore_entry_script_tags('js/game') }}
 {% endblock javascripts %}
 

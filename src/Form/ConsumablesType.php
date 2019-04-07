@@ -16,8 +16,10 @@ class ConsumablesType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('stat_buffed')
-            ->add('number_buff')
+            ->add('stat')
+            ->add('number')
+            ->add('turn')
+            ->add('price')
         ;
     }
 

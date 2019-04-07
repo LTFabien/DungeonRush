@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="{{ path('classDetails', {'id': dungeon.id}) }}"> {{ dungeon.name }}</a>
+                                <a href="{{ path('Game', {'id': dungeon.id}) }}"> {{ dungeon.name }}</a>
                             </h5>
                             {% if is_granted('ROLE_ADMIN') %}
                             {% endif %}

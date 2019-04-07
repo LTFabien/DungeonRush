@@ -2,44 +2,48 @@
 /**
  * Created by PhpStorm.
  * User: khatt
- * Date: 29/03/2019
- * Time: 16:43
+ * Date: 04/04/2019
+ * Time: 22:47
  */
 
 namespace App\Controller;
 
 
-use App\Entity\Move;
-use App\Form\MoveType;
+use App\Entity\Armor;
+use App\Form\ArmorType;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MoveController extends AbstractController
+class ArmorController  extends AbstractController
 {
     /**
-     * @Route("/admin/move", name="addMove")
+     * @Route("/admin/addArmor", name="addArmor")
      */
 
-    public function addMove(Request $request, ObjectManager $manager) {
-        $move = new Move();
-
-        $form = $this->createForm(MoveType::class, $move);
+    public function addArmor(Request $request, ObjectManager $manager)
+    {
+        $armor = new Armor();
+        $form= $this->createForm(ArmorType::class, $armor);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-
-            $manager->persist($move);
+            $manager->persist($armor);
             $manager->flush();
-
-
             return $this->redirectToRoute('home');
         }
 
-        return $this->render('pages/move', [
-            'formMove' => $form->createView()
+        return $this->render('pages/addArmor.html.twig', [
+            'formArmor' =>$form->createView()
         ]);
+
     }
+
+
+}
+
+{
+
 }

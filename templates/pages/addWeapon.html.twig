@@ -2,30 +2,49 @@
 
 {% block body %}
 
-    <h1>Ajouter une arme</h1>
+    <h1 style="text-align: center;">Ajouter une arme</h1>
+    <div id = "signuppage" class="container">
+        <div id="signup" class ="jumbotron text-center" >
+            {{ form_start(formWeapons) }}
+            <div class="form-group">
+                <label for="">Nom</label>
+                {{ form_widget(formWeapons.name) }}
+            </div>
 
-    {{ form_start(formWeapons) }}
-    <div class="form-group">
-        <label for="">Nom</label>
-        {{ form_widget(formWeapons.name) }}
+            <div class="form-group">
+                <label for="">Description</label>
+                {{ form_widget(formWeapons.description) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Classes autorisées</label>
+                {{ form_widget(formWeapons.class_authorized) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Dégats</label>
+                {{ form_widget(formWeapons.damage) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Elément</label>
+                {{ form_widget(formWeapons.element) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Prix</label>
+                {{ form_widget(formWeapons.price) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Niveau</label>
+                {{ form_widget(formWeapons.lvl) }}
+            </div>
+
+            <button type="submit" class="btn btn-success">Ajouter !</button>
+            {{ form_end(formWeapons) }}
+
+        </div>
     </div>
-
-    <div class="form-group">
-        <label for="">description</label>
-        {{ form_widget(formWeapons.description) }}
-    </div>
-
-    <div class="form-group">
-        <label for="">Classes autorisées</label>
-        {{ form_widget(formWeapons.class_authorized) }}
-    </div>
-
-    <div class="form-group">
-        <label for="">Inventaire</label>
-        {{ form_widget(formWeapons.inventories) }}
-    </div>
-
-    <button type="submit" class="btn btn-success">Ajouter !</button>
-    {{ form_end(formWeapons) }}
 
 {% endblock %}

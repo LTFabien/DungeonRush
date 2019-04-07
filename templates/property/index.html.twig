@@ -24,8 +24,6 @@
                             <h5 id ="classTitle" class="card-title">
                                 <a href="{{ path('classDetails', {'id': characterclass.id}) }}"> {{ characterclass.name }}</a>
                             </h5>
-                            {% if is_granted('ROLE_ADMIN') %}
-                            {% endif %}
                         </div>
                     </div>
                 </div>

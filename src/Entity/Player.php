@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -23,6 +24,7 @@ class Player
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("Team")
      */
     private $name;
 
@@ -33,52 +35,62 @@ class Player
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Move", inversedBy="characters")
+     * @Groups("Team")
      * @ApiSubresource()
      */
     private $move;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $HPmax;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $HP;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $MPmax;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $MP;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $Strength;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $Intelligence;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $Spirit;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $Vitality;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("Team")
      */
     private $Speed;
 
@@ -86,6 +98,18 @@ class Player
      * @ORM\ManyToMany(targetEntity="App\Entity\Team", mappedBy="characters")
      */
     private $teams;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Weapons", inversedBy="players")
+     * @Groups("Team")
+     */
+    private $weapon;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Armor", inversedBy="players")
+     * @Groups("Team")
+     */
+    private $armor;
 
     public function __construct()
     {
@@ -307,6 +331,30 @@ class Player
             $this->teams->removeElement($team);
             $team->removeCharacter($this);
         }
+
+        return $this;
+    }
+
+    public function getWeapon(): ?Weapons
+    {
+        return $this->weapon;
+    }
+
+    public function setWeapon(?Weapons $weapon): self
+    {
+        $this->weapon = $weapon;
+
+        return $this;
+    }
+
+    public function getArmor(): ?Armor
+    {
+        return $this->armor;
+    }
+
+    public function setArmor(?Armor $armor): self
+    {
+        $this->armor = $armor;
 
         return $this;
     }
