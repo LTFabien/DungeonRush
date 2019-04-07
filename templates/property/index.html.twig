@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block title 'Les classes' %}
+{% block body %}
+    <section class = "jumbotron text-center mb-4" style="background-image: url('{{ asset('build/images/wowbanner.jpg') }}')">
+        <div class="container">
+            <div>
+                <h1 class = "jumbotron-heading"> La liste des classes</h1>
+                <p class = "lead text-muted"> Voici les différentes classes qui pourront vous accompagner durant votre aventure.</p>
+            </div>
+        </div>
+    </section>
+    <div class="container text-center">
+        {% if is_granted('ROLE_ADMIN') %}
+        <a id = "redbutton" class="btn btn-success" href="{{ path('addCharacterClass') }}">Ajouter une classe</a>
+        {% endif %}
+        <br><br>
+        <div class="div row flex">
+            {% for characterclass in characterclasses %}
+                {% set imageClass = 'build/images/' ~ characterclass.name|lower ~ '.png' %}
+                <div class="col-3">
+                    <div class="card">
+                        <a href="{{ path('classDetails', {'id': characterclass.id}) }}"><img class="card-img-top" src="{{asset(imageClass)}}"  alt="Image Class" style="height: 380px" ></a>
+                        <div class="card-body">
+                            <h5 id ="classTitle" class="card-title">
+                                <a href="{{ path('classDetails', {'id': characterclass.id}) }}"> {{ characterclass.name }}</a>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock body %}

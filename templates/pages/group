@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1 style="text-align:center">Créez votre équipe</h1>
+    <div id ="signup" class="container text-center">
+        <div id="signuppage" class ="jumbotron text-center" >
+        {{ form_start(formGroup) }}
+        <div class="form-group">
+            <label for="">Choisissez le nom de votre équipe :</label>
+                 {{ form_widget(formGroup.name) }}
+        </div>
+        <div>
+            <ul class="Characters">
+                {% for Character in formGroup.characters %}
+                <div>
+                    {{ form_row(Character.name) }}
+                    {{ form_row(Character.class) }}
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+        <button type="submit" class="btn btn-success">Ajouter !</button>
+        {{ form_end(formGroup) }}
+        </div>
+    </div>
+
+{% endblock %}

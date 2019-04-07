@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1 style="text-align: center;">Ajouter une armure</h1>
+    <div id ="signup" class="container text-center">
+        <div id="signuppage" class ="jumbotron text-center">
+            {{ form_start(formArmor) }}
+            <div class="form-group">
+                <label for="">Nom</label>
+                {{ form_widget(formArmor.name) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Description</label>
+                {{ form_widget(formArmor.description) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Défense</label>
+                {{ form_widget(formArmor.defense) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Elément</label>
+                {{ form_widget(formArmor.element) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Level</label>
+                {{ form_widget(formArmor.lvl) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Prix</label>
+                {{ form_widget(formArmor.price) }}
+            </div>
+
+
+            <button type="submit" class="btn btn-success">Ajouter !</button>
+            {{ form_end(formArmor) }}
+        </div>
+    </div>
+
+{% endblock %}

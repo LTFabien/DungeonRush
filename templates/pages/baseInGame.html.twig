@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block ul %}
+    {{ parent() }}
+<li class="nav-item">
+    <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}" href="{{ path('marchand') }}">Marchand</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}" href="{{ path('inventaire') }}">Inventaire</a>
+</li>
+{% endblock ul %}

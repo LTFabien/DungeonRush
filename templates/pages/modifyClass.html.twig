@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    {% if is_granted('ROLE_ADMIN') %}
+
+        <h1 style="text-align: center;">Modifier une classe</h1>
+        <div id ="signup" class="container text-center">
+            <div id="signuppage" class ="jumbotron text-center">
+                {{ form_start(formModifyClass) }}
+                <div class="form-group">
+                <label for="">Nom</label>
+                {{ form_widget(formModifyClass.name) }}
+                </div>
+
+                <div class="form-group">
+                <label for="">description</label>
+                {{ form_widget(formModifyClass.description) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="">Armes autorisées</label>
+                    {{ form_widget(formModifyClass.authorized_weapons) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="">Move autorisés</label>
+                    {{ form_widget(formModifyClass.authorized_move) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="">Armures autorisées autorisés</label>
+                    {{ form_widget(formModifyClass.authorized_armors) }}
+                </div>
+
+
+                <div class="form-group">
+                    <label for="">HP max</label>
+                    {{ form_widget(formModifyClass.HPmax) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="">HP</label>
+                    {{ form_widget(formModifyClass.HP) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="">MP max</label>
+                    {{ form_widget(formModifyClass.MPmax) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="">MP</label>
+                    {{ form_widget(formModifyClass.MP) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="">Strength</label>
+                    {{ form_widget(formModifyClass.Strength) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="">Vitality</label>
+                    {{ form_widget(formModifyClass.Vitality) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="">Speed</label>
+                    {{ form_widget(formModifyClass.Speed) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="">Spirit</label>
+                    {{ form_widget(formModifyClass.Spirit) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="">Intelligence</label>
+                    {{ form_widget(formModifyClass.Intelligence) }}
+                </div>
+
+                <button type="submit" class="btn btn-success">Modifier !</button>
+                {{ form_end(formModifyClass) }}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

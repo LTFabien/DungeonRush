@@ -1,0 +1,25 @@
+{% extends 'pages/baseInGame.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <h1 class = "jumbotron-heading"> Choisis ton donjon !</h1>
+        <div class="div row flex">
+            {% for dungeon in dungeons %}
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ path('Game', {'id': dungeon.id}) }}"> {{ dungeon.name }}</a>
+                            </h5>
+                            {% if is_granted('ROLE_ADMIN') %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

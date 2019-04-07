@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1 style="text-align:center">Ajouter un consommable</h1>
+    <div id = "signuppage" class="container">
+        <div id="signup" class ="jumbotron text-center" >
+            {{ form_start(formConsumable) }}
+            <div class="form-group">
+                <label for="">Nom</label>
+                {{ form_widget(formConsumable.name) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Description</label>
+                {{ form_widget(formConsumable.description) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Stat modifiée</label>
+                {{ form_widget(formConsumable.stat) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Points ajoutés</label>
+                {{ form_widget(formConsumable.number) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Durée (nombre de tours)</label>
+                {{ form_widget(formConsumable.turn) }}
+            </div>
+
+            <div class="form-group">
+                <label for="">Prix</label>
+                {{ form_widget(formConsumable.price) }}
+            </div>
+
+
+            <button type="submit" class="btn btn-success">Ajouter !</button>
+            {{ form_end(formConsumable) }}
+        </div>
+    </div>
+{% endblock %}

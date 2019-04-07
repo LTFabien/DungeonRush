@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1 style="text-align: center";> Créer un move</h1>
+    <div id ="signup" class="container text-center">
+        <div id="signuppage" class ="jumbotron text-center">
+            {{ form_start(formMove) }}
+            <div class="form-group">
+                <label for="">Nom :</label>
+                {{ form_widget(formMove.nom) }}
+            </div>
+        
+            <div class="form-group">
+                <label for="">Type :</label>
+                {{ form_widget(formMove.type) }}
+            </div>
+        
+            <div class="form-group">
+                <label for="">Description :</label>
+                {{ form_widget(formMove.description) }}
+            </div>
+        
+            <div class="form-group">
+                <label for="">Classes autotisées :</label>
+                {{ form_widget(formMove.class_authorized) }}
+            </div>
+        
+            <div class="form-group">
+                <label for="">Coût :</label>
+                {{ form_widget(formMove.cost) }}
+            </div>
+        
+            <div class="form-group">
+                <label for="">Puissance :</label>
+                {{ form_widget(formMove.puissance) }}
+            </div>
+        
+            <div class="form-group">
+                <label for="">Niveau :</label>
+                {{ form_widget(formMove.lvl) }}
+            </div>
+        
+            <div class="form-group">
+                <label for="">Prix :</label>
+                {{ form_widget(formMove.price) }}
+            </div>
+        
+            <div class="form-group">
+                <label for="">Element :</label>
+                {{ form_widget(formMove.element) }}
+            </div>
+        
+            <button type="submit" class="btn btn-success">Ajouter !</button>
+            {{ form_end(formMove) }}
+        </div>
+    </div>
+{% endblock %}

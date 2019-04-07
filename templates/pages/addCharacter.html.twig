@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Ajouter un Personnage 1</h1>
+
+    {{ form_start(formCharacter) }}
+    <div class="form-group">
+        <label for="">Nom</label>
+        {{ form_widget(formCharacter.name) }}
+    </div>
+
+
+    <div class="form-group">
+        <label for="">Classe</label>
+        {{ form_widget(formCharacter.class) }}
+    </div>
+
+
+    {{ form_end(formCharacter) }}
+
+    <h1>Ajouter un Personnage 2</h1>
+
+    {{ form_start(formCharacter) }}
+    <div class="form-group">
+        <label for="">Nom</label>
+        {{ form_widget(formCharacter.name) }}
+    </div>
+
+
+    <div class="form-group">
+        <label for="">Classe</label>
+        {{ form_widget(formCharacter.class) }}
+    </div>
+
+    {{ form_end(formCharacter) }}
+
+    <h1>Ajouter un Personnage 3</h1>
+
+    {{ form_start(formCharacter) }}
+    <div class="form-group">
+        <label for="">Nom</label>
+        {{ form_widget(formCharacter.name) }}
+    </div>
+
+
+    <div class="form-group">
+        <label for="">Classe</label>
+        {{ form_widget(formCharacter.class) }}
+    </div>
+
+
+    <button type="submit" class="btn btn-success">Ajouter !</button>
+    {{ form_end(formCharacter) }}
+
+
+
+{% endblock %}

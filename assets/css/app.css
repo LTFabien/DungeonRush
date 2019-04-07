@@ -1,0 +1,115 @@
+
+.nav-item a {
+    color: #EC1D27 !important;
+    cursor: pointer;
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+.card-title-text{
+    text-align: center;
+    color:#EC1D27;
+    font-weight: bold;
+}
+.nav-item a:hover {
+    color: grey !important;
+    cursor: pointer;
+}
+.navbar-text{
+    color: lightgray !important;
+}
+.jumbotron {
+    margin-bottom: 0;
+    background-color: #FFFFFF;
+    background-repeat : no-repeat;
+    background-size :cover;
+}
+.jumbotron .container{
+    max-width: 40rem;
+    background: rgba(255,255,255,0.2);
+    padding: 2rem;
+    color: white;
+}
+
+#classTitle {
+    font-weight: bold;
+    color: #EC1D27 !important;
+    text-align: center;
+}
+
+#classDetailsTitle {
+    font-weight: bold;
+    color: black !important;
+    text-align: center;
+}
+
+#redbutton {
+    background-color: #EC1D27 !important;
+    margin:auto;
+    text-align:center;
+}
+.jumbotron .lead {
+    color: white !important;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
+}
+
+#div1 {
+    width: 32px;
+    height: 48px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+    margin-top: 30px;
+    margin-left: 200px;
+}
+#div2 {
+    width: 350px;
+    height: 70px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+#div3 {
+    width: 350px;
+    height: 70px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-rows: repeat(3, 200px);
+    grid-gap: 10px;
+    grid-auto-flow: column;
+    grid-auto-columns: 300px 100px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    margin-right:10%;
+    margin-left:18%;
+}
+
+#signup {
+    border-radius:8px;
+    border: 5px solid grey;
+    width : 50%;
+    display: inline-block;
+}
+#signuppage {
+    text-align: center;
+    padding-top: 5%;
+
+}
+
+
+#formTitle {
+    font-weight: bold;
+    padding-bottom: 5%;
+    margin-bottom: 5%;
+    border-bottom: 1px solid grey;
+
+}
+#add {
+    padding-top: 5%;
+}
